@@ -1,7 +1,7 @@
 import React from "react";
-import ImageComponent from "../components/ImageComponent"; // Ensure correct casing
-import VideoComponent from "../components/VideoComponent"; // Ensure correct casing
-import CartoonVideoComponent from "../components/CartoonVideoComponent"; // Ensure correct casing
+import ImageComponent from "../Components/ImageComponent";
+import VideoComponent from "../Components/VideoComponent";
+import CartoonVideoComponent from "../Components/CartoonVideoComponent"; // Ensure correct casing
 
 // Import images
 import img01 from "../assets/img001.webp";
