@@ -1,7 +1,7 @@
 import React from "react";
 import ImageComponent from "../Components/ImageComponent";
 import ReactPlayer from "react-player";
-import CartoonVideoComponent from "../Components/CartoonVideoComponent"; // Keep your existing cartoon component
+import CartoonVideoComponent from "../Components/CartoonVideoComponent";
 
 // Import images
 import img01 from "../assets/img001.webp";
@@ -10,18 +10,18 @@ import img03 from "../assets/img03.webp";
 import img04 from "../assets/img04.webp";
 import img05 from "../assets/img05.webp";
 
-// YouTube links
+// Updated YouTube links
 const projectsData = {
   architecture: {
     images: [img01, img02, img03, img04, img05],
     videos: [
-      "https://www.youtube.com/watch?v=44nZsF5fV3A",
-      "https://www.youtube.com/watch?v=jYl_fKvGaYk",
-      "https://www.youtube.com/watch?v=W_uMtE21BFs",
+      "https://youtu.be/jYl_fKvGaYk?si=MS7a_7VcZ1ydvLZq",
+      "https://youtu.be/W_uMtE21BFs?si=exATu0ormOqGKcNe",
+      "https://youtu.be/44nZsF5fV3A?si=VeQlxCLrz-Vq0Uoz",
     ],
   },
   animation: {
-    video: "https://www.youtube.com/watch?v=vJTLelEsXLY",
+    video: "https://youtu.be/vJTLelEsXLY?si=2F-tO6yuze_Xv5Jv",
   },
 };
 
