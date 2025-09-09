@@ -1,47 +1,6 @@
 // Projects.jsx
-import React from "react";
+import React, { useState } from "react";
 import ImageComponent from "../Components/ImageComponent";
-
-// Video Components
-const VideoComponent = ({ videos, title }) => {
-  return (
-    <div className="flex flex-col gap-8">
-      <h3 className="text-2xl text-blue-400 font-semibold mb-4">{title}</h3>
-      {videos.map((video, index) => (
-        <div key={index} className="w-full aspect-video">
-          <iframe
-            className="w-full h-full"
-            src={video}
-            title={`video-${index}`}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-const CartoonVideoComponent = ({ videoUrl }) => {
-  return (
-    <div className="flex flex-col gap-4">
-      <h3 className="text-2xl text-blue-400 font-semibold mb-4 text-center">
-        3D Cartoon Animation
-      </h3>
-      <div className="w-full aspect-video">
-        <iframe
-          className="w-full h-full"
-          src={videoUrl}
-          title="cartoon-video"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      </div>
-    </div>
-  );
-};
 
 // Import images
 import img01 from "../assets/img001.webp";
@@ -49,6 +8,75 @@ import img02 from "../assets/img02.webp";
 import img03 from "../assets/img03.webp";
 import img04 from "../assets/img04.webp";
 import img05 from "../assets/img05.webp";
+
+// Helper to get YouTube thumbnail
+const getThumbnail = (url) => {
+  const videoId = url.split("embed/")[1];
+  return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+};
+
+// Video Component with click-to-play thumbnail
+const VideoComponent = ({ videos, title }) => {
+  const [playingIndex, setPlayingIndex] = useState(null);
+
+  return (
+    <div className="flex flex-col gap-8">
+      <h3 className="text-2xl text-blue-400 font-semibold mb-4">{title}</h3>
+      {videos.map((video, index) => (
+        <div key={index} className="w-full aspect-video relative">
+          {playingIndex === index ? (
+            <iframe
+              className="w-full h-full"
+              src={video}
+              title={`video-${index}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          ) : (
+            <img
+              src={getThumbnail(video)}
+              alt={`video-${index}`}
+              className="w-full h-full object-cover cursor-pointer"
+              onClick={() => setPlayingIndex(index)}
+            />
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const CartoonVideoComponent = ({ videoUrl }) => {
+  const [playing, setPlaying] = useState(false);
+
+  return (
+    <div className="flex flex-col gap-4">
+      <h3 className="text-2xl text-blue-400 font-semibold mb-4 text-center">
+        3D Cartoon Animation
+      </h3>
+      <div className="w-full aspect-video relative">
+        {playing ? (
+          <iframe
+            className="w-full h-full"
+            src={videoUrl}
+            title="cartoon-video"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        ) : (
+          <img
+            src={getThumbnail(videoUrl)}
+            alt="cartoon-video"
+            className="w-full h-full object-cover cursor-pointer"
+            onClick={() => setPlaying(true)}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
 
 // YouTube embed links
 const projectsData = {
@@ -97,4 +125,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
