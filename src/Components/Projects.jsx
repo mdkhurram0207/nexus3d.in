@@ -10,23 +10,23 @@ import img03 from "../assets/img03.webp";
 import img04 from "../assets/img04.webp";
 import img05 from "../assets/img05.webp";
 
-// Updated full YouTube links
+// Short YouTube links
 const projectsData = {
   architecture: {
     images: [img01, img02, img03, img04, img05],
     videos: [
-      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      "https://www.youtube.com/watch?v=3JZ_D3ELwOQ",
-      "https://www.youtube.com/watch?v=L_jWHffIx5E",
-      "https://www.youtube.com/watch?v=Zi_XLOBDo_Y",
-      "https://www.youtube.com/watch?v=kXYiU_JCYtU",
-      "https://www.youtube.com/watch?v=fLexgOxsZu0",
+      "https://youtu.be/dQw4w9WgXcQ",
+      "https://youtu.be/3JZ_D3ELwOQ",
+      "https://youtu.be/L_jWHffIx5E",
+      "https://youtu.be/Zi_XLOBDo_Y",
+      "https://youtu.be/kXYiU_JCYtU",
+      "https://youtu.be/fLexgOxsZu0",
     ],
   },
   animation: {
     videos: [
-      "https://www.youtube.com/watch?v=5NV6Rdv1a3I",
-      "https://www.youtube.com/watch?v=60ItHLz5WEA",
+      "https://youtu.be/5NV6Rdv1a3I",
+      "https://youtu.be/60ItHLz5WEA",
     ],
   },
 };
