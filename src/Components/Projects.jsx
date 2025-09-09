@@ -1,7 +1,47 @@
+// Projects.jsx
 import React from "react";
 import ImageComponent from "../Components/ImageComponent";
-import VideoComponent from "../Components/VideoComponent";
-import CartoonVideoComponent from "../Components/CartoonVideoComponent"; // Ensure correct casing
+
+// Video Components
+const VideoComponent = ({ videos, title }) => {
+  return (
+    <div className="flex flex-col gap-8">
+      <h3 className="text-2xl text-blue-400 font-semibold mb-4">{title}</h3>
+      {videos.map((video, index) => (
+        <div key={index} className="w-full aspect-video">
+          <iframe
+            className="w-full h-full"
+            src={video}
+            title={`video-${index}`}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const CartoonVideoComponent = ({ videoUrl }) => {
+  return (
+    <div className="flex flex-col gap-4">
+      <h3 className="text-2xl text-blue-400 font-semibold mb-4 text-center">
+        3D Cartoon Animation
+      </h3>
+      <div className="w-full aspect-video">
+        <iframe
+          className="w-full h-full"
+          src={videoUrl}
+          title="cartoon-video"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
+    </div>
+  );
+};
 
 // Import images
 import img01 from "../assets/img001.webp";
@@ -10,18 +50,18 @@ import img03 from "../assets/img03.webp";
 import img04 from "../assets/img04.webp";
 import img05 from "../assets/img05.webp";
 
-// YouTube links
+// YouTube embed links
 const projectsData = {
   architecture: {
     images: [img01, img02, img03, img04, img05],
     videos: [
-      "https://www.youtube.com/watch?v=44nZsF5fV3A", // Project 02
-      "https://www.youtube.com/watch?v=jYl_fKvGaYk", // Project 03
-      "https://www.youtube.com/watch?v=W_uMtE21BFs", // Project 04
+      "https://www.youtube.com/embed/44nZsF5fV3A",
+      "https://www.youtube.com/embed/jYl_fKvGaYk",
+      "https://www.youtube.com/embed/W_uMtE21BFs",
     ],
   },
   animation: {
-    video: "https://www.youtube.com/watch?v=vJTLelEsXLY", // Cartoon Video
+    video: "https://www.youtube.com/embed/vJTLelEsXLY",
   },
 };
 
@@ -41,7 +81,10 @@ const Projects = () => {
 
         {/* 3D Architecture Videos */}
         <div className="w-full mb-16">
-          <VideoComponent videos={projectsData.architecture.videos} title="3D Architecture Walkthrough" />
+          <VideoComponent
+            videos={projectsData.architecture.videos}
+            title="3D Architecture Walkthrough"
+          />
         </div>
 
         {/* Cartoon Animation Video */}
@@ -54,3 +97,4 @@ const Projects = () => {
 };
 
 export default Projects;
+
