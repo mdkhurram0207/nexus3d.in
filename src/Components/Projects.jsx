@@ -1,7 +1,7 @@
 import React from "react";
 import ImageComponent from "../Components/ImageComponent";
-import VideoComponent from "../Components/VideoComponent";
-import CartoonVideoComponent from "../Components/CartoonVideoComponent";
+import ReactPlayer from "react-player";
+import CartoonVideoComponent from "../Components/CartoonVideoComponent"; // Keep your existing cartoon component
 
 // Import images
 import img01 from "../assets/img001.webp";
@@ -10,24 +10,18 @@ import img03 from "../assets/img03.webp";
 import img04 from "../assets/img04.webp";
 import img05 from "../assets/img05.webp";
 
-// Short YouTube links
+// YouTube links
 const projectsData = {
   architecture: {
     images: [img01, img02, img03, img04, img05],
     videos: [
-      "https://youtu.be/dQw4w9WgXcQ",
-      "https://youtu.be/3JZ_D3ELwOQ",
-      "https://youtu.be/L_jWHffIx5E",
-      "https://youtu.be/Zi_XLOBDo_Y",
-      "https://youtu.be/kXYiU_JCYtU",
-      "https://youtu.be/fLexgOxsZu0",
+      "https://www.youtube.com/watch?v=44nZsF5fV3A",
+      "https://www.youtube.com/watch?v=jYl_fKvGaYk",
+      "https://www.youtube.com/watch?v=W_uMtE21BFs",
     ],
   },
   animation: {
-    videos: [
-      "https://youtu.be/5NV6Rdv1a3I",
-      "https://youtu.be/60ItHLz5WEA",
-    ],
+    video: "https://www.youtube.com/watch?v=vJTLelEsXLY",
   },
 };
 
@@ -46,18 +40,23 @@ const Projects = () => {
         </div>
 
         {/* 3D Architecture Videos */}
-        <div className="w-full mb-16">
-          <VideoComponent 
-            videos={projectsData.architecture.videos} 
-            title="3D Architecture Walkthrough" 
-          />
+        <div className="w-full mb-16 flex flex-wrap justify-center gap-8">
+          {projectsData.architecture.videos.map((url, index) => (
+            <div key={index} className="w-full sm:w-[45%] lg:w-[30%]">
+              <ReactPlayer
+                url={url}
+                width="100%"
+                height="200px"
+                controls
+                light={true} // Shows YouTube thumbnail
+              />
+            </div>
+          ))}
         </div>
 
-        {/* Cartoon Animation Videos */}
+        {/* Cartoon Animation Video */}
         <div className="w-full">
-          {projectsData.animation.videos.map((video, index) => (
-            <CartoonVideoComponent key={index} videoUrl={video} />
-          ))}
+          <CartoonVideoComponent videoUrl={projectsData.animation.video} />
         </div>
       </div>
     </div>
