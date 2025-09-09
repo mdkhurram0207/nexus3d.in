@@ -15,13 +15,13 @@ const projectsData = {
   architecture: {
     images: [img01, img02, img03, img04, img05],
     videos: [
-      "https://youtu.be/enSSQQTzQHQ", // Project 02
-      "https://youtu.be/7Q-lx7khCjo", // Project 03
-      "https://youtu.be/90UFGpOwVhY", // Project 04
+      "https://www.youtube.com/watch?v=44nZsF5fV3A", // Project 02
+      "https://www.youtube.com/watch?v=jYl_fKvGaYk", // Project 03
+      "https://www.youtube.com/watch?v=W_uMtE21BFs", // Project 04
     ],
   },
   animation: {
-    video: "https://youtu.be/W4CZkwYImJc", // Cartoon Video
+    video: "https://www.youtube.com/watch?v=vJTLelEsXLY", // Cartoon Video
   },
 };
 
