@@ -16,6 +16,15 @@ const ProjectsFirebase = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(() => {
+    // Default Cloudinary images as fallback
+    const defaultImages = [
+      "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img001_ee2owt.webp",
+      "https://res.cloudinary.com/dy31puega/image/upload/v1761579853/img02_ogmxgf.webp",
+      "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img03_hqyjn5.webp",
+      "https://res.cloudinary.com/dy31puega/image/upload/v1761579854/img04_oanhad.webp",
+      "https://res.cloudinary.com/dy31puega/image/upload/v1761579856/img05_ycc7wx.webp",
+    ];
+
     // Listen for real-time updates from Firestore
     const projectsRef = collection(db, "projects");
     const q = query(projectsRef, orderBy("timestamp", "desc"));
@@ -27,6 +36,7 @@ const ProjectsFirebase = () => {
         cartoon: { videos: [] }
       };
 
+      // Add Firebase images
       snapshot.forEach((doc) => {
         const data = doc.data();
         if (data.category && projectsData[data.category]) {
@@ -45,6 +55,15 @@ const ProjectsFirebase = () => {
           }
         }
       });
+
+      // If no Firebase images exist, use default images
+      if (projectsData.architecture.images.length === 0) {
+        projectsData.architecture.images = defaultImages.map((url, index) => ({
+          id: `default-${index}`,
+          url: url,
+          timestamp: new Date()
+        }));
+      }
 
       setProjects(projectsData);
     });
