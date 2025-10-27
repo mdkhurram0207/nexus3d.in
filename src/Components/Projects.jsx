@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { FaPlay, FaTimes, FaExpand } from "react-icons/fa";
 
-// Import local images
-import img01 from "../assets/img001.webp";
-import img02 from "../assets/img02.webp";
-import img03 from "../assets/img03.webp";
-import img04 from "../assets/img04.webp";
-import img05 from "../assets/img05.webp";
-
+// Cloudinary images - optimized CDN delivery
 const projectsData = {
   architecture: {
-    images: [img01, img02, img03, img04, img05],
+    images: [
+      "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img01_hqyjn5.webp",
+      "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img02_hqyjn5.webp",
+      "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img03_hqyjn5.webp",
+      "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img04_hqyjn5.webp",
+      "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img05_hqyjn5.webp",
+    ],
     videos: [
       "https://youtu.be/jYl_fKvGaYk?si=MS7a_7VcZ1ydvLZq",
       "https://youtu.be/W_uMtE21BFs?si=exATu0ormOqGKcNe",
