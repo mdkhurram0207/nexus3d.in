@@ -165,7 +165,7 @@ const Home = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer group"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer group flex flex-col items-center"
           onClick={scrollToNext}
         >
           <motion.div
