@@ -33,6 +33,7 @@ const Sidebar = () => {
         whileTap={{ scale: 0.95 }}
         onClick={toggleSidebar}
         className="fixed top-6 left-6 z-50 p-3 bg-black/90 backdrop-blur-md border border-white/10 hover:border-white/30 hover:bg-black transition-all duration-500 shadow-lg hover:shadow-white/10"
+        style={{ zIndex: 9999 }}
       >
         <motion.div
           animate={{ rotate: isOpen ? 90 : 0 }}
@@ -87,7 +88,7 @@ const Sidebar = () => {
             className="fixed top-0 left-0 h-full w-80 bg-white text-black shadow-2xl z-40 overflow-y-auto"
           >
             {/* Sidebar Header */}
-            <div className="p-8 border-b border-gray-200">
+            <div className="p-8 pt-24 border-b border-gray-200">
               <h2 className="font-serif text-3xl font-medium text-gray-900">
                 Nexus 3D
               </h2>
