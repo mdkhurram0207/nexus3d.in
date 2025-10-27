@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
-import Projects from "./Components/Projects";
+import Projects from "./Components/ProjectsFirebase";
 import Services from "./Components/Services";
 import AboutUs from "./Components/AboutUs";
 import Contact from "./Components/Contact";
-import AdminPanel from "./Components/AdminPanel";
+import AdminPanel from "./Components/AdminPanelFirebase";
 import Sidebar from "./Components/Sidebar";
 import ContactUsButton from "./Components/ContactUsButton";
 import Footer from "./Components/Footer";
