@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaPhoneAlt, FaEnvelope, FaWhatsapp, FaMapMarkerAlt, FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaPhoneAlt, FaEnvelope, FaWhatsapp, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -24,59 +24,25 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Company Info */}
-          <div>
-            <h3 className="font-serif text-2xl font-medium mb-6">Nexus 3D</h3>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <h3 className="font-serif text-xl sm:text-2xl font-medium mb-4 sm:mb-6">Nexus 3D</h3>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
               Transforming architectural visions into stunning 3D reality. Professional visualization services with over 7 years of excellence.
             </p>
-            <div className="flex gap-4">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 border border-gray-700 hover:border-white flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black"
-              >
-                <FaFacebook className="text-lg" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 border border-gray-700 hover:border-white flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black"
-              >
-                <FaInstagram className="text-lg" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 border border-gray-700 hover:border-white flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black"
-              >
-                <FaLinkedin className="text-lg" />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 border border-gray-700 hover:border-white flex items-center justify-center transition-all duration-300 hover:bg-white hover:text-black"
-              >
-                <FaYoutube className="text-lg" />
-              </a>
-            </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-serif text-lg font-medium mb-6 uppercase tracking-wide">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="font-serif text-base sm:text-lg font-medium mb-4 sm:mb-6 uppercase tracking-wide">Quick Links</h4>
+            <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link
                     to={link.path}
-                    className="text-gray-400 hover:text-white text-sm transition-colors duration-300 inline-block"
+                    className="text-gray-400 hover:text-white text-sm sm:text-base transition-colors duration-300 inline-block"
                   >
                     {link.name}
                   </Link>
@@ -87,10 +53,10 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-serif text-lg font-medium mb-6 uppercase tracking-wide">Our Services</h4>
-            <ul className="space-y-3">
+            <h4 className="font-serif text-base sm:text-lg font-medium mb-4 sm:mb-6 uppercase tracking-wide">Our Services</h4>
+            <ul className="space-y-2 sm:space-y-3">
               {services.map((service, index) => (
-                <li key={index} className="text-gray-400 text-sm">
+                <li key={index} className="text-gray-400 text-sm sm:text-base">
                   {service}
                 </li>
               ))}
@@ -98,35 +64,35 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h4 className="font-serif text-lg font-medium mb-6 uppercase tracking-wide">Contact Us</h4>
-            <div className="space-y-4">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <h4 className="font-serif text-base sm:text-lg font-medium mb-4 sm:mb-6 uppercase tracking-wide">Contact Us</h4>
+            <div className="space-y-3 sm:space-y-4">
               <a
                 href="tel:+919756170713"
-                className="flex items-start gap-3 text-gray-400 hover:text-white text-sm transition-colors duration-300 group"
+                className="flex items-start gap-3 text-gray-400 hover:text-white text-sm sm:text-base transition-colors duration-300 group"
               >
-                <FaPhoneAlt className="text-base mt-0.5 group-hover:scale-110 transition-transform duration-300" />
+                <FaPhoneAlt className="text-sm sm:text-base mt-0.5 sm:mt-1 group-hover:scale-110 transition-transform duration-300" />
                 <span>+91 9756170713</span>
               </a>
               <a
                 href="mailto:contact@nexus3d.in"
-                className="flex items-start gap-3 text-gray-400 hover:text-white text-sm transition-colors duration-300 group"
+                className="flex items-start gap-3 text-gray-400 hover:text-white text-sm sm:text-base transition-colors duration-300 group"
               >
-                <FaEnvelope className="text-base mt-0.5 group-hover:scale-110 transition-transform duration-300" />
-                <span>contact@nexus3d.in</span>
+                <FaEnvelope className="text-sm sm:text-base mt-0.5 sm:mt-1 group-hover:scale-110 transition-transform duration-300" />
+                <span className="break-all">contact@nexus3d.in</span>
               </a>
               <a
                 href="https://wa.me/+919756170713"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-3 text-gray-400 hover:text-white text-sm transition-colors duration-300 group"
+                className="flex items-start gap-3 text-gray-400 hover:text-white text-sm sm:text-base transition-colors duration-300 group"
               >
-                <FaWhatsapp className="text-base mt-0.5 group-hover:scale-110 transition-transform duration-300" />
+                <FaWhatsapp className="text-sm sm:text-base mt-0.5 sm:mt-1 group-hover:scale-110 transition-transform duration-300" />
                 <span>WhatsApp Chat</span>
               </a>
-              <div className="flex items-start gap-3 text-gray-400 text-sm">
-                <FaMapMarkerAlt className="text-base mt-0.5" />
-                <span>Raza Building, Near Temptations,<br />Delhi Road, Pakwara,<br />Moradabad 244102, UP, India</span>
+              <div className="flex items-start gap-3 text-gray-400 text-sm sm:text-base">
+                <FaMapMarkerAlt className="text-sm sm:text-base mt-0.5 sm:mt-1 flex-shrink-0" />
+                <span className="leading-relaxed">Raza Building, Near Temptations, Delhi Road, Pakwara, Moradabad 244102, UP, India</span>
               </div>
             </div>
           </div>
@@ -135,12 +101,12 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm text-center md:text-left">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+            <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-left">
               © {currentYear} Nexus 3D. All rights reserved.
             </p>
-            <div className="flex gap-6 text-sm">
+            <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm">
               <Link to="/contact" className="text-gray-400 hover:text-white transition-colors duration-300">
                 Privacy Policy
               </Link>

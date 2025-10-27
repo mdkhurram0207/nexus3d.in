@@ -122,7 +122,7 @@ const Home = () => {
               </Link>
             </motion.div>
           </div>
-        </div>
+      </div>
 
         {/* Scroll Indicator */}
         <motion.div
@@ -190,7 +190,7 @@ const Home = () => {
       </section>
 
       {/* What We Do Section */}
-      <section className="relative py-32 sm:py-40 bg-gray-900 text-white">
+      <section className="relative py-32 sm:py-40 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -199,10 +199,10 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h3 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium mb-6">
+            <h3 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium mb-6 text-gray-900">
               What We <span className="italic">Do</span>
             </h3>
-            <div className="w-24 h-0.5 bg-white mx-auto"></div>
+            <div className="w-24 h-0.5 bg-gray-900 mx-auto"></div>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -215,15 +215,15 @@ const Home = () => {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="bg-white/5 backdrop-blur-sm p-10 border border-white/10 hover:border-white/30 transition-all duration-500 h-full">
+                <div className="bg-gray-50 p-10 border border-gray-200 hover:border-gray-900 hover:shadow-2xl transition-all duration-500 h-full">
                   <div className="mb-6">
-                    <div className="w-12 h-0.5 bg-white transform origin-left group-hover:scale-x-150 transition-transform duration-500"></div>
+                    <div className="w-12 h-0.5 bg-gray-900 transform origin-left group-hover:scale-x-150 transition-transform duration-500"></div>
                   </div>
-                  <h4 className="font-serif text-2xl sm:text-3xl font-medium mb-6">{service.title}</h4>
-                  <p className="text-base text-gray-300 leading-relaxed mb-6">
+                  <h4 className="font-serif text-2xl sm:text-3xl font-medium mb-6 text-gray-900">{service.title}</h4>
+                  <p className="text-base text-gray-600 leading-relaxed mb-6">
                     {service.description}
                   </p>
-                  <p className="text-sm text-gray-400 italic">
+                  <p className="text-sm text-gray-500 italic">
                     {service.note}
                   </p>
                 </div>
@@ -273,7 +273,7 @@ const Home = () => {
                         <h3 className="font-serif text-2xl sm:text-3xl font-medium text-gray-900 mb-4">{item.title}</h3>
                         <p className="text-base text-gray-600 leading-relaxed">{item.description}</p>
                       </div>
-                    </div>
+      </div>
                   </div>
                 </motion.div>
               );
@@ -295,46 +295,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Contact CTA Section */}
-      <section className="relative py-24 bg-black">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-white mb-10">
-              Ready to Start Your <span className="italic">Project?</span>
-            </h3>
-            <div className="flex flex-wrap justify-center gap-5">
-              <a
-                href="tel:+919756170713"
-                className="flex items-center gap-3 px-10 py-4 bg-blue-600 text-white font-medium text-base tracking-wide transition-all duration-300 hover:bg-blue-700 uppercase"
-              >
-                <FaPhoneAlt className="text-lg" />
-                <span>Call Us</span>
-              </a>
-              <a
-                href="https://wa.me/+919756170713"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-10 py-4 bg-green-600 text-white font-medium text-base tracking-wide transition-all duration-300 hover:bg-green-700 uppercase"
-              >
-                <FaWhatsapp className="text-lg" />
-                <span>WhatsApp</span>
-              </a>
-              <a
-                href="mailto:contact@nexus3d.in"
-                className="flex items-center gap-3 px-10 py-4 bg-purple-600 text-white font-medium text-base tracking-wide transition-all duration-300 hover:bg-purple-700 uppercase"
-              >
-                <FaEnvelope className="text-lg" />
-                <span>Email Us</span>
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 };
