@@ -106,17 +106,17 @@ const AdminPanel = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 sm:px-8 py-24">
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-50 to-white px-4 sm:px-8 py-24">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex justify-between items-center mb-12">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12 bg-white p-6 rounded-lg shadow-md border border-gray-200">
           <div>
-            <h1 className="text-4xl font-serif font-light text-gray-900 mb-2">Admin Panel</h1>
-            <p className="text-gray-600">Manage your projects</p>
+            <h1 className="text-3xl sm:text-4xl font-serif font-light text-gray-900 mb-2">Admin Panel</h1>
+            <p className="text-gray-600">Manage your 3D visualization projects</p>
           </div>
           <button
             onClick={handleLogout}
-            className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all duration-300"
+            className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 hover:shadow-lg transition-all duration-300 font-medium"
           >
             <FaSignOutAlt />
             Logout
@@ -124,66 +124,73 @@ const AdminPanel = () => {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex gap-4 mb-8 border-b border-gray-200">
-          <button
-            onClick={() => setActiveTab('images')}
-            className={`flex items-center gap-2 px-6 py-3 font-medium transition-all duration-300 ${
-              activeTab === 'images'
-                ? 'border-b-2 border-black text-black'
-                : 'text-gray-500 hover:text-gray-900'
-            }`}
-          >
-            <FaImage />
-            3D Renderings ({projects.images.length})
-          </button>
-          <button
-            onClick={() => setActiveTab('videos')}
-            className={`flex items-center gap-2 px-6 py-3 font-medium transition-all duration-300 ${
-              activeTab === 'videos'
-                ? 'border-b-2 border-black text-black'
-                : 'text-gray-500 hover:text-gray-900'
-            }`}
-          >
-            <FaVideo />
-            Walkthroughs ({projects.videos.length})
-          </button>
-          <button
-            onClick={() => setActiveTab('cartoon')}
-            className={`flex items-center gap-2 px-6 py-3 font-medium transition-all duration-300 ${
-              activeTab === 'cartoon'
-                ? 'border-b-2 border-black text-black'
-                : 'text-gray-500 hover:text-gray-900'
-            }`}
-          >
-            <FaVideo />
-            Cartoon Animation
-          </button>
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-2 mb-8">
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={() => setActiveTab('images')}
+              className={`flex items-center gap-2 px-6 py-3 font-medium transition-all duration-300 rounded-lg ${
+                activeTab === 'images'
+                  ? 'bg-black text-white shadow-md'
+                  : 'text-gray-600 hover:bg-gray-100'
+              }`}
+            >
+              <FaImage />
+              <span className="hidden sm:inline">3D Renderings</span>
+              <span className="sm:hidden">Renderings</span>
+              <span className="ml-1 px-2 py-0.5 bg-white/20 rounded-full text-xs">{projects.images.length}</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('videos')}
+              className={`flex items-center gap-2 px-6 py-3 font-medium transition-all duration-300 rounded-lg ${
+                activeTab === 'videos'
+                  ? 'bg-black text-white shadow-md'
+                  : 'text-gray-600 hover:bg-gray-100'
+              }`}
+            >
+              <FaVideo />
+              <span className="hidden sm:inline">Walkthroughs</span>
+              <span className="sm:hidden">Videos</span>
+              <span className="ml-1 px-2 py-0.5 bg-white/20 rounded-full text-xs">{projects.videos.length}</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('cartoon')}
+              className={`flex items-center gap-2 px-6 py-3 font-medium transition-all duration-300 rounded-lg ${
+                activeTab === 'cartoon'
+                  ? 'bg-black text-white shadow-md'
+                  : 'text-gray-600 hover:bg-gray-100'
+              }`}
+            >
+              <FaVideo />
+              <span className="hidden sm:inline">Cartoon Animation</span>
+              <span className="sm:hidden">Cartoon</span>
+            </button>
+          </div>
         </div>
 
         {/* Add New Item */}
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-8">
-          <h2 className="text-xl font-medium mb-4">Add New {activeTab === 'images' ? 'Image' : 'Video'}</h2>
-          <div className="flex gap-4">
+        <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-lg shadow-md border-2 border-gray-300 mb-8">
+          <h2 className="text-2xl font-semibold mb-6 text-gray-900">Add New {activeTab === 'images' ? 'Image' : 'Video'}</h2>
+          <div className="flex flex-col sm:flex-row gap-4">
             <input
               type="text"
               value={newItem.url}
               onChange={(e) => setNewItem({ ...newItem, url: e.target.value })}
               placeholder={
                 activeTab === 'images'
-                  ? 'Enter image URL (e.g., /src/assets/img06.webp or https://...)'
-                  : 'Enter YouTube URL (e.g., https://youtu.be/...)'
+                  ? 'Paste your image URL here... (e.g., https://i.imgur.com/example.jpg)'
+                  : 'Paste YouTube URL here... (e.g., https://youtu.be/...)'
               }
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900"
+              className="flex-1 px-5 py-4 bg-white border-2 border-gray-400 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-black focus:ring-2 focus:ring-black/20 transition-all duration-300 shadow-sm"
             />
             <button
               onClick={handleAddItem}
-              className="flex items-center gap-2 px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-all duration-300"
+              className="flex items-center justify-center gap-2 px-8 py-4 bg-black text-white rounded-lg hover:bg-gray-800 hover:shadow-lg transition-all duration-300 font-medium whitespace-nowrap"
             >
               <FaPlus />
               Add
             </button>
           </div>
-          <p className="text-sm text-gray-500 mt-2">
+          <p className="text-sm text-gray-600 mt-4 bg-blue-50 p-3 rounded border border-blue-200">
             {activeTab === 'images' 
               ? '💡 Tip: Use full image URLs from services like Imgur, ImgBB, or Cloudinary (e.g., https://i.imgur.com/example.jpg)'
               : '💡 Tip: Use YouTube share URL format (youtu.be) for best compatibility'}
@@ -191,8 +198,10 @@ const AdminPanel = () => {
         </div>
 
         {/* Items List */}
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <h2 className="text-xl font-medium mb-6">Current {activeTab === 'images' ? 'Images' : 'Videos'}</h2>
+        <div className="bg-white p-8 rounded-lg shadow-md border-2 border-gray-300">
+          <h2 className="text-2xl font-semibold mb-6 text-gray-900 border-b-2 border-gray-200 pb-4">
+            Current {activeTab === 'images' ? 'Images' : activeTab === 'videos' ? 'Videos' : 'Cartoon Video'}
+          </h2>
           
           {activeTab === 'images' && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
