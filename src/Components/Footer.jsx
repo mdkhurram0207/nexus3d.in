@@ -25,17 +25,18 @@ const Footer = () => {
     <footer className="bg-black text-white">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
+        {/* Desktop: Show all columns, Mobile: Show only Company Info and Contact */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Company Info */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <div className="lg:col-span-1">
             <h3 className="font-serif text-xl sm:text-2xl font-medium mb-4 sm:mb-6">Nexus 3D</h3>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
               Transforming architectural visions into stunning 3D reality. Professional visualization services with over 7 years of excellence.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div>
+          {/* Quick Links - Hidden on Mobile */}
+          <div className="hidden lg:block">
             <h4 className="font-serif text-base sm:text-lg font-medium mb-4 sm:mb-6 uppercase tracking-wide">Quick Links</h4>
             <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link, index) => (
@@ -51,8 +52,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
-          <div>
+          {/* Services - Hidden on Mobile */}
+          <div className="hidden lg:block">
             <h4 className="font-serif text-base sm:text-lg font-medium mb-4 sm:mb-6 uppercase tracking-wide">Our Services</h4>
             <ul className="space-y-2 sm:space-y-3">
               {services.map((service, index) => (
@@ -64,7 +65,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <div className="lg:col-span-1">
             <h4 className="font-serif text-base sm:text-lg font-medium mb-4 sm:mb-6 uppercase tracking-wide">Contact Us</h4>
             <div className="space-y-3 sm:space-y-4">
               <a
