@@ -32,15 +32,16 @@ const getProjects = () => {
   return defaultProjects;
 };
 
-const projectsData = getProjects();
-
 const Projects = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeTab, setActiveTab] = useState("images");
-  const [projects, setProjects] = useState(projectsData);
+  const [projects, setProjects] = useState(() => getProjects());
 
   // Listen for changes in localStorage
   useEffect(() => {
+    // Load data immediately on mount
+    setProjects(getProjects());
+    
     const handleStorageChange = () => {
       setProjects(getProjects());
     };
