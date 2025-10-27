@@ -1,63 +1,33 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { FaPlay, FaTimes, FaExpand } from "react-icons/fa";
-import SEO from './SEO';
 
-// Import images
-import img01 from "../assets/img001.webp";
-import img02 from "../assets/img02.webp";
-import img03 from "../assets/img03.webp";
-import img04 from "../assets/img04.webp";
-import img05 from "../assets/img05.webp";
-
-// Default projects
-const defaultProjects = {
-  images: [img01, img02, img03, img04, img05],
-  videos: [
-    "https://youtu.be/jYl_fKvGaYk?si=MS7a_7VcZ1ydvLZq",
-    "https://youtu.be/W_uMtE21BFs?si=exATu0ormOqGKcNe",
-    "https://youtu.be/44nZsF5fV3A?si=VeQlxCLrz-Vq0Uoz",
-  ],
-  cartoonVideo: "https://youtu.be/vJTLelEsXLY?si=2F-tO6yuze_Xv5Jv",
-};
-
-// Function to get projects from localStorage or use defaults
-const getProjects = () => {
-  const savedProjects = localStorage.getItem('nexus3d_projects');
-  if (savedProjects) {
-    return JSON.parse(savedProjects);
-  }
-  return defaultProjects;
+// Cloudinary images - optimized and faster loading from CDN
+const projectsData = {
+  architecture: {
+    images: [
+      "https://res.cloudinary.com/dy31puega/image/upload/c_scale,f_auto,q_auto,w_1200/v1/nexus3d/img001",
+      "https://res.cloudinary.com/dy31puega/image/upload/c_scale,f_auto,q_auto,w_1200/v1/nexus3d/img002",
+      "https://res.cloudinary.com/dy31puega/image/upload/c_scale,f_auto,q_auto,w_1200/v1/nexus3d/img003",
+      "https://res.cloudinary.com/dy31puega/image/upload/c_scale,f_auto,q_auto,w_1200/v1/nexus3d/img004",
+      "https://res.cloudinary.com/dy31puega/image/upload/c_scale,f_auto,q_auto,w_1200/v1/nexus3d/img005",
+    ],
+    videos: [
+      "https://youtu.be/jYl_fKvGaYk?si=MS7a_7VcZ1ydvLZq",
+      "https://youtu.be/W_uMtE21BFs?si=exATu0ormOqGKcNe",
+      "https://youtu.be/44nZsF5fV3A?si=VeQlxCLrz-Vq0Uoz",
+    ],
+  },
+  animation: {
+    video: "https://youtu.be/vJTLelEsXLY?si=2F-tO6yuze_Xv5Jv",
+  },
 };
 
 const Projects = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeTab, setActiveTab] = useState("images");
-  const [projects, setProjects] = useState(() => getProjects());
-
-  // Listen for changes in localStorage
-  useEffect(() => {
-    // Load data immediately on mount
-    setProjects(getProjects());
-    
-    const handleStorageChange = () => {
-      setProjects(getProjects());
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-    
-    // Also check for updates every second (for same-tab updates)
-    const interval = setInterval(() => {
-      setProjects(getProjects());
-    }, 1000);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      clearInterval(interval);
-    };
-  }, []);
 
   // Memoize ImageModal to prevent unnecessary re-renders
   const ImageModal = useMemo(() => ({ imageUrl, onClose }) => (
@@ -92,45 +62,38 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen bg-white px-4 sm:px-8 w-full">
-      <SEO 
-        title="Our Projects - 3D Architectural Renderings & Animations | Nexus 3D"
-        description="Explore our portfolio of stunning 3D architectural visualizations, walkthrough animations, and cartoon animations. Professional 3D rendering projects showcasing photorealistic quality."
-        keywords="3D rendering portfolio, architectural visualization projects, walkthrough animations, 3D renderings, cartoon animation, architectural projects, 3D visualization examples"
-        canonical="https://nexus3d.in/projects"
-      />
-      <div className="w-full max-w-7xl mx-auto py-20 sm:py-24">
+      <div className="w-full max-w-7xl mx-auto py-24">
         {/* Page Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-20"
+          className="text-center mb-20"
         >
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light mb-4 sm:mb-6 text-gray-900 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6 text-gray-900 tracking-tight">
           Our Projects
           </h1>
-          <div className="w-16 h-px bg-gray-900 mx-auto mb-6 sm:mb-8"></div>
-          <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto font-light px-4">
+          <div className="w-16 h-px bg-gray-900 mx-auto mb-8"></div>
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto font-light">
             Explore our portfolio of stunning 3D architectural visualizations and creative animations
           </p>
         </motion.div>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12 sm:mb-16">
+        <div className="flex justify-center gap-4 mb-16">
           <button
             onClick={() => setActiveTab("images")}
-            className={`px-4 sm:px-8 py-2 sm:py-3 font-medium text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 ${
+            className={`px-8 py-3 font-medium text-sm tracking-wide uppercase transition-all duration-300 ${
               activeTab === "images"
                 ? "bg-black text-white"
                 : "bg-white text-gray-900 border border-gray-200 hover:border-gray-900"
             }`}
           >
-            <span className="hidden sm:inline">3D Renderings</span>
-            <span className="sm:hidden">Renderings</span>
+            3D Renderings
           </button>
           <button
             onClick={() => setActiveTab("videos")}
-            className={`px-4 sm:px-8 py-2 sm:py-3 font-medium text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 ${
+            className={`px-8 py-3 font-medium text-sm tracking-wide uppercase transition-all duration-300 ${
               activeTab === "videos"
                 ? "bg-black text-white"
                 : "bg-white text-gray-900 border border-gray-200 hover:border-gray-900"
@@ -140,14 +103,13 @@ const Projects = () => {
           </button>
           <button
             onClick={() => setActiveTab("animation")}
-            className={`px-4 sm:px-8 py-2 sm:py-3 font-medium text-xs sm:text-sm tracking-wide uppercase transition-all duration-300 ${
+            className={`px-8 py-3 font-medium text-sm tracking-wide uppercase transition-all duration-300 ${
               activeTab === "animation"
                 ? "bg-black text-white"
                 : "bg-white text-gray-900 border border-gray-200 hover:border-gray-900"
             }`}
           >
-            <span className="hidden sm:inline">Cartoon Animation</span>
-            <span className="sm:hidden">Animation</span>
+            Cartoon Animation
           </button>
         </div>
 
@@ -157,13 +119,13 @@ const Projects = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-12 sm:mb-16"
+            className="mb-16"
           >
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-light text-center mb-8 sm:mb-12 text-gray-900 px-4">
+            <h3 className="text-2xl sm:text-3xl font-light text-center mb-12 text-gray-900">
               3D Architectural Renderings
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-              {projects.images.map((src, index) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projectsData.architecture.images.map((src, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -174,15 +136,15 @@ const Projects = () => {
                   onClick={() => setSelectedImage(src)}
                 >
                   <img
-                    className="w-full h-48 sm:h-64 object-cover"
+                    className="w-full h-64 object-cover"
                     src={src}
                     alt={`Project ${index + 1}`}
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/70 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <div className="text-center text-white">
-                      <FaExpand className="text-2xl sm:text-3xl mb-2 mx-auto" />
-                      <p className="font-light text-xs sm:text-sm uppercase tracking-wide">View Full Size</p>
+                      <FaExpand className="text-3xl mb-2 mx-auto" />
+                      <p className="font-light text-sm uppercase tracking-wide">View Full Size</p>
                     </div>
                   </div>
                 </motion.div>
@@ -197,13 +159,13 @@ const Projects = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-12 sm:mb-16"
+            className="mb-16"
           >
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-light text-center mb-8 sm:mb-12 text-gray-900 px-4">
+            <h3 className="text-2xl sm:text-3xl font-light text-center mb-12 text-gray-900">
               3D Walkthrough Animations
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
-              {projects.videos.map((url, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {projectsData.architecture.videos.map((url, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -225,8 +187,8 @@ const Projects = () => {
                         }
                       }}
                       playIcon={
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-black rounded-full flex items-center justify-center">
-                          <FaPlay className="text-white text-base sm:text-xl ml-1" />
+                        <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center">
+                          <FaPlay className="text-white text-xl ml-1" />
                         </div>
                       }
                     />
@@ -245,7 +207,7 @@ const Projects = () => {
             transition={{ duration: 0.5 }}
             className="w-full max-w-5xl mx-auto"
           >
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-light text-center mb-8 sm:mb-12 text-gray-900 px-4">
+            <h3 className="text-2xl sm:text-3xl font-light text-center mb-12 text-gray-900">
               2D/3D Cartoon Animation
             </h3>
             <motion.div
@@ -253,7 +215,7 @@ const Projects = () => {
             >
               <div className="aspect-video bg-gray-100">
                 <ReactPlayer
-                  url={projects.cartoonVideo}
+                  url={projectsData.animation.video}
                   width="100%"
                   height="100%"
                   controls
@@ -264,8 +226,8 @@ const Projects = () => {
                     }
                   }}
                   playIcon={
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-black rounded-full flex items-center justify-center">
-                      <FaPlay className="text-white text-xl sm:text-2xl ml-1" />
+                    <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center">
+                      <FaPlay className="text-white text-2xl ml-1" />
                     </div>
                   }
                 />
@@ -279,17 +241,17 @@ const Projects = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-16 sm:mt-24 px-4"
+          className="text-center mt-24"
         >
-          <h3 className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-900 mb-4 sm:mb-6 tracking-tight">
+          <h3 className="text-2xl sm:text-3xl font-light text-gray-900 mb-6 tracking-tight">
             Impressed by Our Work?
           </h3>
-          <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto font-light">
+          <p className="text-base text-gray-600 mb-8 max-w-2xl mx-auto font-light">
             Let us transform your vision into stunning 3D reality
           </p>
           <Link
             to="/contact"
-            className="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-black text-white font-medium text-xs sm:text-sm tracking-wide transition-all duration-300 hover:bg-gray-800 uppercase"
+            className="inline-block px-8 py-3 bg-black text-white font-medium text-sm tracking-wide transition-all duration-300 hover:bg-gray-800 uppercase"
           >
             Start Your Project
           </Link>

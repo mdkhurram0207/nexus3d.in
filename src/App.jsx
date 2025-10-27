@@ -1,11 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
-import Projects from "./Components/ProjectsFirebase";
+import Projects from "./Components/Projects";
 import Services from "./Components/Services";
 import AboutUs from "./Components/AboutUs";
 import Contact from "./Components/Contact";
-import AdminPanel from "./Components/AdminPanelFirebase";
 import Sidebar from "./Components/Sidebar";
 import ContactUsButton from "./Components/ContactUsButton";
 import Footer from "./Components/Footer";
@@ -17,50 +16,23 @@ const App = () => {
       {/* Scroll to top on route change */}
       <ScrollToTop />
 
+      {/* Sidebar Navigation */}
+      <Sidebar />
+
       {/* Main Content */}
       <Routes>
-        <Route path="/" element={
-          <>
-            <Sidebar />
-            <Home />
-            <ContactUsButton />
-            <Footer />
-          </>
-        } />
-        <Route path="/services" element={
-          <>
-            <Sidebar />
-            <Services />
-            <ContactUsButton />
-            <Footer />
-          </>
-        } />
-        <Route path="/projects" element={
-          <>
-            <Sidebar />
-            <Projects />
-            <ContactUsButton />
-            <Footer />
-          </>
-        } />
-        <Route path="/about" element={
-          <>
-            <Sidebar />
-            <AboutUs />
-            <ContactUsButton />
-            <Footer />
-          </>
-        } />
-        <Route path="/contact" element={
-          <>
-            <Sidebar />
-            <Contact />
-            <ContactUsButton />
-            <Footer />
-          </>
-        } />
-        <Route path="/admin-panel" element={<AdminPanel />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
+
+      {/* Floating Contact Button */}
+      <ContactUsButton />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
