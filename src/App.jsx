@@ -8,10 +8,14 @@ import Contact from "./Components/Contact";
 import Sidebar from "./Components/Sidebar";
 import ContactUsButton from "./Components/ContactUsButton";
 import Footer from "./Components/Footer";
+import ScrollToTop from "./Components/ScrollToTop";
 
 const App = () => {
   return (
     <div className="bg-black min-h-screen text-white relative">
+      {/* Scroll to top on route change */}
+      <ScrollToTop />
+
       {/* Sidebar Navigation */}
       <Sidebar />
 
