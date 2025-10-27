@@ -130,7 +130,7 @@ const Home = () => {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="w-24 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent mx-auto mb-12"
+              className="w-24 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent mx-auto mb-8"
             ></motion.div>
 
             {/* CTA Buttons */}
@@ -138,7 +138,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-wrap justify-center gap-4"
+              className="flex flex-wrap justify-center gap-4 mb-20"
             >
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -165,7 +165,7 @@ const Home = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer group"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer group"
           onClick={scrollToNext}
         >
           <motion.div
