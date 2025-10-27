@@ -32,26 +32,36 @@ const Sidebar = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={toggleSidebar}
-        className="fixed top-6 left-6 z-50 p-3 bg-black border border-white/20 hover:border-white transition-all duration-300"
+        className="fixed top-6 left-6 z-50 p-3 bg-black/90 backdrop-blur-md border border-white/10 hover:border-white/30 hover:bg-black transition-all duration-500 shadow-lg hover:shadow-white/10"
       >
-        {isOpen ? (
-          <FaTimes className="w-6 h-6 text-white" />
-        ) : (
-          <HiMenuAlt3 className="w-6 h-6 text-white" />
-        )}
+        <motion.div
+          animate={{ rotate: isOpen ? 90 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {isOpen ? (
+            <FaTimes className="w-6 h-6 text-white" />
+          ) : (
+            <HiMenuAlt3 className="w-6 h-6 text-white" />
+          )}
+        </motion.div>
       </motion.button>
 
       {/* Brand Name - Always Visible */}
-      <div className="fixed top-6 right-6 z-40 flex items-center gap-4">
-        <div className="text-right">
-          <h1 className="font-serif text-xl sm:text-2xl font-medium text-white">
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="fixed top-6 right-6 z-40 flex items-center gap-4"
+      >
+        <div className="text-right bg-black/40 backdrop-blur-md px-6 py-3 border border-white/10">
+          <h1 className="font-serif text-xl sm:text-2xl font-light text-white tracking-wide">
             Nexus 3D
           </h1>
-          <p className="text-xs text-gray-300 tracking-wide hidden sm:block">
+          <p className="text-xs text-gray-300 tracking-widest hidden sm:block uppercase">
             3D Visualization Studio
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Backdrop Overlay */}
       <AnimatePresence>
