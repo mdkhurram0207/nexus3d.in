@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaPhoneAlt, FaEnvelope, FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
+import SEO from './SEO';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -56,6 +57,12 @@ const ContactUs = () => {
 
   return (
     <div className="min-h-screen bg-white px-4 sm:px-8 py-24">
+      <SEO 
+        title="Contact Us - Get in Touch for 3D Rendering Services | Nexus 3D"
+        description="Contact Nexus 3D for professional 3D architectural rendering and visualization services. Located in Moradabad. Call +91-9756170713 or email nexus3dstudio@gmail.com"
+        keywords="contact nexus 3d, 3D rendering quote, architectural visualization contact, Moradabad 3D studio, get in touch, 3D rendering services contact"
+        canonical="https://nexus3d.in/contact"
+      />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div

@@ -47,18 +47,18 @@ const Sidebar = () => {
         </motion.div>
       </motion.button>
 
-      {/* Brand Name - Always Visible */}
+      {/* Brand Name - Hidden on Mobile */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="fixed top-6 right-6 z-40 flex items-center gap-4"
+        className="fixed top-6 right-6 z-40 items-center gap-4 hidden md:flex"
       >
         <div className="text-right bg-black/40 backdrop-blur-md px-6 py-3 border border-white/10">
           <h1 className="font-serif text-xl sm:text-2xl font-light text-white tracking-wide">
             Nexus 3D
           </h1>
-          <p className="text-xs text-gray-300 tracking-widest hidden sm:block uppercase">
+          <p className="text-xs text-gray-300 tracking-widest uppercase">
             3D Visualization Studio
           </p>
         </div>

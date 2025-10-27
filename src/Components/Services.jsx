@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import SEO from './SEO';
 
 const servicesList = [
   { name: "Architectural Visualization Services" },
@@ -25,6 +26,12 @@ const cartoonServices = [
 const Services = () => {
   return (
     <div className="min-h-screen bg-zinc-50 px-4 sm:px-8 py-32">
+      <SEO 
+        title="Our Services - 3D Rendering & Architectural Visualization | Nexus 3D"
+        description="Expert 3D architectural rendering, visualization, walkthrough animation, 2D/3D cartoon animation services. Professional 3D modeling and architectural designing solutions."
+        keywords="3D rendering services, architectural visualization, walkthrough animation, 3D modeling, architectural rendering, 3D animation services, cartoon animation, architectural designing"
+        canonical="https://nexus3d.in/services"
+      />
       <div className="w-full max-w-7xl mx-auto">
         {/* Header Section */}
         <motion.div

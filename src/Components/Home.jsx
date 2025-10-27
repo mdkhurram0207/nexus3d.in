@@ -1,5 +1,6 @@
 import React from 'react';
 import HomeVideo from './HomeVideo';
+import SEO from './SEO';
 import { FaPhoneAlt, FaWhatsapp, FaEnvelope, FaCheckCircle, FaAward, FaUsers, FaClock, FaChevronDown } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -55,8 +56,14 @@ const Home = () => {
 
   return (
     <div className="bg-white">
+      <SEO 
+        title="Nexus 3D - Professional 3D Architectural Rendering & Visualization Studio in Moradabad"
+        description="Transform your architectural concepts into stunning photorealistic visuals. Expert 3D rendering, walkthrough animations, interior & exterior visualization services in Moradabad, India."
+        keywords="3D rendering, architectural visualization, 3D animation, walkthrough animation, interior rendering, exterior rendering, photorealistic rendering, 3D architectural services, Moradabad"
+        canonical="https://nexus3d.in/"
+      />
       {/* Hero Section */}
-      <section className="relative w-full h-screen overflow-hidden bg-black">
+      <header className="relative w-full h-screen overflow-hidden bg-black">
         {/* Video Background */}
         <div className="absolute inset-0">
           <HomeVideo />
@@ -177,7 +184,7 @@ const Home = () => {
           </motion.div>
           <p className="text-white/50 text-xs tracking-[0.2em] mt-2 uppercase">Scroll</p>
         </motion.div>
-      </section>
+      </header>
 
       {/* Introduction Section */}
       <section className="relative py-16 sm:py-20 bg-white overflow-hidden">

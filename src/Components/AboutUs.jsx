@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaRegFileAlt, FaGlobeAmericas, FaUserFriends, FaRocket, FaAward, FaHeart } from 'react-icons/fa';
+import SEO from './SEO';
 
 const AboutUs = () => {
   const [projects, setProjects] = useState(0);
@@ -60,6 +61,12 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen bg-white px-4 sm:px-8 py-24">
+      <SEO 
+        title="About Us - Professional 3D Visualization Studio | Nexus 3D"
+        description="Learn about Nexus 3D, your trusted partner for 3D architectural rendering and visualization. With 7+ years of experience, 120+ completed projects across 5 countries."
+        keywords="about nexus 3d, 3D visualization studio, architectural rendering company, 3D animation experts, Moradabad, experienced 3D artists"
+        canonical="https://nexus3d.in/about"
+      />
       <div className="w-full max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
