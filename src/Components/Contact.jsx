@@ -59,8 +59,8 @@ const ContactUs = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-black via-gray-900 to-black text-white min-h-screen px-4 sm:px-8 py-20">
-      <div className="max-w-7xl mx-auto">
+    <div className="bg-gradient-to-b from-black via-gray-900 to-black text-white min-h-screen px-4 sm:px-8 py-24">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -68,7 +68,7 @@ const ContactUs = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl sm:text-6xl font-bold mb-6">
+          <h1 className="text-3xl sm:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
             Let's Connect
             </span>

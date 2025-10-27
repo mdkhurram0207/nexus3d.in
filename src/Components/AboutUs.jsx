@@ -62,8 +62,8 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white px-4 sm:px-8 py-20">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white px-4 sm:px-8 py-24">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -71,7 +71,7 @@ const AboutUs = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h1 className="text-4xl sm:text-6xl font-bold mb-6">
+          <h1 className="text-3xl sm:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               About Nexus 3D
             </span>
@@ -211,8 +211,8 @@ const AboutUs = () => {
                 <h3 className="text-lg font-semibold text-white mb-2">Location</h3>
                 <p className="text-gray-400">
                   Raza Building, Near Temptations, Delhi Road, Pakwara, Moradabad 244102
-                </p>
-              </div>
+          </p>
+        </div>
             </div>
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full flex items-center justify-center flex-shrink-0">
