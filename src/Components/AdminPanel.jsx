@@ -3,6 +3,13 @@ import { motion } from 'framer-motion';
 import { FaImage, FaVideo, FaPlus, FaTrash, FaSignOutAlt, FaEdit } from 'react-icons/fa';
 import AdminLogin from './AdminLogin';
 
+// Import default images
+import img01 from "../assets/img001.webp";
+import img02 from "../assets/img02.webp";
+import img03 from "../assets/img03.webp";
+import img04 from "../assets/img04.webp";
+import img05 from "../assets/img05.webp";
+
 const AdminPanel = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [activeTab, setActiveTab] = useState('images');
@@ -29,15 +36,9 @@ const AdminPanel = () => {
     if (savedProjects) {
       setProjects(JSON.parse(savedProjects));
     } else {
-      // Initialize with default projects
+      // Initialize with default projects using imported images
       const defaultProjects = {
-        images: [
-          '/src/assets/img001.webp',
-          '/src/assets/img02.webp',
-          '/src/assets/img03.webp',
-          '/src/assets/img04.webp',
-          '/src/assets/img05.webp'
-        ],
+        images: [img01, img02, img03, img04, img05],
         videos: [
           'https://youtu.be/jYl_fKvGaYk?si=MS7a_7VcZ1ydvLZq',
           'https://youtu.be/W_uMtE21BFs?si=exATu0ormOqGKcNe',
@@ -184,7 +185,7 @@ const AdminPanel = () => {
           </div>
           <p className="text-sm text-gray-500 mt-2">
             {activeTab === 'images' 
-              ? '💡 Tip: Upload images to /src/assets/ folder first, then use the path here'
+              ? '💡 Tip: Use full image URLs from services like Imgur, ImgBB, or Cloudinary (e.g., https://i.imgur.com/example.jpg)'
               : '💡 Tip: Use YouTube share URL format (youtu.be) for best compatibility'}
           </p>
         </div>
