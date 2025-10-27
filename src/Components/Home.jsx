@@ -142,14 +142,14 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-wrap justify-center gap-4 mb-20"
             >
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={scrollToNext}
-                className="group px-12 py-4 bg-white text-black font-light text-sm tracking-[0.2em] transition-all duration-500 hover:bg-black hover:text-white border border-white uppercase relative overflow-hidden"
-              >
-                <span className="relative z-10">My Projects</span>
-              </motion.button>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Link
+                  to="/projects"
+                  className="inline-block px-12 py-4 bg-white text-black font-light text-sm tracking-[0.2em] transition-all duration-500 hover:bg-black hover:text-white border border-white uppercase relative overflow-hidden group"
+                >
+                  <span className="relative z-10">Portfolio</span>
+                </Link>
+              </motion.div>
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   to="/contact"
