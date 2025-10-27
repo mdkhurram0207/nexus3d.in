@@ -5,13 +5,6 @@ import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebas
 import { doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
 import { auth, db, ADMIN_UID } from '../firebase';
 
-// Import default images
-import img01 from "../assets/img001.webp";
-import img02 from "../assets/img02.webp";
-import img03 from "../assets/img03.webp";
-import img04 from "../assets/img04.webp";
-import img05 from "../assets/img05.webp";
-
 const AdminPanelFirebase = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -30,15 +23,11 @@ const AdminPanelFirebase = () => {
   const [loginError, setLoginError] = useState('');
   const [syncing, setSyncing] = useState(false);
 
-  // Default projects
+  // Default projects - Start with empty arrays, you'll add your own!
   const defaultProjects = {
-    images: [img01, img02, img03, img04, img05],
-    videos: [
-      'https://youtu.be/jYl_fKvGaYk?si=MS7a_7VcZ1ydvLZq',
-      'https://youtu.be/W_uMtE21BFs?si=exATu0ormOqGKcNe',
-      'https://youtu.be/44nZsF5fV3A?si=VeQlxCLrz-Vq0Uoz'
-    ],
-    cartoonVideo: 'https://youtu.be/vJTLelEsXLY?si=2F-tO6yuze_Xv5Jv'
+    images: [],
+    videos: [],
+    cartoonVideo: ''
   };
 
   // Check authentication state
