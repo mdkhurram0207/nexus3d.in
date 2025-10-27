@@ -423,7 +423,7 @@ const Home = () => {
                       <div>
                         <h3 className="font-serif text-2xl sm:text-3xl font-light text-gray-900 mb-4">{item.title}</h3>
                         <p className="text-base text-gray-600 leading-relaxed font-light">{item.description}</p>
-                      </div>
+      </div>
       </div>
 
                   </div>

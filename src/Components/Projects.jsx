@@ -11,8 +11,8 @@ const projectsData = {
       "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img01_hqyjn5.webp",
       "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img02_hqyjn5.webp",
       "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img03_hqyjn5.webp",
-      "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img04_hqyjn5.webp",
-      "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img05_hqyjn5.webp",
+      "https://res.cloudinary.com/dy31puega/image/upload/v1761579854/img04_oanhad.webp",
+      "https://res.cloudinary.com/dy31puega/image/upload/v1761579856/img05_ycc7wx.webp",
     ],
     videos: [
       "https://youtu.be/jYl_fKvGaYk?si=MS7a_7VcZ1ydvLZq",
