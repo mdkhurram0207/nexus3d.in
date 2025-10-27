@@ -35,7 +35,7 @@ const Services = () => {
         >
           <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-medium mb-8 text-gray-900">
             Our <span className="italic">Services</span>
-          </h1>
+        </h1>
           <div className="w-24 h-0.5 bg-gray-900 mx-auto mb-10"></div>
           <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto">
             Comprehensive 3D visualization and animation solutions tailored to bring your architectural visions to life
@@ -58,8 +58,8 @@ const Services = () => {
                     <div className="w-10 h-0.5 bg-gray-900 mb-6 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                     <h3 className="text-xl sm:text-2xl text-gray-900 group-hover:text-gray-900 transition-colors duration-300 leading-tight">
                       {service.name}
-                    </h3>
-                  </div>
+              </h3>
+            </div>
                   <div className="mt-6 flex items-center text-gray-500 group-hover:text-gray-900 transition-colors duration-300">
                     <span className="text-sm uppercase tracking-widest">Learn More</span>
                     <span className="ml-2 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">→</span>
@@ -79,7 +79,7 @@ const Services = () => {
         >
           <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium mb-6 text-gray-900">
             Cartoon <span className="italic">Animation</span> Services
-          </h2>
+        </h2>
           <div className="w-24 h-0.5 bg-gray-900 mx-auto mb-8"></div>
           <p className="text-lg text-gray-600">
             Creative and engaging cartoon animations for all your storytelling needs
@@ -100,8 +100,8 @@ const Services = () => {
                   <div className="w-12 h-0.5 bg-gray-900 mb-6 mx-auto transform origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                   <h3 className="font-serif text-2xl sm:text-3xl font-medium text-center text-gray-900 group-hover:text-gray-900 transition-colors duration-300">
                     {service.name}
-                  </h3>
-                </div>
+              </h3>
+            </div>
               </motion.div>
             </Link>
           ))}

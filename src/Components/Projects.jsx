@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
@@ -30,7 +30,8 @@ const Projects = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeTab, setActiveTab] = useState("images");
 
-  const ImageModal = ({ imageUrl, onClose }) => (
+  // Memoize ImageModal to prevent unnecessary re-renders
+  const ImageModal = useMemo(() => ({ imageUrl, onClose }) => (
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
@@ -58,7 +59,7 @@ const Projects = () => {
         />
       </motion.div>
     </AnimatePresence>
-  );
+  ), []);
 
   return (
     <div className="min-h-screen bg-white px-4 sm:px-8 w-full">
@@ -130,7 +131,7 @@ const Projects = () => {
                   key={index}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.05 }}
                   whileHover={{ scale: 1.02 }}
                   className="group relative overflow-hidden cursor-pointer border border-gray-200 hover:border-gray-900 transition-all duration-300"
                   onClick={() => setSelectedImage(src)}
@@ -139,6 +140,7 @@ const Projects = () => {
                     className="w-full h-64 object-cover"
                     src={src}
                     alt={`Project ${index + 1}`}
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/70 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <div className="text-center text-white">
@@ -148,7 +150,7 @@ const Projects = () => {
                   </div>
                 </motion.div>
               ))}
-        </div>
+            </div>
           </motion.div>
         )}
 
@@ -164,33 +166,37 @@ const Projects = () => {
               3D Walkthrough Animations
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectsData.architecture.videos.map((url, index) => (
+              {projectsData.architecture.videos.map((url, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
+                  transition={{ delay: index * 0.05 }}
                   className="group relative border border-gray-200 overflow-hidden"
                 >
                   <div className="aspect-video bg-gray-100">
-              <ReactPlayer
-                url={url}
-                width="100%"
+                    <ReactPlayer
+                      url={url}
+                      width="100%"
                       height="100%"
-                controls
+                      controls
                       light={true}
                       playing={false}
+                      config={{
+                        youtube: {
+                          playerVars: { modestbranding: 1, rel: 0 }
+                        }
+                      }}
                       playIcon={
                         <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center">
                           <FaPlay className="text-white text-xl ml-1" />
                         </div>
                       }
-              />
-            </div>
+                    />
+                  </div>
                 </motion.div>
-          ))}
-        </div>
+              ))}
+            </div>
           </motion.div>
         )}
 
@@ -206,7 +212,6 @@ const Projects = () => {
               2D/3D Cartoon Animation
             </h3>
             <motion.div
-              whileHover={{ scale: 1.01 }}
               className="relative border border-gray-200 overflow-hidden"
             >
               <div className="aspect-video bg-gray-100">
@@ -216,13 +221,18 @@ const Projects = () => {
                   height="100%"
                   controls
                   light={true}
+                  config={{
+                    youtube: {
+                      playerVars: { modestbranding: 1, rel: 0 }
+                    }
+                  }}
                   playIcon={
                     <div className="w-20 h-20 bg-black rounded-full flex items-center justify-center">
                       <FaPlay className="text-white text-2xl ml-1" />
                     </div>
                   }
                 />
-        </div>
+              </div>
             </motion.div>
           </motion.div>
         )}

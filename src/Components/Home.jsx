@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeVideo from './HomeVideo';
-import { FaPhoneAlt, FaWhatsapp, FaArrowRight, FaCheckCircle, FaAward, FaUsers, FaClock, FaChevronDown } from 'react-icons/fa';
+import { FaPhoneAlt, FaWhatsapp, FaEnvelope, FaCheckCircle, FaAward, FaUsers, FaClock, FaChevronDown } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -54,7 +54,7 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-zinc-50">
+    <div className="bg-white">
       {/* Hero Section */}
       <section className="relative w-full h-screen overflow-hidden bg-black">
         {/* Video Background */}
@@ -255,7 +255,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
             {whyChooseUs.map((item, index) => {
               const Icon = item.icon;
-              return (
+  return (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
@@ -296,7 +296,7 @@ const Home = () => {
       </section>
 
       {/* Contact CTA Section */}
-      <section className="relative py-24 bg-gray-900">
+      <section className="relative py-24 bg-black">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -308,21 +308,30 @@ const Home = () => {
               Ready to Start Your <span className="italic">Project?</span>
             </h3>
             <div className="flex flex-wrap justify-center gap-5">
-        <a
-          href="tel:+919756170713"
-                className="px-10 py-4 bg-white text-black font-medium text-base tracking-wide transition-all duration-300 hover:bg-gray-100 uppercase"
-        >
-                +91 9756170713
-        </a>
-        <a
-          href="https://wa.me/+919756170713"
-          target="_blank"
-          rel="noopener noreferrer"
-                className="px-10 py-4 bg-transparent text-white font-medium text-base tracking-wide border-2 border-white transition-all duration-300 hover:bg-white hover:text-black uppercase"
-        >
-                WhatsApp
-        </a>
-      </div>
+              <a
+                href="tel:+919756170713"
+                className="flex items-center gap-3 px-10 py-4 bg-blue-600 text-white font-medium text-base tracking-wide transition-all duration-300 hover:bg-blue-700 uppercase"
+              >
+                <FaPhoneAlt className="text-lg" />
+                <span>Call Us</span>
+              </a>
+              <a
+                href="https://wa.me/+919756170713"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-10 py-4 bg-green-600 text-white font-medium text-base tracking-wide transition-all duration-300 hover:bg-green-700 uppercase"
+              >
+                <FaWhatsapp className="text-lg" />
+                <span>WhatsApp</span>
+              </a>
+              <a
+                href="mailto:contact@nexus3d.in"
+                className="flex items-center gap-3 px-10 py-4 bg-purple-600 text-white font-medium text-base tracking-wide transition-all duration-300 hover:bg-purple-700 uppercase"
+              >
+                <FaEnvelope className="text-lg" />
+                <span>Email Us</span>
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>

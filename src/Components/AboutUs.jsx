@@ -185,14 +185,14 @@ const AboutUs = () => {
               >
                 <div className="flex-shrink-0 w-20 h-20 border border-gray-900 flex items-center justify-center">
                   <span className="text-lg font-light text-gray-900">{item.year}</span>
-                </div>
+          </div>
                 <div className="flex-1 pt-2">
                   <h4 className="text-xl font-light text-gray-900 mb-2">{item.event}</h4>
                   <p className="text-base text-gray-600 font-light">{item.description}</p>
-                </div>
+          </div>
               </motion.div>
             ))}
-          </div>
+        </div>
         </motion.div>
 
         {/* Contact Info */}
@@ -222,7 +222,7 @@ const AboutUs = () => {
             >
               Get a Quote
             </a>
-          </div>
+        </div>
         </motion.div>
       </div>
     </div>
