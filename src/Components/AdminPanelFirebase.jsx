@@ -150,7 +150,7 @@ const AdminPanelFirebase = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/20 transition-all duration-300"
+                className="w-full px-4 py-3 bg-white text-gray-900 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/20 transition-all duration-300"
                 required
               />
             </div>
@@ -162,7 +162,7 @@ const AdminPanelFirebase = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/20 transition-all duration-300"
+                className="w-full px-4 py-3 bg-white text-gray-900 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-2 focus:ring-black/20 transition-all duration-300"
                 required
               />
             </div>
@@ -251,7 +251,7 @@ const AdminPanelFirebase = () => {
                   ? "Enter image URL..."
                   : "Enter video URL..."
               }
-              className="flex-1 px-5 py-4 bg-white border-2 border-gray-400 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-black focus:ring-2 focus:ring-black/20 transition-all duration-300 shadow-sm"
+              className="flex-1 px-5 py-4 bg-white text-gray-900 border-2 border-gray-400 rounded-lg placeholder-gray-500 focus:outline-none focus:border-black focus:ring-2 focus:ring-black/20 transition-all duration-300 shadow-sm"
             />
             <button
               onClick={addItem}
