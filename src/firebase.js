@@ -2,15 +2,15 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
-// TODO: Replace with your Firebase project configuration
-// Follow FIREBASE_SETUP_GUIDE.md to get these values
+// Firebase configuration
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDK7U8aKcJgZVlfuGLmkaBlQ3q-uZ25IvY",
+  authDomain: "nexus3d-edf5f.firebaseapp.com",
+  projectId: "nexus3d-edf5f",
+  storageBucket: "nexus3d-edf5f.firebasestorage.app",
+  messagingSenderId: "403950933485",
+  appId: "1:403950933485:web:42ced28f647d95e39d43e4",
+  measurementId: "G-3194L7TXT4"
 };
 
 // Initialize Firebase
@@ -22,6 +22,6 @@ export const db = getFirestore(app);
 // Initialize Authentication
 export const auth = getAuth(app);
 
-// Admin User UID - Replace with the UID of your admin user from Firebase Authentication
-export const ADMIN_UID = "YOUR_ADMIN_USER_UID";
+// Admin User UID - The UID of your admin user from Firebase Authentication
+export const ADMIN_UID = "jbQAlag59rZV6GHTxMWzvOdVK1E3";
 
