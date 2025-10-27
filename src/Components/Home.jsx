@@ -1,117 +1,120 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import HomeVideo from './HomeVideo';
-import { FaPhoneAlt, FaWhatsapp, FaArrowRight, FaPlay, FaCheckCircle, FaAward, FaUsers, FaRocket } from 'react-icons/fa';
+import { FaPhoneAlt, FaWhatsapp, FaArrowRight, FaCheckCircle, FaAward, FaUsers, FaClock, FaChevronDown } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const whyChooseUs = [
-    { icon: FaAward, title: 'Premium Quality', description: 'Photorealistic 3D renderings' },
-    { icon: FaRocket, title: 'Fast Delivery', description: 'On-time project completion' },
-    { icon: FaUsers, title: 'Expert Team', description: '7+ years of experience' },
-    { icon: FaCheckCircle, title: '100% Satisfaction', description: 'Unlimited revisions' }
+    { 
+      icon: FaAward, 
+      title: 'High-Quality Visuals', 
+      description: 'We focus on realism and artistic depth. Every render is meticulously crafted to highlight accurate materials, lighting, and perspectives, ensuring a lifelike experience that reflects the true essence of your design.'
+    },
+    { 
+      icon: FaClock, 
+      title: 'Fast Turnaround Time', 
+      description: 'We understand deadlines matter. Our streamlined workflow allows us to deliver top-quality results quickly — without ever compromising detail or quality.'
+    },
+    { 
+      icon: FaUsers, 
+      title: 'Experienced & Skilled Team', 
+      description: 'With over seven years in the industry, our team brings together expertise in architecture, 3D modeling, and visual effects to produce exceptional results for clients across multiple domains.'
+    },
+    { 
+      icon: FaCheckCircle, 
+      title: 'Client-Centered Approach', 
+      description: 'Your satisfaction is our priority. We collaborate closely with every client to ensure that each project meets their expectations and conveys the desired vision — every single time.'
+    }
   ];
 
+  const services = [
+    {
+      title: '3D Rendering',
+      description: 'Transform your architectural designs into photorealistic images that showcase every detail with stunning precision and clarity.',
+      note: 'Perfect for presentations, marketing materials, and client approvals.'
+    },
+    {
+      title: 'Walkthrough Videos',
+      description: 'Immersive 3D walkthrough animations that allow clients to experience and explore spaces before construction begins.',
+      note: 'Bring your projects to life with cinematic quality animations.'
+    },
+    {
+      title: '3D Modeling',
+      description: 'Detailed and accurate 3D models crafted with precision, ideal for architectural visualization and product design.',
+      note: 'High-quality models optimized for any rendering engine.'
+    }
+  ];
+
+  const scrollToNext = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
+
   return (
-    <div className="bg-black">
+    <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative w-full h-screen overflow-hidden">
+      <section className="relative w-full h-screen overflow-hidden bg-black">
         {/* Video Background */}
         <div className="absolute inset-0">
           <HomeVideo />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black"></div>
+          <div className="absolute inset-0 bg-black/60"></div>
         </div>
 
         {/* Hero Content */}
         <div className="relative z-10 h-full flex items-center justify-center px-4">
-          <div className="text-center max-w-4xl mx-auto">
+          <div className="text-center max-w-5xl mx-auto">
             {/* Welcome Text */}
-            <motion.div
+            <motion.p
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mb-4"
+              transition={{ duration: 0.8 }}
+              className="text-gray-300 text-sm sm:text-base font-light tracking-widest uppercase mb-4"
             >
-              <p className="text-blue-400 text-sm sm:text-base font-medium tracking-widest uppercase">
-                Welcome to
-              </p>
-            </motion.div>
+              Welcome to Nexus 3D
+            </motion.p>
 
             {/* Main Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light mb-6 text-white leading-tight tracking-tight"
             >
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Nexus 3D
-              </span>
+              Where Architecture Meets Imagination
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-base sm:text-lg lg:text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-base sm:text-lg text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed font-light"
             >
-              Transforming architectural visions into stunning 3D reality with photorealistic precision
+              We bring your architectural dreams to life with stunning 3D visuals, walkthroughs, and animations — designed to inspire and impress.
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-wrap justify-center gap-4 mb-12"
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-wrap justify-center gap-4"
             >
-              <Link
-                to="/projects"
-                className="group flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50"
+              <button
+                onClick={scrollToNext}
+                className="px-8 py-3 bg-white text-black font-medium text-sm tracking-wide transition-all duration-300 hover:bg-gray-100 uppercase"
               >
-                View Our Work
-                <FaPlay className="group-hover:translate-x-1 transition-transform text-sm" />
-              </Link>
+                Explore More
+              </button>
               <Link
                 to="/contact"
-                className="group flex items-center gap-2 bg-white/10 backdrop-blur-md text-white px-6 py-3 rounded-full font-semibold text-sm sm:text-base border border-white/30 transition-all duration-300 hover:bg-white/20 hover:scale-105"
+                className="px-8 py-3 bg-transparent text-white font-medium text-sm tracking-wide border border-white transition-all duration-300 hover:bg-white hover:text-black uppercase"
               >
-                Get Quote
-                <FaArrowRight className="group-hover:translate-x-1 transition-transform text-sm" />
+                Get in Touch
               </Link>
-            </motion.div>
-
-            {/* Quick Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto"
-            >
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-400">120+</div>
-                <div className="text-xs sm:text-sm text-gray-400 mt-1">Projects</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-purple-400">40+</div>
-                <div className="text-xs sm:text-sm text-gray-400 mt-1">Clients</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-pink-400">5+</div>
-                <div className="text-xs sm:text-sm text-gray-400 mt-1">Countries</div>
-              </div>
             </motion.div>
           </div>
         </div>
@@ -121,63 +124,170 @@ const Home = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
+          onClick={scrollToNext}
         >
           <motion.div
-            animate={{ y: [0, 10, 0] }}
+            animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-2"
+            className="text-white text-2xl"
           >
-            <div className="w-1 h-2 bg-white/60 rounded-full"></div>
+            <FaChevronDown />
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="relative py-16 sm:py-20 bg-gradient-to-b from-black to-gray-900">
+      {/* Introduction Section */}
+      <section className="relative py-24 sm:py-32 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-gray-900 mb-8 tracking-tight">
+              Transforming Concepts into Reality
+            </h2>
+            <div className="w-16 h-px bg-gray-900 mx-auto mb-8"></div>
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto mb-6 font-light">
+              At Nexus 3D, we specialize in crafting photorealistic architectural renders and immersive animations that help clients visualize spaces before they're built. From detailed interior designs to large-scale exterior developments, our visuals communicate your vision clearly and beautifully.
+            </p>
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto font-light">
+              We blend creativity, technology, and precision to deliver renders that capture every detail — lighting, texture, and depth — making your designs truly come alive.
+            </p>
+          </motion.div>
+
+          {/* Stats Highlight */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
+          >
+            <div className="text-center p-6 border border-gray-200">
+              <div className="text-4xl sm:text-5xl font-light text-gray-900 mb-2">7+</div>
+              <div className="text-sm sm:text-base text-gray-500 uppercase tracking-wide">Years of Experience</div>
+            </div>
+            <div className="text-center p-6 border border-gray-200">
+              <div className="text-4xl sm:text-5xl font-light text-gray-900 mb-2">120+</div>
+              <div className="text-sm sm:text-base text-gray-500 uppercase tracking-wide">Projects Completed</div>
+            </div>
+            <div className="text-center p-6 border border-gray-200">
+              <div className="text-4xl sm:text-5xl font-light text-gray-900 mb-2">40+</div>
+              <div className="text-sm sm:text-base text-gray-500 uppercase tracking-wide">Clients Worldwide</div>
+            </div>
+            <div className="text-center p-6 border border-gray-200">
+              <div className="text-4xl sm:text-5xl font-light text-gray-900 mb-2">5+</div>
+              <div className="text-sm sm:text-base text-gray-500 uppercase tracking-wide">Countries Served</div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* What We Do Section */}
+      <section className="relative py-24 sm:py-32 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Why Choose <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Nexus 3D</span>
+            <h3 className="text-3xl sm:text-4xl font-light text-gray-900 mb-4 tracking-tight">
+              What We Do
+            </h3>
+            <div className="w-16 h-px bg-gray-900 mx-auto"></div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white p-8 border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+              >
+                <h4 className="text-xl sm:text-2xl font-light text-gray-900 mb-4">{service.title}</h4>
+                <p className="text-base text-gray-600 leading-relaxed mb-4 font-light">
+                  {service.description}
+                </p>
+                <p className="text-sm text-gray-500 font-light italic">
+                  {service.note}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="relative py-24 sm:py-32 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-gray-900 mb-6 tracking-tight">
+              Why Choose Nexus 3D
             </h2>
-            <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
-              We deliver exceptional 3D visualization services with precision and creativity
+            <div className="w-16 h-px bg-gray-900 mx-auto mb-8"></div>
+            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto font-light">
+              Experience the difference that precision, passion, and performance can make.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {whyChooseUs.map((item, index) => {
               const Icon = item.icon;
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  whileHover={{ y: -5 }}
-                  className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300"
+                  className="bg-gray-50 p-8 border border-gray-200 hover:shadow-lg transition-shadow duration-300"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-4">
-                    <Icon className="text-white text-xl" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 border border-gray-900 flex items-center justify-center flex-shrink-0">
+                      <Icon className="text-gray-900 text-xl" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-light text-gray-900 mb-3">{item.title}</h3>
+                      <p className="text-base text-gray-600 leading-relaxed font-light">{item.description}</p>
+                    </div>
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-400">{item.description}</p>
                 </motion.div>
               );
             })}
-          </div>
+      </div>
+
+          {/* Closing Statement */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
+              From initial concept to final visualization, Nexus 3D ensures that your ideas are represented with clarity, precision, and artistic excellence.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Contact CTA Section */}
-      <section className="relative py-12 bg-gradient-to-b from-gray-900 to-black">
+      <section className="relative py-16 bg-black">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -185,27 +295,25 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6">
-              Ready to Bring Your Vision to Life?
+            <h3 className="text-2xl sm:text-3xl font-light text-white mb-8 tracking-tight">
+              Ready to Start Your Project?
             </h3>
             <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="tel:+919756170713"
-                className="group flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 px-6 rounded-full font-medium text-sm sm:text-base shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-blue-500/50"
-              >
-                <FaPhoneAlt className="group-hover:rotate-12 transition-transform" />
-                <span>+91 9756170713</span>
-              </a>
-              <a
-                href="https://wa.me/+919756170713"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 text-white py-3 px-6 rounded-full font-medium text-sm sm:text-base shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-green-500/50"
-              >
-                <FaWhatsapp className="group-hover:rotate-12 transition-transform" />
-                <span>WhatsApp</span>
-              </a>
-            </div>
+        <a
+          href="tel:+919756170713"
+                className="px-8 py-3 bg-white text-black font-medium text-sm tracking-wide transition-all duration-300 hover:bg-gray-100 uppercase"
+        >
+                +91 9756170713
+        </a>
+        <a
+          href="https://wa.me/+919756170713"
+          target="_blank"
+          rel="noopener noreferrer"
+                className="px-8 py-3 bg-transparent text-white font-medium text-sm tracking-wide border border-white transition-all duration-300 hover:bg-white hover:text-black uppercase"
+        >
+                WhatsApp
+        </a>
+      </div>
           </motion.div>
         </div>
       </section>
