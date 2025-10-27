@@ -353,8 +353,12 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="relative py-16 sm:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="relative py-16 sm:py-20 bg-white overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-1/4 left-0 w-72 h-72 bg-gray-50 rounded-full filter blur-3xl opacity-40"></div>
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-gray-50 rounded-full filter blur-3xl opacity-40"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -362,11 +366,26 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-medium text-gray-900 mb-8">
+            {/* Decorative line */}
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "4rem" }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="h-px bg-gradient-to-r from-transparent via-gray-900 to-transparent mx-auto mb-8"
+            ></motion.div>
+            
+            <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-light text-gray-900 mb-8">
               Why Choose <span className="italic">Nexus 3D</span>
             </h2>
-            <div className="w-24 h-0.5 bg-gray-900 mx-auto mb-10"></div>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="w-24 h-px bg-gray-900 mx-auto mb-10"
+            ></motion.div>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto font-light">
               Experience the difference that precision, passion, and performance can make.
             </p>
           </motion.div>
@@ -381,16 +400,26 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="group"
+                  whileHover={{ y: -4 }}
+                  className="group cursor-default"
                 >
-                  <div className="bg-gray-50 p-10 border border-gray-200 hover:border-gray-900 hover:shadow-2xl transition-all duration-500">
-                    <div className="flex items-start gap-6">
-                      <div className="w-16 h-16 border-2 border-gray-900 flex items-center justify-center flex-shrink-0 group-hover:bg-gray-900 transition-colors duration-500">
+                  <div className="relative bg-white p-10 border border-gray-200 hover:border-gray-900 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden">
+                    {/* Decorative corner elements */}
+                    <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    {/* Number indicator */}
+                    <div className="absolute top-4 right-4 text-6xl font-serif font-light text-gray-100 group-hover:text-gray-200 transition-colors duration-500">
+                      0{index + 1}
+                    </div>
+                    
+                    <div className="flex items-start gap-6 relative z-10">
+                      <div className="w-16 h-16 border border-gray-900 flex items-center justify-center flex-shrink-0 group-hover:bg-gray-900 transition-all duration-500">
                         <Icon className="text-gray-900 group-hover:text-white text-2xl transition-colors duration-500" />
                       </div>
                       <div>
-                        <h3 className="font-serif text-2xl sm:text-3xl font-medium text-gray-900 mb-4">{item.title}</h3>
-                        <p className="text-base text-gray-600 leading-relaxed">{item.description}</p>
+                        <h3 className="font-serif text-2xl sm:text-3xl font-light text-gray-900 mb-4">{item.title}</h3>
+                        <p className="text-base text-gray-600 leading-relaxed font-light">{item.description}</p>
                       </div>
       </div>
                   </div>
