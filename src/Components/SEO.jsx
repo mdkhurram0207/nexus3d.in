@@ -69,3 +69,4 @@ const SEO = ({ title, description, keywords, canonical, ogImage }) => {
 
 export default SEO;
 
+
