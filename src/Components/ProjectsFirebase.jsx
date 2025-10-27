@@ -16,18 +16,7 @@ const ProjectsFirebase = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(() => {
-    // Default Cloudinary images as fallback
-    const defaultImages = [
-      "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img001_ee2owt.webp",
-      "https://res.cloudinary.com/dy31puega/image/upload/v1761579853/img02_ogmxgf.webp",
-      "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img03_hqyjn5.webp",
-      "https://res.cloudinary.com/dy31puega/image/upload/v1761579854/img04_oanhad.webp",
-      "https://res.cloudinary.com/dy31puega/image/upload/v1761579856/img05_ycc7wx.webp",
-    ];
-
-    // Default videos as fallback - Empty arrays, videos will be added via admin panel
-    const defaultWalkthroughs = [];
-    const defaultCartoonVideos = [];
+    // No hardcoded content - all images and videos come from Firebase admin panel
 
     // Listen for real-time updates from Firestore
     const projectsRef = collection(db, "projects");
@@ -60,33 +49,7 @@ const ProjectsFirebase = () => {
         }
       });
 
-      // If no Firebase images exist, use default images
-      if (projectsData.architecture.images.length === 0) {
-        projectsData.architecture.images = defaultImages.map((url, index) => ({
-          id: `default-${index}`,
-          url: url,
-          timestamp: new Date()
-        }));
-      } else {
-        // Always include default images alongside Firebase images
-        const defaultImageObjects = defaultImages.map((url, index) => ({
-          id: `default-${index}`,
-          url: url,
-          timestamp: new Date()
-        }));
-        
-        // Combine Firebase images with default images, avoiding duplicates
-        const allImages = [...projectsData.architecture.images];
-        defaultImageObjects.forEach(defaultImg => {
-          if (!allImages.some(img => img.url === defaultImg.url)) {
-            allImages.push(defaultImg);
-          }
-        });
-        
-        projectsData.architecture.images = allImages;
-      }
-
-      // Videos will only come from Firebase admin panel - no hardcoded defaults
+      // All content comes from Firebase admin panel - no hardcoded defaults
 
       setProjects(projectsData);
     });

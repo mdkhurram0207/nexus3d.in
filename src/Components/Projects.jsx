@@ -4,24 +4,14 @@ import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { FaPlay, FaTimes, FaExpand } from "react-icons/fa";
 
-// Cloudinary images - optimized CDN delivery
+// Empty projects data - all content comes from Firebase admin panel
 const projectsData = {
   architecture: {
-    images: [
-      "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img001_ee2owt.webp",
-      "https://res.cloudinary.com/dy31puega/image/upload/v1761579853/img02_ogmxgf.webp",
-      "https://res.cloudinary.com/dy31puega/image/upload/v1761579852/img03_hqyjn5.webp",
-      "https://res.cloudinary.com/dy31puega/image/upload/v1761579854/img04_oanhad.webp",
-      "https://res.cloudinary.com/dy31puega/image/upload/v1761579856/img05_ycc7wx.webp",
-    ],
-    videos: [
-      "https://youtu.be/jYl_fKvGaYk?si=MS7a_7VcZ1ydvLZq",
-      "https://youtu.be/W_uMtE21BFs?si=exATu0ormOqGKcNe",
-      "https://youtu.be/44nZsF5fV3A?si=VeQlxCLrz-Vq0Uoz",
-    ],
+    images: [],
+    videos: [],
   },
   animation: {
-    video: "https://youtu.be/vJTLelEsXLY?si=2F-tO6yuze_Xv5Jv",
+    video: "",
   },
 };
 
