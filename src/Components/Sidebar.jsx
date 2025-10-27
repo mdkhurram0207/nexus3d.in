@@ -27,9 +27,23 @@ const Sidebar = () => {
 
   return (
     <div className="relative">
+      {/* Sidebar Toggle Button */}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={toggleSidebar}
+        className="fixed top-6 left-6 z-50 p-3 bg-black border border-white/20 hover:border-white transition-all duration-300"
+      >
+        {isOpen ? (
+          <FaTimes className="w-6 h-6 text-white" />
+        ) : (
+          <HiMenuAlt3 className="w-6 h-6 text-white" />
+        )}
+      </motion.button>
+
       {/* Brand Name - Always Visible */}
-      <div className="fixed top-6 left-6 z-40 flex items-center gap-4">
-        <div>
+      <div className="fixed top-6 right-6 z-40 flex items-center gap-4">
+        <div className="text-right">
           <h1 className="font-serif text-xl sm:text-2xl font-medium text-white">
             Nexus 3D
           </h1>
@@ -38,20 +52,6 @@ const Sidebar = () => {
           </p>
         </div>
       </div>
-
-      {/* Sidebar Toggle Button */}
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={toggleSidebar}
-        className="fixed top-6 right-6 z-50 p-3 bg-black border border-white/20 hover:border-white transition-all duration-300"
-      >
-        {isOpen ? (
-          <FaTimes className="w-6 h-6 text-white" />
-        ) : (
-          <HiMenuAlt3 className="w-6 h-6 text-white" />
-        )}
-      </motion.button>
 
       {/* Backdrop Overlay */}
       <AnimatePresence>
@@ -70,11 +70,11 @@ const Sidebar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ x: '100%' }}
+            initial={{ x: '-100%' }}
             animate={{ x: 0 }}
-            exit={{ x: '100%' }}
+            exit={{ x: '-100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 h-full w-80 bg-white text-black shadow-2xl z-40 overflow-y-auto"
+            className="fixed top-0 left-0 h-full w-80 bg-white text-black shadow-2xl z-40 overflow-y-auto"
           >
             {/* Sidebar Header */}
             <div className="p-8 border-b border-gray-200">
