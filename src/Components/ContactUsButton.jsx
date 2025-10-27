@@ -1,16 +1,24 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { FaPhoneAlt } from "react-icons/fa";
 
 const ContactUsButton = () => {
   return (
-    <a
+    <motion.a
       href="tel:+919756170713"
-      className="fixed top-1/2 right-2 transform -translate-y-1/2 flex items-center gap-1 bg-black text-white px-4 py-2 text-xs md:px-6 md:py-4 md:text-sm rounded-md shadow-lg border border-white transition-all duration-300 hover:bg-green-700 animate-borderGlow"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="fixed top-1/2 right-4 transform -translate-y-1/2 z-40 flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-3 md:px-6 md:py-4 text-xs md:text-sm rounded-full shadow-2xl hover:shadow-blue-500/50 transition-all duration-300"
       title="Call Us"
     >
-      <FaPhoneAlt className="w-4 h-4 md:w-5 md:h-5" />
-      <span className="font-semibold">Contact</span>
-    </a>
+      <motion.div
+        animate={{ rotate: [0, 10, -10, 0] }}
+        transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+      >
+        <FaPhoneAlt className="w-4 h-4 md:w-5 md:h-5" />
+      </motion.div>
+      <span className="font-semibold hidden sm:inline">Contact</span>
+    </motion.a>
   );
 };
 

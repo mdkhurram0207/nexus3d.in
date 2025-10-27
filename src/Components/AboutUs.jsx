@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FaRegFileAlt, FaGlobeAmericas, FaUserFriends } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaRegFileAlt, FaGlobeAmericas, FaUserFriends, FaRocket, FaAward, FaHeart, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 
 const AboutUs = () => {
   const [projects, setProjects] = useState(0);
@@ -10,10 +11,12 @@ const AboutUs = () => {
     let count = 0;
     const step = Math.ceil(target / 100);
     const timer = setInterval(() => {
-      if (count >= target) clearInterval(timer);
-      else {
+      if (count >= target) {
+        clearInterval(timer);
+        setter(target);
+      } else {
         count += step;
-        setter(count);
+        setter(Math.min(count, target));
       }
     }, interval);
   };
@@ -24,55 +27,217 @@ const AboutUs = () => {
     startCounting(40, setClients);
   }, []);
 
-  return (
-    <div className="min-h-screen flex justify-center items-center p-4 sm:p-8 bg-gradient-to-b from-black via-blue-900 to-black text-white">
-      <div className="max-w-2xl sm:max-w-4xl w-full text-center">
-        <h1 className="text-3xl sm:text-5xl font-bold text-blue-300 mb-6">About Us</h1>
-        <p className="text-base sm:text-lg leading-6 sm:leading-8 mb-4">
-          Welcome to our company! We specialize in architectural visualization and animation. Since 2018, we've delivered high-quality 3D rendering, modeling, and animation services.
-        </p>
-        <p className="text-base sm:text-lg leading-6 sm:leading-8 mb-4">
-          We've successfully completed 120+ projects, collaborating with clients worldwide. Our portfolio includes architectural renderings, 3D walkthroughs, and creative 3D cartoon animations.
-        </p>
-        <p className="text-base sm:text-lg leading-6 sm:leading-8 mb-4">
-          Our commitment to precision, timely delivery, and client satisfaction drives us to create immersive and visually stunning projects.
-        </p>
-        <p className="text-base sm:text-lg leading-6 sm:leading-8 mb-4">
-          With a passionate team of designers and animators, we push creative boundaries to bring ideas to life.
-        </p>
-        <p className="text-base sm:text-lg leading-6 sm:leading-8 mb-6">
-          We believe in turning visions into reality by combining technology, creativity, and expertise. Let’s collaborate and create something extraordinary together.
-        </p>
+  const stats = [
+    { icon: FaRegFileAlt, value: projects, label: 'Projects Completed', color: 'from-blue-400 to-cyan-400' },
+    { icon: FaUserFriends, value: clients, label: 'Happy Clients', color: 'from-purple-400 to-pink-400' },
+    { icon: FaGlobeAmericas, value: countries, label: 'Countries Served', color: 'from-green-400 to-teal-400' }
+  ];
 
-        {/* Counter Section */}
-        <div className="mt-8 flex flex-wrap sm:flex-nowrap justify-center gap-8 sm:gap-16">
-          <div className="flex flex-col items-center">
-            <FaRegFileAlt size={40} className="text-white mb-2" />
-            <p className="text-xl sm:text-2xl font-bold text-blue-300">{projects}+</p>
-            <p className="text-sm sm:text-base text-gray-400">Projects</p>
+  const values = [
+    { 
+      icon: FaAward, 
+      title: 'Excellence', 
+      description: 'Delivering top-tier quality in every project',
+      color: 'from-yellow-400 to-orange-400'
+    },
+    { 
+      icon: FaRocket, 
+      title: 'Innovation', 
+      description: 'Pushing creative boundaries with cutting-edge technology',
+      color: 'from-blue-400 to-purple-400'
+    },
+    { 
+      icon: FaHeart, 
+      title: 'Passion', 
+      description: 'Bringing enthusiasm and dedication to every design',
+      color: 'from-pink-400 to-red-400'
+    }
+  ];
+
+  const timeline = [
+    { year: '2018', event: 'Founded Nexus 3D', description: 'Started our journey in 3D visualization' },
+    { year: '2020', event: 'International Expansion', description: 'Began serving clients across 5 countries' },
+    { year: '2022', event: '100+ Projects', description: 'Milestone achievement in project delivery' },
+    { year: '2025', event: 'Industry Leader', description: 'Recognized as a premier 3D visualization studio' }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white px-4 sm:px-8 py-20">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <h1 className="text-4xl sm:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              About Nexus 3D
+            </span>
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
+            Your trusted partner in transforming architectural visions into breathtaking 3D realities
+          </p>
+        </motion.div>
+
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
+        >
+          {stats.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl text-center"
+              >
+                <div className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
+                  <Icon className="text-3xl text-white" />
+                </div>
+                <div className={`text-4xl sm:text-5xl font-bold mb-2 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
+                  {stat.value}+
+                </div>
+                <p className="text-gray-400 text-lg">{stat.label}</p>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        {/* Story Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mb-20"
+        >
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 sm:p-12 shadow-2xl">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Our Story
+            </h2>
+            <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
+              <p>
+                Since 2018, <span className="text-blue-400 font-semibold">Nexus 3D</span> has been at the forefront of architectural visualization and animation. We specialize in delivering high-quality 3D rendering, modeling, and animation services that bring architectural concepts to life with stunning photorealistic precision.
+              </p>
+              <p>
+                Our journey has been marked by the successful completion of <span className="text-purple-400 font-semibold">120+ projects</span>, collaborating with clients across the globe. From architectural renderings and 3D walkthroughs to creative cartoon animations, our diverse portfolio showcases our versatility and expertise.
+              </p>
+              <p>
+                At Nexus 3D, we believe in the power of visualization to transform ideas into reality. Our commitment to precision, timely delivery, and client satisfaction drives us to create immersive and visually stunning projects that exceed expectations.
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col items-center">
-            <FaGlobeAmericas size={40} className="text-white mb-2" />
-            <p className="text-xl sm:text-2xl font-bold text-blue-300">{countries}+</p>
-            <p className="text-sm sm:text-base text-gray-400">Countries</p>
+        </motion.div>
+
+        {/* Values Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mb-20"
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-white">
+            Our Core Values
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {values.map((value, index) => {
+              const Icon = value.icon;
+              return (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl text-center"
+                >
+                  <div className={`w-16 h-16 bg-gradient-to-br ${value.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
+                    <Icon className="text-3xl text-white" />
+                  </div>
+                  <h3 className={`text-2xl font-bold mb-3 bg-gradient-to-r ${value.color} bg-clip-text text-transparent`}>
+                    {value.title}
+                  </h3>
+                  <p className="text-gray-400">{value.description}</p>
+                </motion.div>
+              );
+            })}
           </div>
-          <div className="flex flex-col items-center">
-            <FaUserFriends size={40} className="text-white mb-2" />
-            <p className="text-xl sm:text-2xl font-bold text-blue-300">{clients}+</p>
-            <p className="text-sm sm:text-base text-gray-400">Clients</p>
+        </motion.div>
+
+        {/* Timeline Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mb-20"
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center text-white">
+            Our Journey
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {timeline.map((item, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl shadow-xl"
+              >
+                <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-3">
+                  {item.year}
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">{item.event}</h3>
+                <p className="text-gray-400">{item.description}</p>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Contact Information */}
-        <div className="mt-8 sm:mt-12">
-          <p className="text-base sm:text-lg">📍 Raza Building, Near Temptations, Delhi Road, Pakwara, Moradabad 244102</p>
-          <p className="text-base sm:text-lg mt-4">
-            📞 <a href="tel:+919756170713" className="text-blue-400 hover:underline">+91 9756170713</a>
-          </p>
-          <p className="text-base sm:text-lg mt-4">
-            ✉️ <a href="mailto:contact@nexus3d.in" className="text-blue-400 hover:underline">contact@nexus3d.in</a>
-          </p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1 }}
+          className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 sm:p-12 shadow-2xl"
+        >
+          <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Get In Touch
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-pink-400 rounded-full flex items-center justify-center flex-shrink-0">
+                <FaMapMarkerAlt className="text-xl text-white" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white mb-2">Location</h3>
+                <p className="text-gray-400">
+                  Raza Building, Near Temptations, Delhi Road, Pakwara, Moradabad 244102
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full flex items-center justify-center flex-shrink-0">
+                <FaPhoneAlt className="text-xl text-white" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white mb-2">Phone</h3>
+                <a href="tel:+919756170713" className="text-blue-400 hover:text-blue-300 transition-colors">
+                  +91 9756170713
+                </a>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center flex-shrink-0">
+                <FaEnvelope className="text-xl text-white" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white mb-2">Email</h3>
+                <a href="mailto:contact@nexus3d.in" className="text-purple-400 hover:text-purple-300 transition-colors">
+                  contact@nexus3d.in
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
