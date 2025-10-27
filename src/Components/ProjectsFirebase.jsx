@@ -238,15 +238,25 @@ const ProjectsFirebase = () => {
                   onClick={() => setSelectedVideo(item.url)}
                 >
                   <div className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
-                    <div className="aspect-video bg-gray-200 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-black bg-opacity-80 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                          <FaPlay className="text-white text-base sm:text-xl ml-1" />
-                        </div>
-                        <p className="text-sm sm:text-base text-gray-600 font-medium">
-                          Walkthrough Video
-                        </p>
-                      </div>
+                    <div className="aspect-video bg-gray-200">
+                      <ReactPlayer
+                        url={item.url}
+                        width="100%"
+                        height="100%"
+                        light={true}
+                        playing={false}
+                        controls={false}
+                        config={{
+                          youtube: {
+                            playerVars: { modestbranding: 1, rel: 0 }
+                          }
+                        }}
+                        playIcon={
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 bg-black bg-opacity-80 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                            <FaPlay className="text-white text-base sm:text-xl ml-1" />
+                          </div>
+                        }
+                      />
                     </div>
                   </div>
                 </motion.div>
@@ -279,15 +289,25 @@ const ProjectsFirebase = () => {
                   onClick={() => setSelectedVideo(item.url)}
                 >
                   <div className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
-                    <div className="aspect-video bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-purple-600 bg-opacity-80 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                          <FaPlay className="text-white text-base sm:text-xl ml-1" />
-                        </div>
-                        <p className="text-sm sm:text-base text-gray-600 font-medium">
-                          Cartoon Animation
-                        </p>
-                      </div>
+                    <div className="aspect-video bg-gray-200">
+                      <ReactPlayer
+                        url={item.url}
+                        width="100%"
+                        height="100%"
+                        light={true}
+                        playing={false}
+                        controls={false}
+                        config={{
+                          youtube: {
+                            playerVars: { modestbranding: 1, rel: 0 }
+                          }
+                        }}
+                        playIcon={
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 bg-purple-600 bg-opacity-80 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
+                            <FaPlay className="text-white text-base sm:text-xl ml-1" />
+                          </div>
+                        }
+                      />
                     </div>
                   </div>
                 </motion.div>
