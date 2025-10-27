@@ -34,20 +34,23 @@ const ContactUs = () => {
       icon: FaPhoneAlt,
       title: "Phone",
       value: "+91 9756170713",
-      link: "tel:+919756170713"
+      link: "tel:+919756170713",
+      color: "blue"
     },
     {
       icon: FaEnvelope,
       title: "Email",
       value: "contact@nexus3d.in",
-      link: "mailto:contact@nexus3d.in"
+      link: "mailto:contact@nexus3d.in",
+      color: "purple"
     },
     {
       icon: FaWhatsapp,
       title: "WhatsApp",
       value: "Chat with Us",
       link: "https://wa.me/+919756170713",
-      external: true
+      external: true,
+      color: "green"
     }
   ];
 
@@ -162,6 +165,11 @@ const ContactUs = () => {
             <div className="space-y-4">
               {contactMethods.map((method, index) => {
                 const Icon = method.icon;
+                const colorClasses = {
+                  blue: "bg-blue-600 hover:bg-blue-700 border-blue-600",
+                  green: "bg-green-600 hover:bg-green-700 border-green-600",
+                  purple: "bg-purple-600 hover:bg-purple-700 border-purple-600"
+                };
                 return (
                   <motion.a
                     key={index}
@@ -171,20 +179,18 @@ const ContactUs = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="block p-6 bg-gray-50 border border-gray-200 hover:border-gray-900 transition-all duration-300"
+                    className={`flex items-center gap-4 p-6 text-white transition-all duration-300 ${colorClasses[method.color]}`}
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 border border-gray-900 flex items-center justify-center flex-shrink-0">
-                        <Icon className="text-gray-900 text-xl" />
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide mb-1">
-                          {method.title}
-                        </h3>
-                        <p className="text-base text-gray-600 font-light">
-                          {method.value}
-                        </p>
-                      </div>
+                    <div className="w-12 h-12 bg-white/20 flex items-center justify-center flex-shrink-0">
+                      <Icon className="text-white text-xl" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-medium uppercase tracking-wide mb-1">
+                        {method.title}
+                      </h3>
+                      <p className="text-base font-light">
+                        {method.value}
+                      </p>
                     </div>
                   </motion.a>
                 );
@@ -201,13 +207,16 @@ const ContactUs = () => {
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 border border-gray-900 flex items-center justify-center flex-shrink-0">
                   <FaMapMarkerAlt className="text-gray-900 text-xl" />
-          </div>
+                </div>
                 <div>
-                  <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide mb-1">
+                  <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide mb-2">
                     Location
-          </h3>
-                  <p className="text-base text-gray-600 font-light">
-                    Dehradun, Uttarakhand, India
+                  </h3>
+                  <p className="text-base text-gray-600 font-light leading-relaxed">
+                    Raza Building, Near Temptations,<br />
+                    Delhi Road, Pakwara,<br />
+                    Moradabad 244102,<br />
+                    Uttar Pradesh, India
                   </p>
                 </div>
               </div>

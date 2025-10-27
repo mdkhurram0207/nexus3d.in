@@ -7,6 +7,7 @@ import AboutUs from "./Components/AboutUs";
 import Contact from "./Components/Contact";
 import Sidebar from "./Components/Sidebar";
 import ContactUsButton from "./Components/ContactUsButton";
+import Footer from "./Components/Footer";
 
 const App = () => {
   return (
@@ -25,6 +26,9 @@ const App = () => {
 
       {/* Floating Contact Button */}
       <ContactUsButton />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
