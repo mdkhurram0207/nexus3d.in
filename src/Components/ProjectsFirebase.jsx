@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import { db } from "../firebase";
@@ -15,47 +15,44 @@ const ProjectsFirebase = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  useEffect(() => {
-    // No hardcoded content - all images and videos come from Firebase admin panel
-
-    // Listen for real-time updates from Firestore
+  // Memoized Firebase listener to prevent unnecessary re-renders
+  const fetchProjects = useCallback(() => {
     const projectsRef = collection(db, "projects");
     const q = query(projectsRef, orderBy("timestamp", "desc"));
     
-    const unsubscribe = onSnapshot(q, (snapshot) => {
+    return onSnapshot(q, (snapshot) => {
       const projectsData = {
         architecture: { images: [] },
         walkthroughs: { videos: [] },
         cartoon: { videos: [] }
       };
 
-      // Add Firebase images
+      // Process Firebase data efficiently
       snapshot.forEach((doc) => {
         const data = doc.data();
         if (data.category && projectsData[data.category]) {
+          const item = {
+            id: doc.id,
+            url: data.url,
+            timestamp: data.timestamp
+          };
+          
           if (data.category === "architecture") {
-            projectsData.architecture.images.push({
-              id: doc.id,
-              url: data.url,
-              timestamp: data.timestamp
-            });
+            projectsData.architecture.images.push(item);
           } else {
-            projectsData[data.category].videos.push({
-              id: doc.id,
-              url: data.url,
-              timestamp: data.timestamp
-            });
+            projectsData[data.category].videos.push(item);
           }
         }
       });
 
-      // All content comes from Firebase admin panel - no hardcoded defaults
-
       setProjects(projectsData);
     });
-
-    return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    const unsubscribe = fetchProjects();
+    return () => unsubscribe();
+  }, [fetchProjects]);
 
   const tabs = [
     { key: "architecture", label: "3D Renderings", shortLabel: "Renderings" },
@@ -63,6 +60,7 @@ const ProjectsFirebase = () => {
     { key: "cartoon", label: "Cartoon Animation", shortLabel: "Animation" },
   ];
 
+  // Memoized modals for better performance
   const ImageModal = useMemo(() => {
     if (!selectedImage) return null;
 
@@ -86,6 +84,7 @@ const ProjectsFirebase = () => {
             alt="Project"
             className="max-w-full max-h-full object-contain rounded-lg"
             onClick={(e) => e.stopPropagation()}
+            loading="eager"
           />
         </div>
       </motion.div>
@@ -116,9 +115,10 @@ const ProjectsFirebase = () => {
               width="100%"
               height="100%"
               controls
+              playing={true}
               config={{
                 youtube: {
-                  playerVars: { modestbranding: 1, rel: 0 }
+                  playerVars: { modestbranding: 1, rel: 0, autoplay: 1 }
                 }
               }}
             />
@@ -193,7 +193,7 @@ const ProjectsFirebase = () => {
                   key={item.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  transition={{ duration: 0.3, delay: index * 0.02 }}
                   className="group cursor-pointer"
                   onClick={() => setSelectedImage(item.url)}
                 >
@@ -203,6 +203,7 @@ const ProjectsFirebase = () => {
                       alt={`Project ${index + 1}`}
                       className="w-full h-48 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
                       <FaPlay className="text-white text-2xl sm:text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -233,7 +234,7 @@ const ProjectsFirebase = () => {
                   key={item.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
                   className="group cursor-pointer"
                   onClick={() => setSelectedVideo(item.url)}
                 >
@@ -284,7 +285,7 @@ const ProjectsFirebase = () => {
                   key={item.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
                   className="group cursor-pointer"
                   onClick={() => setSelectedVideo(item.url)}
                 >
