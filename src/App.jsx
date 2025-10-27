@@ -5,6 +5,7 @@ import Projects from "./Components/Projects";
 import Services from "./Components/Services";
 import AboutUs from "./Components/AboutUs";
 import Contact from "./Components/Contact";
+import AdminPanel from "./Components/AdminPanel";
 import Sidebar from "./Components/Sidebar";
 import ContactUsButton from "./Components/ContactUsButton";
 import Footer from "./Components/Footer";
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/projects" element={<Projects />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin-panel" element={<AdminPanel />} />
       </Routes>
 
       {/* Floating Contact Button */}
