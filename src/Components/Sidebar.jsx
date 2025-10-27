@@ -66,10 +66,10 @@ const Sidebar = () => {
           >
             {/* Sidebar Header */}
             <div className="p-8 border-b border-gray-200">
-              <h2 className="text-2xl font-light text-gray-900 tracking-tight">
+              <h2 className="font-serif text-3xl font-medium text-gray-900">
                 Nexus 3D
               </h2>
-              <p className="text-sm text-gray-600 mt-2 font-light">
+              <p className="text-sm text-gray-600 mt-2 tracking-wide">
                 3D Visualization Studio
               </p>
             </div>
@@ -102,7 +102,7 @@ const Sidebar = () => {
                             ? 'text-white' 
                             : 'text-gray-600 group-hover:text-gray-900'
                         }`} />
-                        <span className={`text-lg font-light ${
+                        <span className={`text-lg ${
                           isActive ? 'text-white' : 'text-gray-900'
                         }`}>
                           {item.label}

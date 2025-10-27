@@ -54,26 +54,26 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-zinc-50">
       {/* Hero Section */}
       <section className="relative w-full h-screen overflow-hidden bg-black">
         {/* Video Background */}
         <div className="absolute inset-0">
           <HomeVideo />
-          <div className="absolute inset-0 bg-black/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70"></div>
         </div>
 
         {/* Hero Content */}
         <div className="relative z-10 h-full flex items-center justify-center px-4">
-          <div className="text-center max-w-5xl mx-auto">
+          <div className="text-center max-w-6xl mx-auto">
             {/* Welcome Text */}
             <motion.p
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-gray-300 text-sm sm:text-base font-light tracking-widest uppercase mb-4"
+              className="text-gray-300 text-xs sm:text-sm font-medium tracking-ultra-wide uppercase mb-6"
             >
-              Welcome to Nexus 3D
+              Welcome to
             </motion.p>
 
             {/* Main Headline */}
@@ -81,9 +81,10 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light mb-6 text-white leading-tight tracking-tight"
+              className="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-medium mb-8 text-white leading-tight"
             >
-              Where Architecture Meets Imagination
+              Where Architecture <br/>
+              <span className="italic">Meets</span> Imagination
             </motion.h1>
 
             {/* Subtitle */}
@@ -91,7 +92,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-base sm:text-lg text-gray-200 mb-10 max-w-3xl mx-auto leading-relaxed font-light"
+              className="text-base sm:text-lg lg:text-xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed"
             >
               We bring your architectural dreams to life with stunning 3D visuals, walkthroughs, and animations — designed to inspire and impress.
             </motion.p>
@@ -105,13 +106,17 @@ const Home = () => {
             >
               <button
                 onClick={scrollToNext}
-                className="px-8 py-3 bg-white text-black font-medium text-sm tracking-wide transition-all duration-300 hover:bg-gray-100 uppercase"
+                className="group px-10 py-4 bg-white text-black font-medium text-base tracking-wide transition-all duration-300 hover:bg-gray-100 uppercase relative overflow-hidden"
               >
-                Explore More
+                <span className="relative z-10">Explore More</span>
+                <div className="absolute inset-0 bg-gray-900 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                  Explore More
+                </span>
               </button>
               <Link
                 to="/contact"
-                className="px-8 py-3 bg-transparent text-white font-medium text-sm tracking-wide border border-white transition-all duration-300 hover:bg-white hover:text-black uppercase"
+                className="px-10 py-4 bg-transparent text-white font-medium text-base tracking-wide border-2 border-white transition-all duration-300 hover:bg-white hover:text-black uppercase"
               >
                 Get in Touch
               </Link>
@@ -124,13 +129,13 @@ const Home = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer"
           onClick={scrollToNext}
         >
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="text-white text-2xl"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="text-white text-3xl"
           >
             <FaChevronDown />
           </motion.div>
@@ -138,23 +143,24 @@ const Home = () => {
       </section>
 
       {/* Introduction Section */}
-      <section className="relative py-24 sm:py-32 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="relative py-32 sm:py-40 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-24"
           >
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-gray-900 mb-8 tracking-tight">
-              Transforming Concepts into Reality
+            <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-medium text-gray-900 mb-10 leading-tight">
+              Transforming Concepts<br/>
+              <span className="italic">into</span> Reality
             </h2>
-            <div className="w-16 h-px bg-gray-900 mx-auto mb-8"></div>
-            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto mb-6 font-light">
+            <div className="w-24 h-0.5 bg-gray-900 mx-auto mb-12"></div>
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto mb-8">
               At Nexus 3D, we specialize in crafting photorealistic architectural renders and immersive animations that help clients visualize spaces before they're built. From detailed interior designs to large-scale exterior developments, our visuals communicate your vision clearly and beautifully.
             </p>
-            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto font-light">
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
               We blend creativity, technology, and precision to deliver renders that capture every detail — lighting, texture, and depth — making your designs truly come alive.
             </p>
           </motion.div>
@@ -165,61 +171,62 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto"
           >
-            <div className="text-center p-6 border border-gray-200">
-              <div className="text-4xl sm:text-5xl font-light text-gray-900 mb-2">7+</div>
-              <div className="text-sm sm:text-base text-gray-500 uppercase tracking-wide">Years of Experience</div>
-            </div>
-            <div className="text-center p-6 border border-gray-200">
-              <div className="text-4xl sm:text-5xl font-light text-gray-900 mb-2">120+</div>
-              <div className="text-sm sm:text-base text-gray-500 uppercase tracking-wide">Projects Completed</div>
-            </div>
-            <div className="text-center p-6 border border-gray-200">
-              <div className="text-4xl sm:text-5xl font-light text-gray-900 mb-2">40+</div>
-              <div className="text-sm sm:text-base text-gray-500 uppercase tracking-wide">Clients Worldwide</div>
-            </div>
-            <div className="text-center p-6 border border-gray-200">
-              <div className="text-4xl sm:text-5xl font-light text-gray-900 mb-2">5+</div>
-              <div className="text-sm sm:text-base text-gray-500 uppercase tracking-wide">Countries Served</div>
-            </div>
+            {[
+              { number: '7+', label: 'Years of Experience' },
+              { number: '120+', label: 'Projects Completed' },
+              { number: '40+', label: 'Clients Worldwide' },
+              { number: '5+', label: 'Countries Served' }
+            ].map((stat, index) => (
+              <div key={index} className="text-center group">
+                <div className="text-5xl sm:text-6xl font-serif font-medium text-gray-900 mb-3">{stat.number}</div>
+                <div className="text-sm sm:text-base text-gray-500 uppercase tracking-widest">{stat.label}</div>
+                <div className="w-12 h-0.5 bg-gray-900 mx-auto mt-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>
 
       {/* What We Do Section */}
-      <section className="relative py-24 sm:py-32 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="relative py-32 sm:py-40 bg-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h3 className="text-3xl sm:text-4xl font-light text-gray-900 mb-4 tracking-tight">
-              What We Do
+            <h3 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium mb-6">
+              What We <span className="italic">Do</span>
             </h3>
-            <div className="w-16 h-px bg-gray-900 mx-auto"></div>
+            <div className="w-24 h-0.5 bg-white mx-auto"></div>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {services.map((service, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
                 viewport={{ once: true }}
-                className="bg-white p-8 border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+                className="group"
               >
-                <h4 className="text-xl sm:text-2xl font-light text-gray-900 mb-4">{service.title}</h4>
-                <p className="text-base text-gray-600 leading-relaxed mb-4 font-light">
-                  {service.description}
-                </p>
-                <p className="text-sm text-gray-500 font-light italic">
-                  {service.note}
-                </p>
+                <div className="bg-white/5 backdrop-blur-sm p-10 border border-white/10 hover:border-white/30 transition-all duration-500 h-full">
+                  <div className="mb-6">
+                    <div className="w-12 h-0.5 bg-white transform origin-left group-hover:scale-x-150 transition-transform duration-500"></div>
+                  </div>
+                  <h4 className="font-serif text-2xl sm:text-3xl font-medium mb-6">{service.title}</h4>
+                  <p className="text-base text-gray-300 leading-relaxed mb-6">
+                    {service.description}
+                  </p>
+                  <p className="text-sm text-gray-400 italic">
+                    {service.note}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -227,25 +234,25 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="relative py-24 sm:py-32 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="relative py-32 sm:py-40 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-gray-900 mb-6 tracking-tight">
-              Why Choose Nexus 3D
+            <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-medium text-gray-900 mb-8">
+              Why Choose <span className="italic">Nexus 3D</span>
             </h2>
-            <div className="w-16 h-px bg-gray-900 mx-auto mb-8"></div>
-            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto font-light">
+            <div className="w-24 h-0.5 bg-gray-900 mx-auto mb-10"></div>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               Experience the difference that precision, passion, and performance can make.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
             {whyChooseUs.map((item, index) => {
               const Icon = item.icon;
               return (
@@ -255,15 +262,17 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-gray-50 p-8 border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+                  className="group"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 border border-gray-900 flex items-center justify-center flex-shrink-0">
-                      <Icon className="text-gray-900 text-xl" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-light text-gray-900 mb-3">{item.title}</h3>
-                      <p className="text-base text-gray-600 leading-relaxed font-light">{item.description}</p>
+                  <div className="bg-gray-50 p-10 border border-gray-200 hover:border-gray-900 hover:shadow-2xl transition-all duration-500">
+                    <div className="flex items-start gap-6">
+                      <div className="w-16 h-16 border-2 border-gray-900 flex items-center justify-center flex-shrink-0 group-hover:bg-gray-900 transition-colors duration-500">
+                        <Icon className="text-gray-900 group-hover:text-white text-2xl transition-colors duration-500" />
+                      </div>
+                      <div>
+                        <h3 className="font-serif text-2xl sm:text-3xl font-medium text-gray-900 mb-4">{item.title}</h3>
+                        <p className="text-base text-gray-600 leading-relaxed">{item.description}</p>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -279,7 +288,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center"
           >
-            <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-5xl mx-auto leading-relaxed italic">
               From initial concept to final visualization, Nexus 3D ensures that your ideas are represented with clarity, precision, and artistic excellence.
             </p>
           </motion.div>
@@ -287,21 +296,21 @@ const Home = () => {
       </section>
 
       {/* Contact CTA Section */}
-      <section className="relative py-16 bg-black">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="relative py-24 bg-gray-900">
+        <div className="max-w-5xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl sm:text-3xl font-light text-white mb-8 tracking-tight">
-              Ready to Start Your Project?
+            <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-white mb-10">
+              Ready to Start Your <span className="italic">Project?</span>
             </h3>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-5">
         <a
           href="tel:+919756170713"
-                className="px-8 py-3 bg-white text-black font-medium text-sm tracking-wide transition-all duration-300 hover:bg-gray-100 uppercase"
+                className="px-10 py-4 bg-white text-black font-medium text-base tracking-wide transition-all duration-300 hover:bg-gray-100 uppercase"
         >
                 +91 9756170713
         </a>
@@ -309,7 +318,7 @@ const Home = () => {
           href="https://wa.me/+919756170713"
           target="_blank"
           rel="noopener noreferrer"
-                className="px-8 py-3 bg-transparent text-white font-medium text-sm tracking-wide border border-white transition-all duration-300 hover:bg-white hover:text-black uppercase"
+                className="px-10 py-4 bg-transparent text-white font-medium text-base tracking-wide border-2 border-white transition-all duration-300 hover:bg-white hover:text-black uppercase"
         >
                 WhatsApp
         </a>
