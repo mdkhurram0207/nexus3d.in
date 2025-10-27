@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./Components/Home";
 import Projects from "./Components/ProjectsFirebase";
 import Services from "./Components/Services";
@@ -12,13 +12,16 @@ import Footer from "./Components/Footer";
 import ScrollToTop from "./Components/ScrollToTop";
 
 const App = () => {
+  const location = useLocation();
+  const isAdminPanel = location.pathname === "/admin-panel";
+
   return (
     <div className="bg-black min-h-screen text-white relative">
       {/* Scroll to top on route change */}
       <ScrollToTop />
 
-      {/* Sidebar Navigation */}
-      <Sidebar />
+      {/* Sidebar Navigation - Hide on admin panel */}
+      {!isAdminPanel && <Sidebar />}
 
       {/* Main Content */}
       <Routes>
@@ -30,11 +33,11 @@ const App = () => {
         <Route path="/admin-panel" element={<AdminPanel />} />
       </Routes>
 
-      {/* Floating Contact Button */}
-      <ContactUsButton />
+      {/* Floating Contact Button - Hide on admin panel */}
+      {!isAdminPanel && <ContactUsButton />}
 
-      {/* Footer */}
-      <Footer />
+      {/* Footer - Hide on admin panel */}
+      {!isAdminPanel && <Footer />}
     </div>
   );
 };

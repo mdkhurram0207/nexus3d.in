@@ -25,6 +25,10 @@ const ProjectsFirebase = () => {
       "https://res.cloudinary.com/dy31puega/image/upload/v1761579856/img05_ycc7wx.webp",
     ];
 
+    // Default videos as fallback - Empty arrays, videos will be added via admin panel
+    const defaultWalkthroughs = [];
+    const defaultCartoonVideos = [];
+
     // Listen for real-time updates from Firestore
     const projectsRef = collection(db, "projects");
     const q = query(projectsRef, orderBy("timestamp", "desc"));
@@ -63,7 +67,26 @@ const ProjectsFirebase = () => {
           url: url,
           timestamp: new Date()
         }));
+      } else {
+        // Always include default images alongside Firebase images
+        const defaultImageObjects = defaultImages.map((url, index) => ({
+          id: `default-${index}`,
+          url: url,
+          timestamp: new Date()
+        }));
+        
+        // Combine Firebase images with default images, avoiding duplicates
+        const allImages = [...projectsData.architecture.images];
+        defaultImageObjects.forEach(defaultImg => {
+          if (!allImages.some(img => img.url === defaultImg.url)) {
+            allImages.push(defaultImg);
+          }
+        });
+        
+        projectsData.architecture.images = allImages;
       }
+
+      // Videos will only come from Firebase admin panel - no hardcoded defaults
 
       setProjects(projectsData);
     });
