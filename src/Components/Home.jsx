@@ -143,14 +143,14 @@ const Home = () => {
       </section>
 
       {/* Introduction Section */}
-      <section className="relative py-32 sm:py-40 bg-white">
+      <section className="relative py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-24"
+            className="text-center mb-16"
           >
             <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-medium text-gray-900 mb-10 leading-tight">
               Transforming Concepts<br/>
@@ -190,14 +190,14 @@ const Home = () => {
       </section>
 
       {/* What We Do Section */}
-      <section className="relative py-32 sm:py-40 bg-white">
+      <section className="relative py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12"
           >
             <h3 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium mb-6 text-gray-900">
               What We <span className="italic">Do</span>
@@ -234,14 +234,14 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="relative py-32 sm:py-40 bg-white">
+      <section className="relative py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12"
           >
             <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-medium text-gray-900 mb-8">
               Why Choose <span className="italic">Nexus 3D</span>
