@@ -148,7 +148,7 @@ const Home = () => {
                 onClick={scrollToNext}
                 className="group px-12 py-4 bg-white text-black font-light text-sm tracking-[0.2em] transition-all duration-500 hover:bg-black hover:text-white border border-white uppercase relative overflow-hidden"
               >
-                <span className="relative z-10">Explore More</span>
+                <span className="relative z-10">My Projects</span>
               </motion.button>
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link
