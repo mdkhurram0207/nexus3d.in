@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { FaPlay, FaTimes, FaExpand } from "react-icons/fa";
 
-// Cloudinary images - optimized and faster loading from CDN
+// Import local images
+import img01 from "../assets/img001.webp";
+import img02 from "../assets/img02.webp";
+import img03 from "../assets/img03.webp";
+import img04 from "../assets/img04.webp";
+import img05 from "../assets/img05.webp";
+
 const projectsData = {
   architecture: {
-    images: [
-      "https://res.cloudinary.com/dy31puega/image/upload/c_scale,f_auto,q_auto,w_1200/v1/nexus3d/img001",
-      "https://res.cloudinary.com/dy31puega/image/upload/c_scale,f_auto,q_auto,w_1200/v1/nexus3d/img002",
-      "https://res.cloudinary.com/dy31puega/image/upload/c_scale,f_auto,q_auto,w_1200/v1/nexus3d/img003",
-      "https://res.cloudinary.com/dy31puega/image/upload/c_scale,f_auto,q_auto,w_1200/v1/nexus3d/img004",
-      "https://res.cloudinary.com/dy31puega/image/upload/c_scale,f_auto,q_auto,w_1200/v1/nexus3d/img005",
-    ],
+    images: [img01, img02, img03, img04, img05],
     videos: [
       "https://youtu.be/jYl_fKvGaYk?si=MS7a_7VcZ1ydvLZq",
       "https://youtu.be/W_uMtE21BFs?si=exATu0ormOqGKcNe",
