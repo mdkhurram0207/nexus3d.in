@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import ReactPlayer from "react-player";
@@ -19,8 +19,8 @@ const Projects = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeTab, setActiveTab] = useState("images");
 
-  // Memoize ImageModal to prevent unnecessary re-renders
-  const ImageModal = useMemo(() => ({ imageUrl, onClose }) => (
+  // ImageModal component
+  const ImageModal = ({ imageUrl, onClose }) => (
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
@@ -48,7 +48,7 @@ const Projects = () => {
         />
       </motion.div>
     </AnimatePresence>
-  ), []);
+  );
 
   return (
     <div className="min-h-screen bg-white px-4 sm:px-8 w-full">

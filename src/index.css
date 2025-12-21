@@ -212,3 +212,32 @@
     box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
   }
 }
+
+/* Styles for dynamically rendered HTML content (blog posts, service details) */
+.content-html {
+  @apply text-gray-700 leading-relaxed;
+}
+
+.content-html h2 {
+  @apply text-3xl font-serif font-medium text-gray-900 mt-8 mb-4;
+}
+
+.content-html h3 {
+  @apply text-2xl font-serif font-medium text-gray-900 mt-6 mb-3;
+}
+
+.content-html p {
+  @apply mb-4 text-gray-700 leading-relaxed;
+}
+
+.content-html ul {
+  @apply list-disc list-inside mb-4 space-y-2 text-gray-700;
+}
+
+.content-html li {
+  @apply mb-2;
+}
+
+.content-html strong {
+  @apply font-semibold text-gray-900;
+}
