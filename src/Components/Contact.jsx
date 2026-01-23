@@ -69,7 +69,7 @@ const ContactUs = () => {
           </h1>
           <div className="w-16 h-px bg-gray-900 mx-auto mb-8"></div>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto font-light">
-            Let's discuss your next project. We're here to help bring your architectural vision to life.
+            Got a project? Questions? Just want to chat about what's possible? Drop us a line. We're pretty friendly, and we actually respond to messages (shocking, we know).
           </p>
         </motion.div>
 
@@ -137,7 +137,7 @@ const ContactUs = () => {
                   required
                   rows="5"
                   className="w-full px-4 py-3 border border-gray-300 focus:border-gray-900 focus:outline-none transition-colors duration-300 bg-white text-gray-900 resize-none"
-                  placeholder="Tell us about your project..."
+                  placeholder="What are you working on? What do you need? Tell us everything..."
                 ></textarea>
             </div>
 

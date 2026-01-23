@@ -36,26 +36,26 @@ const AboutUs = () => {
   const values = [
     { 
       icon: FaAward, 
-      title: 'Excellence', 
-      description: 'Delivering top-tier quality in every project'
+      title: 'We Don\'t Half-Ass Things', 
+      description: 'If we're going to do it, we're going to do it right. No shortcuts, no "good enough." We'll tweak that lighting for the third time if it means getting it perfect.'
     },
     { 
       icon: FaRocket, 
-      title: 'Innovation', 
-      description: 'Pushing creative boundaries with cutting-edge technology'
+      title: 'We Stay Curious', 
+      description: 'New tools? We try them. New techniques? We learn them. The industry moves fast, and so do we. Because the best way to stay good is to keep getting better.'
     },
     { 
       icon: FaHeart, 
-      title: 'Passion', 
-      description: 'Loving what we do and making every detail count'
+      title: 'We Actually Like This Stuff', 
+      description: 'There's something satisfying about making something look real when it isn't. We geek out over good lighting. We get excited about perfect textures. It's weird, but it works.'
     }
   ];
 
   const timeline = [
-    { year: '2018', event: 'Nexus 3D Founded', description: 'Started our journey in architectural visualization' },
-    { year: '2020', event: 'International Expansion', description: 'Expanded services to clients across multiple countries' },
-    { year: '2022', event: '100+ Projects Milestone', description: 'Completed our 100th successful project' },
-    { year: '2025', event: 'Industry Leader', description: 'Recognized as a leading 3D visualization studio' }
+    { year: '2018', event: 'We Started This Thing', description: 'Two people, one computer, and a lot of coffee. That\'s how it began. We had no idea it would turn into this.' },
+    { year: '2020', event: 'Clients Started Calling', description: 'Word got around. Suddenly we were working with people in different countries. Still not sure how that happened, but we\'re not complaining.' },
+    { year: '2022', event: 'Hit 100 Projects', description: 'That was a good day. We celebrated with pizza. Because why not? A hundred projects is a big deal.' },
+    { year: '2025', event: 'Still Going Strong', description: 'Here we are. Still making renders, still learning, still trying to get better. The journey continues.' }
   ];
 
   return (
@@ -73,7 +73,7 @@ const AboutUs = () => {
           </h1>
           <div className="w-16 h-px bg-gray-900 mx-auto mb-8"></div>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
-            We are a team of passionate 3D artists and designers dedicated to transforming architectural visions into stunning visual reality.
+            We're a bunch of people who got really good at making things look real on a computer. Started small, stayed focused, and somehow ended up working with clients all over the world. Not bad for a team that just wanted to make cool visuals.
           </p>
         </motion.div>
 
@@ -119,10 +119,10 @@ const AboutUs = () => {
           </h2>
           <div className="w-16 h-px bg-gray-900 mx-auto mb-12"></div>
           <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto font-light text-center mb-6">
-            Since 2018, Nexus 3D has been at the forefront of architectural visualization, helping architects, developers, and designers bring their concepts to life through photorealistic 3D renders and animations.
+            Back in 2018, we started with a simple idea: what if we could show people exactly what their building would look like before they built it? Turns out, a lot of people wanted that. Architects, developers, interior designers — they all came knocking. And we kept getting better at it.
           </p>
           <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto font-light text-center">
-            With a commitment to quality, innovation, and client satisfaction, we've grown from a small studio to a trusted partner for projects across multiple countries, delivering excellence in every frame.
+            Fast forward to now, and we're working with clients in five different countries. But here's the thing — we still approach every project like it's our first. Because every project matters. Every detail counts. And honestly? We wouldn't have it any other way.
           </p>
         </motion.div>
 
@@ -207,7 +207,7 @@ const AboutUs = () => {
             Let's Create Together
           </h3>
           <p className="text-base text-gray-600 mb-8 font-light">
-            Ready to bring your architectural vision to life?
+            Got a project in mind? Let's talk. We're always up for a challenge, and honestly, we'd love to see what you're working on.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a

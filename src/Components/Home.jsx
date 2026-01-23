@@ -10,41 +10,41 @@ const Home = () => {
   const whyChooseUs = [
     { 
       icon: FaAward, 
-      title: 'High-Quality Visuals', 
-      description: 'We focus on realism and artistic depth. Every render is meticulously crafted to highlight accurate materials, lighting, and perspectives, ensuring a lifelike experience that reflects the true essence of your design.'
+      title: 'We Actually Care About Quality', 
+      description: 'Look, there are plenty of places that'll churn out renders. We're not one of them. We'll spend hours tweaking that one light source because it matters. We'll redo materials until they look real enough to touch. Why? Because when your client sees it, they should believe it.'
     },
     { 
       icon: FaClock, 
-      title: 'Fast Turnaround Time', 
-      description: 'We understand deadlines matter. Our streamlined workflow allows us to deliver top-quality results quickly — without ever compromising detail or quality.'
+      title: 'We Get It Done Fast', 
+      description: 'Deadlines are real. We know that. So we've built our process to be efficient without cutting corners. You need it yesterday? We've been there. We'll hustle, but we won't give you something that looks rushed.'
     },
     { 
       icon: FaUsers, 
-      title: 'Experienced & Skilled Team', 
-      description: 'With over seven years in the industry, our team brings together expertise in architecture, 3D modeling, and visual effects to produce exceptional results for clients across multiple domains.'
+      title: 'We Know What We're Doing', 
+      description: 'Seven years might not sound like forever, but in this industry, it's enough to learn what works and what doesn't. We've worked with architects, developers, interior designers — you name it. We've seen the mistakes, learned from them, and now we avoid them.'
     },
     { 
       icon: FaCheckCircle, 
-      title: 'Client-Centered Approach', 
-      description: 'Your satisfaction is our priority. We collaborate closely with every client to ensure that each project meets their expectations and conveys the desired vision — every single time.'
+      title: 'We Listen (Seriously)', 
+      description: 'Your project isn't our project to design. It's yours. So we listen. Really listen. When you say "make it warmer" or "I don't like that angle," we hear you. We'll tweak, adjust, and refine until you're happy. Because your vision is what matters here.'
     }
   ];
 
   const services = [
     {
       title: '3D Rendering',
-      description: 'Transform your architectural designs into photorealistic images that showcase every detail with stunning precision and clarity.',
-      note: 'Perfect for presentations, marketing materials, and client approvals.'
+      description: 'You know those images that make you stop scrolling? That's what we make. We take your designs and turn them into visuals so real, people will ask if we took a photo. Every texture, every shadow, every reflection — we obsess over it all.',
+      note: 'Great for when you need to show clients what they're buying before they buy it.'
     },
     {
       title: 'Walkthrough Videos',
-      description: 'Immersive 3D walkthrough animations that allow clients to experience and explore spaces before construction begins.',
-      note: 'Bring your projects to life with cinematic quality animations.'
+      description: 'Remember that feeling of walking through a space for the first time? We recreate that, but in video form. Clients can literally walk through your design before a single brick is laid. It's pretty cool, honestly.',
+      note: 'Nothing sells a space like letting people experience it themselves.'
     },
     {
       title: '3D Modeling',
-      description: 'Detailed and accurate 3D models crafted with precision, ideal for architectural visualization and product design.',
-      note: 'High-quality models optimized for any rendering engine.'
+      description: 'Before we can make it look pretty, we need to build it. That's where modeling comes in. We create every wall, every window, every detail exactly as it should be. No shortcuts, no "that's close enough."',
+      note: 'The foundation of everything we do. Get this right, and the rest follows.'
     }
   ];
 
@@ -124,7 +124,7 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-base sm:text-lg lg:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-light"
             >
-              We bring your architectural dreams to life with stunning 3D visuals, walkthroughs, and animations — designed to inspire and impress.
+              Ever wondered what your building would look like before it's even built? That's what we do. We turn blueprints into breathtaking visuals that make clients say "wow" — and sometimes "is this real?"
             </motion.p>
 
             {/* Decorative middle line */}
@@ -228,10 +228,10 @@ const Home = () => {
             ></motion.div>
             
             <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto mb-8 font-light">
-              At Nexus 3D, we specialize in crafting photorealistic architectural renders and immersive animations that help clients visualize spaces before they're built. From detailed interior designs to large-scale exterior developments, our visuals communicate your vision clearly and beautifully.
+              So here's the thing — we've been doing this for a while now. Started back in 2018, and honestly, we've gotten pretty good at it. We take your sketches, your ideas, your "I want it to feel like this" moments, and we turn them into something you can actually see. Not just see, but feel. Walk through. Show off to investors.
             </p>
             <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto font-light">
-              We blend creativity, technology, and precision to deliver renders that capture every detail — lighting, texture, and depth — making your designs truly come alive.
+              Whether it's a cozy apartment interior or a massive commercial complex, we obsess over the details. That morning light streaming through the window? We'll get it right. The way shadows fall at different times of day? We'll nail it. Because when you're trying to sell a vision, every pixel matters.
             </p>
           </motion.div>
 
@@ -389,7 +389,7 @@ const Home = () => {
               className="w-24 h-px bg-gray-900 mx-auto mb-10"
             ></motion.div>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto font-light">
-              Experience the difference that precision, passion, and performance can make.
+              Here's what sets us apart: we actually give a damn. About your project, about the details, about making sure you get something you're proud to show off.
             </p>
           </motion.div>
 
@@ -441,7 +441,7 @@ const Home = () => {
             className="text-center"
           >
             <p className="text-lg sm:text-xl text-gray-600 max-w-5xl mx-auto leading-relaxed italic">
-              From initial concept to final visualization, Nexus 3D ensures that your ideas are represented with clarity, precision, and artistic excellence.
+              Bottom line? We take your ideas and make them real. Not just real-looking — real enough that when someone sees our work, they get excited. And that's the whole point, isn't it?
             </p>
           </motion.div>
         </div>

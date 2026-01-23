@@ -38,7 +38,7 @@ const Services = () => {
         </h1>
           <div className="w-24 h-0.5 bg-gray-900 mx-auto mb-10"></div>
           <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto">
-            Comprehensive 3D visualization and animation solutions tailored to bring your architectural visions to life
+            So here's what we do. We take your architectural ideas and turn them into visuals that actually make sense. No jargon, no fluff — just good work that helps you sell your vision.
           </p>
         </motion.div>
 
@@ -82,7 +82,7 @@ const Services = () => {
         </h2>
           <div className="w-24 h-0.5 bg-gray-900 mx-auto mb-8"></div>
           <p className="text-lg text-gray-600">
-            Creative and engaging cartoon animations for all your storytelling needs
+            Sometimes you need something fun. Something that makes people smile. That's where our cartoon work comes in. Whether it's explaining a concept or just adding some personality, we've got you covered.
           </p>
         </motion.div>
 
@@ -115,7 +115,7 @@ const Services = () => {
           className="text-center"
         >
           <h3 className="font-serif text-3xl sm:text-4xl font-medium text-gray-900 mb-10">
-            Ready to Start Your <span className="italic">Project?</span>
+            Think We Can Help? <span className="italic">Let's Talk</span>
           </h3>
           <Link
             to="/contact"
