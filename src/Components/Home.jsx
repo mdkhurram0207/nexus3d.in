@@ -93,7 +93,7 @@ const Home = () => {
               className="text-gray-400 text-xs sm:text-sm font-light tracking-[0.3em] uppercase mb-6 relative inline-block"
             >
               <span className="relative">
-                Hey there
+                Welcome to
                 <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></span>
               </span>
             </motion.p>
@@ -105,16 +105,16 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-light mb-8 text-white leading-tight"
             >
-              We Make Buildings <br/>
+              Where Architecture <br/>
               <span className="italic relative inline-block">
-                Look Real
+                Meets
                 <motion.span
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                   className="absolute bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent origin-left"
                 ></motion.span>
-              </span> Before They're Built
+              </span> Imagination
             </motion.h1>
 
             {/* Subtitle */}
@@ -206,9 +206,9 @@ const Home = () => {
             ></motion.div>
             
             <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-light text-gray-900 mb-10 leading-tight">
-              Your Ideas, <br/>
+              Transforming Concepts<br/>
               <span className="italic relative inline-block">
-                Our Magic
+                into
                 <motion.span
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
@@ -216,7 +216,7 @@ const Home = () => {
                   viewport={{ once: true }}
                   className="absolute bottom-2 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent origin-center"
                 ></motion.span>
-              </span> (Well, Skills Actually)
+              </span> Reality
             </h2>
             
             <motion.div
@@ -304,7 +304,7 @@ const Home = () => {
             ></motion.div>
             
             <h3 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light mb-6 text-gray-900">
-              Here's What We <span className="italic">Actually Do</span>
+              What We <span className="italic">Do</span>
             </h3>
             <motion.div
               initial={{ scaleX: 0 }}
@@ -379,7 +379,7 @@ const Home = () => {
             ></motion.div>
             
             <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-light text-gray-900 mb-8">
-              Why Work With <span className="italic">Us?</span>
+              Why Choose <span className="italic">Nexus 3D</span>
             </h2>
             <motion.div
               initial={{ scaleX: 0 }}
