@@ -10,41 +10,41 @@ const Home = () => {
   const whyChooseUs = [
     { 
       icon: FaAward, 
-      title: 'We Actually Care About Quality', 
-      description: 'Look, there are plenty of places that'll churn out renders. We're not one of them. We'll spend hours tweaking that one light source because it matters. We'll redo materials until they look real enough to touch. Why? Because when your client sees it, they should believe it.'
+      title: "We Actually Care About Quality", 
+      description: "Look, there are plenty of places that'll churn out renders. We're not one of them. We'll spend hours tweaking that one light source because it matters. We'll redo materials until they look real enough to touch. Why? Because when your client sees it, they should believe it."
     },
     { 
       icon: FaClock, 
-      title: 'We Get It Done Fast', 
-      description: 'Deadlines are real. We know that. So we've built our process to be efficient without cutting corners. You need it yesterday? We've been there. We'll hustle, but we won't give you something that looks rushed.'
+      title: "We Get It Done Fast", 
+      description: "Deadlines are real. We know that. So we've built our process to be efficient without cutting corners. You need it yesterday? We've been there. We'll hustle, but we won't give you something that looks rushed."
     },
     { 
       icon: FaUsers, 
-      title: 'We Know What We're Doing', 
-      description: 'Seven years might not sound like forever, but in this industry, it's enough to learn what works and what doesn't. We've worked with architects, developers, interior designers — you name it. We've seen the mistakes, learned from them, and now we avoid them.'
+      title: "We Know What We're Doing", 
+      description: "Seven years might not sound like forever, but in this industry, it's enough to learn what works and what doesn't. We've worked with architects, developers, interior designers — you name it. We've seen the mistakes, learned from them, and now we avoid them."
     },
     { 
       icon: FaCheckCircle, 
-      title: 'We Listen (Seriously)', 
-      description: 'Your project isn't our project to design. It's yours. So we listen. Really listen. When you say "make it warmer" or "I don't like that angle," we hear you. We'll tweak, adjust, and refine until you're happy. Because your vision is what matters here.'
+      title: "We Listen (Seriously)", 
+      description: "Your project isn't our project to design. It's yours. So we listen. Really listen. When you say \"make it warmer\" or \"I don't like that angle,\" we hear you. We'll tweak, adjust, and refine until you're happy. Because your vision is what matters here."
     }
   ];
 
   const services = [
     {
-      title: '3D Rendering',
-      description: 'You know those images that make you stop scrolling? That's what we make. We take your designs and turn them into visuals so real, people will ask if we took a photo. Every texture, every shadow, every reflection — we obsess over it all.',
-      note: 'Great for when you need to show clients what they're buying before they buy it.'
+      title: "3D Rendering",
+      description: "You know those images that make you stop scrolling? That's what we make. We take your designs and turn them into visuals so real, people will ask if we took a photo. Every texture, every shadow, every reflection — we obsess over it all.",
+      note: "Great for when you need to show clients what they're buying before they buy it."
     },
     {
-      title: 'Walkthrough Videos',
-      description: 'Remember that feeling of walking through a space for the first time? We recreate that, but in video form. Clients can literally walk through your design before a single brick is laid. It's pretty cool, honestly.',
-      note: 'Nothing sells a space like letting people experience it themselves.'
+      title: "Walkthrough Videos",
+      description: "Remember that feeling of walking through a space for the first time? We recreate that, but in video form. Clients can literally walk through your design before a single brick is laid. It's pretty cool, honestly.",
+      note: "Nothing sells a space like letting people experience it themselves."
     },
     {
-      title: '3D Modeling',
-      description: 'Before we can make it look pretty, we need to build it. That's where modeling comes in. We create every wall, every window, every detail exactly as it should be. No shortcuts, no "that's close enough."',
-      note: 'The foundation of everything we do. Get this right, and the rest follows.'
+      title: "3D Modeling",
+      description: "Before we can make it look pretty, we need to build it. That's where modeling comes in. We create every wall, every window, every detail exactly as it should be. No shortcuts, no \"that's close enough.\"",
+      note: "The foundation of everything we do. Get this right, and the rest follows."
     }
   ];
 

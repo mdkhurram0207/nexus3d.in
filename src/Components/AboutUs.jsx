@@ -36,26 +36,26 @@ const AboutUs = () => {
   const values = [
     { 
       icon: FaAward, 
-      title: 'We Don\'t Half-Ass Things', 
-      description: 'If we're going to do it, we're going to do it right. No shortcuts, no "good enough." We'll tweak that lighting for the third time if it means getting it perfect.'
+      title: "We Don't Half-Ass Things", 
+      description: "If we're going to do it, we're going to do it right. No shortcuts, no \"good enough.\" We'll tweak that lighting for the third time if it means getting it perfect."
     },
     { 
       icon: FaRocket, 
-      title: 'We Stay Curious', 
-      description: 'New tools? We try them. New techniques? We learn them. The industry moves fast, and so do we. Because the best way to stay good is to keep getting better.'
+      title: "We Stay Curious", 
+      description: "New tools? We try them. New techniques? We learn them. The industry moves fast, and so do we. Because the best way to stay good is to keep getting better."
     },
     { 
       icon: FaHeart, 
-      title: 'We Actually Like This Stuff', 
-      description: 'There's something satisfying about making something look real when it isn't. We geek out over good lighting. We get excited about perfect textures. It's weird, but it works.'
+      title: "We Actually Like This Stuff", 
+      description: "There's something satisfying about making something look real when it isn't. We geek out over good lighting. We get excited about perfect textures. It's weird, but it works."
     }
   ];
 
   const timeline = [
-    { year: '2018', event: 'We Started This Thing', description: 'Two people, one computer, and a lot of coffee. That\'s how it began. We had no idea it would turn into this.' },
-    { year: '2020', event: 'Clients Started Calling', description: 'Word got around. Suddenly we were working with people in different countries. Still not sure how that happened, but we\'re not complaining.' },
-    { year: '2022', event: 'Hit 100 Projects', description: 'That was a good day. We celebrated with pizza. Because why not? A hundred projects is a big deal.' },
-    { year: '2025', event: 'Still Going Strong', description: 'Here we are. Still making renders, still learning, still trying to get better. The journey continues.' }
+    { year: "2018", event: "We Started This Thing", description: "Two people, one computer, and a lot of coffee. That's how it began. We had no idea it would turn into this." },
+    { year: "2020", event: "Clients Started Calling", description: "Word got around. Suddenly we were working with people in different countries. Still not sure how that happened, but we're not complaining." },
+    { year: "2022", event: "Hit 100 Projects", description: "That was a good day. We celebrated with pizza. Because why not? A hundred projects is a big deal." },
+    { year: "2025", event: "Still Going Strong", description: "Here we are. Still making renders, still learning, still trying to get better. The journey continues." }
   ];
 
   return (
