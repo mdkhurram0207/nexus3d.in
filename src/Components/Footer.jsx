@@ -32,7 +32,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h3 className="font-serif text-xl sm:text-2xl font-medium mb-4 sm:mb-6">Nexus 3D</h3>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-              Transforming architectural visions into stunning 3D reality. Professional visualization services with over 7 years of excellence.
+              We make buildings look real before they're built. Been doing it for seven years now, and we're pretty good at it. Give us your plans, we'll give you something you can actually show people.
             </p>
           </div>
 
