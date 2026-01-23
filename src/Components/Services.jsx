@@ -1,31 +1,30 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { getAllServices } from "../data/servicesData";
-import SEOHead from "./SEO/SEOHead";
+
+const servicesList = [
+  { name: "Architectural Visualization Services" },
+  { name: "Architectural Rendering Services" },
+  { name: "3D Modeling Design Services" },
+  { name: "2D Animation Services" },
+  { name: "3D Walkthrough Animation Services" },
+  { name: "3D Architectural Visualization Services" },
+  { name: "3D Animation Services" },
+  { name: "3D Architectural Rendering Services" },
+  { name: "Architectural Designing Services" },
+  { name: "Animation Services" },
+  { name: "3D Architectural Animation Services" },
+  { name: "Architectural Renderings" },
+];
+
+const cartoonServices = [
+  { name: "3D Cartoon Animation" },
+  { name: "2D Cartoon Animation" }
+];
 
 const Services = () => {
-  // Get all services from data file
-  const services = getAllServices();
-  
-  // SEO metadata for services listing page
-  const seoData = {
-    title: "Our Services | Nexus 3D - 3D Architectural Rendering & Animation Services",
-    description: "Explore Nexus 3D's comprehensive range of 3D architectural rendering, visualization, and animation services. Professional solutions for architects and designers.",
-    keywords: "3D rendering services, architectural visualization services, 3D animation services, Nexus 3D services, building visualization",
-    canonicalUrl: "https://nexus3d.in/services"
-  };
-
   return (
-    <>
-      {/* SEO Head Component - Updates meta tags dynamically */}
-      <SEOHead 
-        title={seoData.title}
-        description={seoData.description}
-        keywords={seoData.keywords}
-        canonicalUrl={seoData.canonicalUrl}
-      />
-      <div className="min-h-screen bg-zinc-50 px-4 sm:px-8 py-32">
+    <div className="min-h-screen bg-zinc-50 px-4 sm:px-8 py-32">
       <div className="w-full max-w-7xl mx-auto">
         {/* Header Section */}
         <motion.div
@@ -43,10 +42,10 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Main Services Grid - Dynamic services from data */}
+        {/* Main Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
-          {services.map((service, index) => (
-            <Link to={`/services/${service.slug}`} key={service.id}>
+          {servicesList.map((service, index) => (
+            <Link to="/contact" key={index}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -58,17 +57,51 @@ const Services = () => {
                   <div>
                     <div className="w-10 h-0.5 bg-gray-900 mb-6 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                     <h3 className="text-xl sm:text-2xl text-gray-900 group-hover:text-gray-900 transition-colors duration-300 leading-tight">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 mt-4 line-clamp-3">
-                      {service.description}
-                    </p>
-                  </div>
+                      {service.name}
+              </h3>
+            </div>
                   <div className="mt-6 flex items-center text-gray-500 group-hover:text-gray-900 transition-colors duration-300">
                     <span className="text-sm uppercase tracking-widest">Learn More</span>
                     <span className="ml-2 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">→</span>
                   </div>
                 </div>
+              </motion.div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Cartoon Animation Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center mb-16"
+        >
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium mb-6 text-gray-900">
+            Cartoon <span className="italic">Animation</span> Services
+        </h2>
+          <div className="w-24 h-0.5 bg-gray-900 mx-auto mb-8"></div>
+          <p className="text-lg text-gray-600">
+            Creative and engaging cartoon animations for all your storytelling needs
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto mb-32">
+          {cartoonServices.map((service, index) => (
+            <Link to="/contact" key={index}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="group"
+              >
+                <div className="p-12 bg-white border-2 border-gray-200 hover:border-gray-900 hover:shadow-2xl transition-all duration-500 cursor-pointer">
+                  <div className="w-12 h-0.5 bg-gray-900 mb-6 mx-auto transform origin-center scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                  <h3 className="font-serif text-2xl sm:text-3xl font-medium text-center text-gray-900 group-hover:text-gray-900 transition-colors duration-300">
+                    {service.name}
+              </h3>
+            </div>
               </motion.div>
             </Link>
           ))}
@@ -93,7 +126,6 @@ const Services = () => {
         </motion.div>
       </div>
     </div>
-    </>
   );
 };
 

@@ -30,6 +30,16 @@ const AdminPanelFirebase = () => {
   const [activeTab, setActiveTab] = useState("architecture");
   const [newItem, setNewItem] = useState("");
   const [loading, setLoading] = useState(false);
+  
+  // Blog management state
+  const [blogs, setBlogs] = useState([]);
+  const [editingBlog, setEditingBlog] = useState(null);
+  const [blogForm, setBlogForm] = useState({
+    title: "",
+    author: "",
+    excerpt: "",
+    content: ""
+  });
 
   useEffect(() => {
     // Listen for authentication state changes
@@ -38,6 +48,7 @@ const AdminPanelFirebase = () => {
         setUser(user);
         setIsAuthenticated(true);
         loadProjects();
+        loadBlogs();
       } else {
         setUser(null);
         setIsAuthenticated(false);
@@ -79,6 +90,24 @@ const AdminPanelFirebase = () => {
       });
 
       setProjects(projectsData);
+    });
+
+    return unsubscribe;
+  };
+
+  const loadBlogs = () => {
+    const blogsRef = collection(db, "blogs");
+    const q = query(blogsRef, orderBy("timestamp", "desc"));
+    
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const blogsData = [];
+      snapshot.forEach((doc) => {
+        blogsData.push({
+          id: doc.id,
+          ...doc.data()
+        });
+      });
+      setBlogs(blogsData);
     });
 
     return unsubscribe;
@@ -127,6 +156,69 @@ const AdminPanelFirebase = () => {
     } catch (error) {
       console.error("Error deleting item:", error);
       alert("Error deleting item. Please try again.");
+    }
+  };
+
+  // Blog management functions
+  const handleBlogSubmit = async (e) => {
+    e.preventDefault();
+    if (!blogForm.title.trim() || !blogForm.content.trim()) {
+      alert("Please fill in title and content fields.");
+      return;
+    }
+
+    try {
+      const blogData = {
+        title: blogForm.title,
+        author: blogForm.author || "Nexus 3D Team",
+        excerpt: blogForm.excerpt || blogForm.content.substring(0, 200) + "...",
+        content: blogForm.content,
+        timestamp: editingBlog ? editingBlog.timestamp : new Date()
+      };
+
+      if (editingBlog) {
+        await updateDoc(doc(db, "blogs", editingBlog.id), blogData);
+        alert("Blog post updated successfully!");
+      } else {
+        await addDoc(collection(db, "blogs"), blogData);
+        alert("Blog post added successfully!");
+      }
+
+      setBlogForm({ title: "", author: "", excerpt: "", content: "" });
+      setEditingBlog(null);
+    } catch (error) {
+      console.error("Error saving blog:", error);
+      alert("Error saving blog post. Please try again.");
+    }
+  };
+
+  const handleEditBlog = (blog) => {
+    setEditingBlog(blog);
+    setBlogForm({
+      title: blog.title || "",
+      author: blog.author || "",
+      excerpt: blog.excerpt || "",
+      content: blog.content || ""
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleCancelEdit = () => {
+    setEditingBlog(null);
+    setBlogForm({ title: "", author: "", excerpt: "", content: "" });
+  };
+
+  const handleDeleteBlog = async (blogId) => {
+    if (!window.confirm("Are you sure you want to delete this blog post?")) {
+      return;
+    }
+
+    try {
+      await deleteDoc(doc(db, "blogs", blogId));
+      alert("Blog post deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting blog:", error);
+      alert("Error deleting blog post. Please try again.");
     }
   };
 
@@ -213,11 +305,12 @@ const AdminPanelFirebase = () => {
           animate={{ opacity: 1, y: 0 }}
           className="bg-white rounded-lg shadow-sm border border-gray-200 p-2 mb-8"
         >
-          <div className="flex space-x-2">
+          <div className="flex flex-wrap space-x-2 space-y-2">
             {[
               { key: "architecture", label: "3D Renderings" },
               { key: "walkthroughs", label: "Walkthroughs" },
               { key: "cartoon", label: "Cartoon Animation" },
+              { key: "blogs", label: "Blog Posts" },
             ].map((tab) => (
               <button
                 key={tab.key}
@@ -234,109 +327,261 @@ const AdminPanelFirebase = () => {
           </div>
         </motion.div>
 
-        {/* Add New Item */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-lg shadow-md border-2 border-gray-300 mb-8"
-        >
-          <h3 className="text-xl font-bold text-gray-900 mb-4">Add New Item</h3>
-          <div className="flex gap-4">
-            <input
-              type="text"
-              value={newItem}
-              onChange={(e) => setNewItem(e.target.value)}
-              placeholder={
-                activeTab === "architecture"
-                  ? "Enter image URL..."
-                  : "Enter video URL..."
-              }
-              className="flex-1 px-5 py-4 bg-white text-gray-900 border-2 border-gray-400 rounded-lg placeholder-gray-500 focus:outline-none focus:border-black focus:ring-2 focus:ring-black/20 transition-all duration-300 shadow-sm"
-            />
-            <button
-              onClick={addItem}
-              className="bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium"
-            >
-              Add Item
-            </button>
-          </div>
-          <p className="text-sm text-gray-600 mt-4 bg-blue-50 p-3 rounded border border-blue-200">
-            💡 <strong>Tip:</strong> For images, use Cloudinary URLs. For videos, use YouTube URLs. Changes sync across all devices instantly!
-          </p>
-        </motion.div>
-
-        {/* Items List */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white p-8 rounded-lg shadow-md border-2 border-gray-300"
-        >
-          <h3 className="text-xl font-bold text-gray-900 mb-6">
-            {activeTab === "architecture" && "3D Renderings"}
-            {activeTab === "walkthroughs" && "Walkthrough Videos"}
-            {activeTab === "cartoon" && "Cartoon Animation Videos"}
-          </h3>
-          
-          <div className="space-y-4">
-            {activeTab === "architecture" &&
-              projects.architecture.images.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200"
-                >
-                  <div className="flex-1">
-                    <img
-                      src={item.url}
-                      alt={`Project ${item.id}`}
-                      className="w-20 h-20 object-cover rounded-lg"
-                      onError={(e) => {
-                        e.target.style.display = "none";
-                      }}
-                    />
-                    <p className="text-sm text-gray-600 mt-2 break-all">{item.url}</p>
-                    <p className="text-xs text-gray-400">
-                      Added: {new Date(item.timestamp?.seconds * 1000).toLocaleDateString()}
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => deleteItem(item.id)}
-                    className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-300 ml-4"
-                  >
-                    Delete
-                  </button>
-                </div>
-              ))}
-
-            {(activeTab === "walkthroughs" || activeTab === "cartoon") &&
-              projects[activeTab].videos.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200"
-                >
-                  <div className="flex-1">
-                    <p className="text-sm text-gray-600 break-all">{item.url}</p>
-                    <p className="text-xs text-gray-400">
-                      Added: {new Date(item.timestamp?.seconds * 1000).toLocaleDateString()}
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => deleteItem(item.id)}
-                    className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-300 ml-4"
-                  >
-                    Delete
-                  </button>
-                </div>
-              ))}
-
-            {((activeTab === "architecture" && projects.architecture.images.length === 0) ||
-              (activeTab === "walkthroughs" && projects.walkthroughs.videos.length === 0) ||
-              (activeTab === "cartoon" && projects.cartoon.videos.length === 0)) && (
-              <div className="text-center py-8 text-gray-500">
-                <p>No items found. Add some content to get started!</p>
+        {/* Blog Post Form */}
+        {activeTab === "blogs" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-lg shadow-md border-2 border-gray-300 mb-8"
+          >
+            <h3 className="text-xl font-bold text-gray-900 mb-4">
+              {editingBlog ? "Edit Blog Post" : "Add New Blog Post"}
+            </h3>
+            <form onSubmit={handleBlogSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Title *
+                </label>
+                <input
+                  type="text"
+                  value={blogForm.title}
+                  onChange={(e) => setBlogForm({ ...blogForm, title: e.target.value })}
+                  placeholder="Enter blog post title..."
+                  className="w-full px-5 py-4 bg-white text-gray-900 border-2 border-gray-400 rounded-lg placeholder-gray-500 focus:outline-none focus:border-black focus:ring-2 focus:ring-black/20 transition-all duration-300 shadow-sm"
+                  required
+                />
               </div>
-            )}
-          </div>
-        </motion.div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Author
+                </label>
+                <input
+                  type="text"
+                  value={blogForm.author}
+                  onChange={(e) => setBlogForm({ ...blogForm, author: e.target.value })}
+                  placeholder="Enter author name (default: Nexus 3D Team)"
+                  className="w-full px-5 py-4 bg-white text-gray-900 border-2 border-gray-400 rounded-lg placeholder-gray-500 focus:outline-none focus:border-black focus:ring-2 focus:ring-black/20 transition-all duration-300 shadow-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Excerpt
+                </label>
+                <textarea
+                  value={blogForm.excerpt}
+                  onChange={(e) => setBlogForm({ ...blogForm, excerpt: e.target.value })}
+                  placeholder="Enter a short excerpt (or leave blank to auto-generate from content)..."
+                  rows="3"
+                  className="w-full px-5 py-4 bg-white text-gray-900 border-2 border-gray-400 rounded-lg placeholder-gray-500 focus:outline-none focus:border-black focus:ring-2 focus:ring-black/20 transition-all duration-300 shadow-sm resize-y"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Content *
+                </label>
+                <textarea
+                  value={blogForm.content}
+                  onChange={(e) => setBlogForm({ ...blogForm, content: e.target.value })}
+                  placeholder="Enter blog post content... (Use double line breaks for paragraphs)"
+                  rows="12"
+                  className="w-full px-5 py-4 bg-white text-gray-900 border-2 border-gray-400 rounded-lg placeholder-gray-500 focus:outline-none focus:border-black focus:ring-2 focus:ring-black/20 transition-all duration-300 shadow-sm resize-y font-mono text-sm"
+                  required
+                />
+              </div>
+              <div className="flex gap-4">
+                <button
+                  type="submit"
+                  className="bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium"
+                >
+                  {editingBlog ? "Update Post" : "Add Post"}
+                </button>
+                {editingBlog && (
+                  <button
+                    type="button"
+                    onClick={handleCancelEdit}
+                    className="bg-gray-500 text-white px-8 py-4 rounded-lg hover:bg-gray-600 transition-colors duration-300 font-medium"
+                  >
+                    Cancel
+                  </button>
+                )}
+              </div>
+            </form>
+            <p className="text-sm text-gray-600 mt-4 bg-blue-50 p-3 rounded border border-blue-200">
+              💡 <strong>Tip:</strong> Use double line breaks (press Enter twice) to create paragraphs. The excerpt will be auto-generated from the first 200 characters if left blank.
+            </p>
+          </motion.div>
+        )}
+
+        {/* Add New Item (for Projects) */}
+        {activeTab !== "blogs" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-lg shadow-md border-2 border-gray-300 mb-8"
+          >
+            <h3 className="text-xl font-bold text-gray-900 mb-4">Add New Item</h3>
+            <div className="flex gap-4">
+              <input
+                type="text"
+                value={newItem}
+                onChange={(e) => setNewItem(e.target.value)}
+                placeholder={
+                  activeTab === "architecture"
+                    ? "Enter image URL..."
+                    : "Enter video URL..."
+                }
+                className="flex-1 px-5 py-4 bg-white text-gray-900 border-2 border-gray-400 rounded-lg placeholder-gray-500 focus:outline-none focus:border-black focus:ring-2 focus:ring-black/20 transition-all duration-300 shadow-sm"
+              />
+              <button
+                onClick={addItem}
+                className="bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors duration-300 font-medium"
+              >
+                Add Item
+              </button>
+            </div>
+            <p className="text-sm text-gray-600 mt-4 bg-blue-50 p-3 rounded border border-blue-200">
+              💡 <strong>Tip:</strong> For images, use Cloudinary URLs. For videos, use YouTube URLs. Changes sync across all devices instantly!
+            </p>
+          </motion.div>
+        )}
+
+        {/* Blog Posts List */}
+        {activeTab === "blogs" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white p-8 rounded-lg shadow-md border-2 border-gray-300"
+          >
+            <h3 className="text-xl font-bold text-gray-900 mb-6">Blog Posts</h3>
+            
+            <div className="space-y-4">
+              {blogs.map((blog) => (
+                <div
+                  key={blog.id}
+                  className="p-6 bg-gray-50 rounded-lg border border-gray-200 hover:border-gray-400 transition-all duration-300"
+                >
+                  <div className="flex justify-between items-start gap-4">
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        {blog.title}
+                      </h4>
+                      <p className="text-sm text-gray-600 mb-2">
+                        <span className="font-medium">Author:</span> {blog.author || "Nexus 3D Team"}
+                      </p>
+                      <p className="text-sm text-gray-500 mb-3 line-clamp-2">
+                        {blog.excerpt || blog.content?.substring(0, 150) + "..."}
+                      </p>
+                      <p className="text-xs text-gray-400">
+                        {blog.timestamp?.seconds
+                          ? new Date(blog.timestamp.seconds * 1000).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'long',
+                              day: 'numeric'
+                            })
+                          : 'Date not available'}
+                      </p>
+                    </div>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleEditBlog(blog)}
+                        className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300 text-sm"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDeleteBlog(blog.id)}
+                        className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-300 text-sm"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {blogs.length === 0 && (
+                <div className="text-center py-8 text-gray-500">
+                  <p>No blog posts found. Add your first blog post above!</p>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Items List (for Projects) */}
+        {activeTab !== "blogs" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white p-8 rounded-lg shadow-md border-2 border-gray-300"
+          >
+            <h3 className="text-xl font-bold text-gray-900 mb-6">
+              {activeTab === "architecture" && "3D Renderings"}
+              {activeTab === "walkthroughs" && "Walkthrough Videos"}
+              {activeTab === "cartoon" && "Cartoon Animation Videos"}
+            </h3>
+            
+            <div className="space-y-4">
+              {activeTab === "architecture" &&
+                projects.architecture.images.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200"
+                  >
+                    <div className="flex-1">
+                      <img
+                        src={item.url}
+                        alt={`Project ${item.id}`}
+                        className="w-20 h-20 object-cover rounded-lg"
+                        onError={(e) => {
+                          e.target.style.display = "none";
+                        }}
+                      />
+                      <p className="text-sm text-gray-600 mt-2 break-all">{item.url}</p>
+                      <p className="text-xs text-gray-400">
+                        Added: {new Date(item.timestamp?.seconds * 1000).toLocaleDateString()}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => deleteItem(item.id)}
+                      className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-300 ml-4"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                ))}
+
+              {(activeTab === "walkthroughs" || activeTab === "cartoon") &&
+                projects[activeTab].videos.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200"
+                  >
+                    <div className="flex-1">
+                      <p className="text-sm text-gray-600 break-all">{item.url}</p>
+                      <p className="text-xs text-gray-400">
+                        Added: {new Date(item.timestamp?.seconds * 1000).toLocaleDateString()}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => deleteItem(item.id)}
+                      className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors duration-300 ml-4"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                ))}
+
+              {((activeTab === "architecture" && projects.architecture.images.length === 0) ||
+                (activeTab === "walkthroughs" && projects.walkthroughs.videos.length === 0) ||
+                (activeTab === "cartoon" && projects.cartoon.videos.length === 0)) && (
+                <div className="text-center py-8 text-gray-500">
+                  <p>No items found. Add some content to get started!</p>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
       </div>
     </div>
   );

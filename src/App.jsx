@@ -3,12 +3,9 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./Components/Home";
 import Projects from "./Components/ProjectsFirebase";
 import Services from "./Components/Services";
-import ServiceDetail from "./Components/ServiceDetail";
-import BlogCategories from "./Components/BlogCategories";
-import BlogList from "./Components/BlogList";
-import BlogDetail from "./Components/BlogDetail";
 import AboutUs from "./Components/AboutUs";
 import Contact from "./Components/Contact";
+import Blog from "./Components/Blog";
 import AdminPanel from "./Components/AdminPanelFirebase";
 import Sidebar from "./Components/Sidebar";
 import ContactUsButton from "./Components/ContactUsButton";
@@ -30,19 +27,10 @@ const App = () => {
       {/* Main Content */}
       <Routes>
         <Route path="/" element={<Home />} />
-        
-        {/* Services Routes */}
         <Route path="/services" element={<Services />} />
-        <Route path="/services/:slug" element={<ServiceDetail />} />
-        
-        {/* Blog Routes */}
-        <Route path="/blog" element={<BlogCategories />} />
-        <Route path="/blog/category/:categorySlug" element={<BlogList />} />
-        <Route path="/blog/:slug" element={<BlogDetail />} />
-        
-        {/* Other Routes */}
         <Route path="/projects" element={<Projects />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin-panel" element={<AdminPanel />} />
       </Routes>

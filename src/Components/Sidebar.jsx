@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaHome, FaBriefcase, FaCog, FaInfoCircle, FaEnvelope, FaTimes, FaPhone, FaWhatsapp } from 'react-icons/fa';
+import { FaHome, FaBriefcase, FaCog, FaInfoCircle, FaEnvelope, FaTimes, FaPhone, FaWhatsapp, FaBlog } from 'react-icons/fa';
 import { HiMenuAlt3 } from 'react-icons/hi';
 
 const Sidebar = () => {
@@ -22,6 +22,7 @@ const Sidebar = () => {
     { path: '/projects', label: 'Projects', icon: FaBriefcase, description: 'View our portfolio' },
     { path: '/services', label: 'Services', icon: FaCog, description: 'What we offer' },
     { path: '/about', label: 'About', icon: FaInfoCircle, description: 'Our story' },
+    { path: '/blog', label: 'Blog', icon: FaBlog, description: 'Stories & insights' },
     { path: '/contact', label: 'Contact', icon: FaEnvelope, description: 'Get in touch' }
   ];
 
