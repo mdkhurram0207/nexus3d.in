@@ -93,7 +93,7 @@ const Home = () => {
               className="text-gray-400 text-xs sm:text-sm font-light tracking-[0.3em] uppercase mb-6 relative inline-block"
             >
               <span className="relative">
-                Welcome to
+                Hey there
                 <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></span>
               </span>
             </motion.p>
@@ -105,16 +105,16 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-light mb-8 text-white leading-tight"
             >
-              Where Architecture <br/>
+              We Make Buildings <br/>
               <span className="italic relative inline-block">
-                Meets
+                Look Real
                 <motion.span
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                   className="absolute bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent origin-left"
                 ></motion.span>
-              </span> Imagination
+              </span> Before They're Built
             </motion.h1>
 
             {/* Subtitle */}
@@ -124,7 +124,7 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-base sm:text-lg lg:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-light"
             >
-              Ever wondered what your building would look like before it's even built? That's what we do. We turn blueprints into breathtaking visuals that make clients say "wow" — and sometimes "is this real?"
+              You've got sketches, plans, maybe even a rough idea. We take all that and turn it into something you can actually show people. Something that makes them stop and say "wait, this isn't a photo?" Yeah, we're pretty good at this.
             </motion.p>
 
             {/* Decorative middle line */}
@@ -206,9 +206,9 @@ const Home = () => {
             ></motion.div>
             
             <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-light text-gray-900 mb-10 leading-tight">
-              Transforming Concepts<br/>
+              Your Ideas, <br/>
               <span className="italic relative inline-block">
-                into
+                Our Magic
                 <motion.span
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
@@ -216,7 +216,7 @@ const Home = () => {
                   viewport={{ once: true }}
                   className="absolute bottom-2 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent origin-center"
                 ></motion.span>
-              </span> Reality
+              </span> (Well, Skills Actually)
             </h2>
             
             <motion.div
@@ -228,10 +228,10 @@ const Home = () => {
             ></motion.div>
             
             <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto mb-8 font-light">
-              So here's the thing — we've been doing this for a while now. Started back in 2018, and honestly, we've gotten pretty good at it. We take your sketches, your ideas, your "I want it to feel like this" moments, and we turn them into something you can actually see. Not just see, but feel. Walk through. Show off to investors.
+              Look, we've been at this since 2018. That's seven years of making buildings look real before they exist. Seven years of figuring out how to make light bounce just right, how to make materials look touchable, how to make spaces feel lived-in even when they're just pixels on a screen.
             </p>
             <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto font-light">
-              Whether it's a cozy apartment interior or a massive commercial complex, we obsess over the details. That morning light streaming through the window? We'll get it right. The way shadows fall at different times of day? We'll nail it. Because when you're trying to sell a vision, every pixel matters.
+              You know what's funny? Every project starts the same way. Someone shows us a drawing or a plan and says "can you make this look real?" And we're like "yeah, we got you." Then we spend way too much time on details nobody will notice, but that's what makes the difference. That's what makes people believe what they're seeing.
             </p>
           </motion.div>
 
@@ -304,7 +304,7 @@ const Home = () => {
             ></motion.div>
             
             <h3 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light mb-6 text-gray-900">
-              What We <span className="italic">Do</span>
+              Here's What We <span className="italic">Actually Do</span>
             </h3>
             <motion.div
               initial={{ scaleX: 0 }}
@@ -379,7 +379,7 @@ const Home = () => {
             ></motion.div>
             
             <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-light text-gray-900 mb-8">
-              Why Choose <span className="italic">Nexus 3D</span>
+              Why Work With <span className="italic">Us?</span>
             </h2>
             <motion.div
               initial={{ scaleX: 0 }}
@@ -389,7 +389,7 @@ const Home = () => {
               className="w-24 h-px bg-gray-900 mx-auto mb-10"
             ></motion.div>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto font-light">
-              Here's what sets us apart: we actually give a damn. About your project, about the details, about making sure you get something you're proud to show off.
+              Honestly? Because we care. Not in that fake corporate way, but actually. We'll stay up late fixing that one light that's bugging you. We'll redo something three times if it's not right. Because your project is important, and we want you to be happy with it.
             </p>
           </motion.div>
 
@@ -441,7 +441,7 @@ const Home = () => {
             className="text-center"
           >
             <p className="text-lg sm:text-xl text-gray-600 max-w-5xl mx-auto leading-relaxed italic">
-              Bottom line? We take your ideas and make them real. Not just real-looking — real enough that when someone sees our work, they get excited. And that's the whole point, isn't it?
+              At the end of the day, we're just people who got really good at making fake things look real. And if that helps you sell your vision, get your project approved, or just show people what you're dreaming up — then we're doing our job right.
             </p>
           </motion.div>
         </div>
