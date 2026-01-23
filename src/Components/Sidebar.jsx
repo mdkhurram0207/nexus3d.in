@@ -66,20 +66,17 @@ const Sidebar = () => {
         </motion.div>
       </motion.button>
 
-      {/* Mobile-Optimized Brand Name */}
+      {/* Small Brand Name */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-40 hidden sm:flex items-center gap-2 sm:gap-4"
+        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-40 hidden sm:flex items-center"
       >
-        <div className="text-right bg-black/60 backdrop-blur-md px-3 py-2 sm:px-6 sm:py-3 border border-white/20 rounded-xl sm:rounded-2xl shadow-lg">
-          <h1 className="font-serif text-lg sm:text-xl md:text-2xl font-light text-white tracking-wide">
+        <div className="text-right bg-black/60 backdrop-blur-md px-2 py-1 sm:px-3 sm:py-1.5 border border-white/20 rounded-lg shadow-lg">
+          <h1 className="font-serif text-sm sm:text-base font-light text-white tracking-wide">
             Nexus 3D
           </h1>
-          <p className="text-xs text-gray-300 tracking-widest hidden md:block uppercase font-light">
-            3D Visualization Studio
-          </p>
         </div>
       </motion.div>
 
