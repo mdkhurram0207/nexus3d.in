@@ -278,77 +278,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured Visuals Section */}
-      <section className="relative py-16 sm:py-20 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
-          >
-            {/* Text */}
-            <div className="lg:col-span-5">
-              <div className="w-16 h-px bg-gray-900 mb-6"></div>
-              <h3 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-gray-900 mb-6 leading-tight">
-                A Quick Look at What We Create
-              </h3>
-              <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-light mb-6">
-                When you scroll, we don’t want the page to feel empty or “template-y”. So here are two recent-style visuals—clean composition, believable lighting, and details that read well on mobile.
-              </p>
-              <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-light">
-                Drop your two images into <span className="font-medium text-gray-900">public/assets</span> as <span className="font-medium text-gray-900">front-img-01</span> and <span className="font-medium text-gray-900">front-img-02</span> (keep the extension), and they’ll show up here.
-              </p>
-            </div>
-
-            {/* Images */}
-            <div className="lg:col-span-7">
-              <div className="relative">
-                {/* subtle background */}
-                <div className="absolute -inset-6 bg-gray-50 rounded-3xl"></div>
-
-                <div className="relative grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <motion.div
-                    whileHover={{ y: -6 }}
-                    transition={{ duration: 0.25 }}
-                    className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500"
-                  >
-                    <img
-                      src="/assets/front-img-01.jpg"
-                      alt="Featured visual 01"
-                      className="w-full h-72 sm:h-80 object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                      loading="lazy"
-                      decoding="async"
-                      onError={(e) => {
-                        e.currentTarget.src = "/assets/front-img-01.png";
-                      }}
-                    />
-                  </motion.div>
-
-                  <motion.div
-                    whileHover={{ y: -6 }}
-                    transition={{ duration: 0.25 }}
-                    className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500 sm:mt-10"
-                  >
-                    <img
-                      src="/assets/front-img-02.jpg"
-                      alt="Featured visual 02"
-                      className="w-full h-72 sm:h-80 object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                      loading="lazy"
-                      decoding="async"
-                      onError={(e) => {
-                        e.currentTarget.src = "/assets/front-img-02.png";
-                      }}
-                    />
-                  </motion.div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* What We Do Section */}
       <section className="relative py-16 sm:py-20 bg-gray-50/50 overflow-hidden">
         {/* Background pattern */}
@@ -385,6 +314,57 @@ const Home = () => {
               className="w-24 h-px bg-gray-900 mx-auto"
             ></motion.div>
           </motion.div>
+
+          {/* What We Do Images (uses front-img-01 / front-img-02) */}
+          <div className="mb-14">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-5">
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-light">
+                  Here’s a small preview of the kind of visuals we like to deliver—balanced compositions,
+                  believable materials, and lighting that feels natural, not overdone.
+                </p>
+              </div>
+              <div className="lg:col-span-7">
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-white/60 rounded-3xl pointer-events-none" />
+                  <div className="relative grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <motion.div
+                      whileHover={{ y: -4 }}
+                      transition={{ duration: 0.25 }}
+                      className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500"
+                    >
+                      <img
+                        src="/assets/front-img-01.jpg"
+                        alt="Nexus 3D sample visual 01"
+                        className="w-full h-60 sm:h-64 object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                        loading="lazy"
+                        decoding="async"
+                        onError={(e) => {
+                          e.currentTarget.src = "/assets/front-img-01.png";
+                        }}
+                      />
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ y: -4 }}
+                      transition={{ duration: 0.25 }}
+                      className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500 sm:mt-6"
+                    >
+                      <img
+                        src="/assets/front-img-02.jpg"
+                        alt="Nexus 3D sample visual 02"
+                        className="w-full h-60 sm:h-64 object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                        loading="lazy"
+                        decoding="async"
+                        onError={(e) => {
+                          e.currentTarget.src = "/assets/front-img-02.png";
+                        }}
+                      />
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {services.map((service, index) => (
