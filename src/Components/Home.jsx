@@ -334,13 +334,13 @@ const Home = () => {
                       className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500"
                     >
                       <img
-                        src="/assets/front-img-01.jpg"
+                        src="/assets/front-img-01.jpg.jpeg"
                         alt="Nexus 3D sample visual 01"
                         className="w-full h-60 sm:h-64 object-cover group-hover:scale-[1.03] transition-transform duration-700"
                         loading="lazy"
                         decoding="async"
                         onError={(e) => {
-                          e.currentTarget.src = "/assets/front-img-01.png";
+                          e.currentTarget.src = "/assets/front-img-01.jpg.jpeg";
                         }}
                       />
                     </motion.div>
@@ -350,13 +350,13 @@ const Home = () => {
                       className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500 sm:mt-6"
                     >
                       <img
-                        src="/assets/front-img-02.jpg"
+                        src="/assets/front-img-02.jpg.jpeg"
                         alt="Nexus 3D sample visual 02"
                         className="w-full h-60 sm:h-64 object-cover group-hover:scale-[1.03] transition-transform duration-700"
                         loading="lazy"
                         decoding="async"
                         onError={(e) => {
-                          e.currentTarget.src = "/assets/front-img-02.png";
+                          e.currentTarget.src = "/assets/front-img-02.jpg.jpeg";
                         }}
                       />
                     </motion.div>
