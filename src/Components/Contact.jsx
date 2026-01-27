@@ -48,7 +48,7 @@ const ContactUs = () => {
       icon: FaWhatsapp,
       title: "WhatsApp",
       value: "Chat with Us",
-      link: "https://wa.me/+919756170713",
+      link: "https://wa.me/919756170713",
       external: true,
       color: "green"
     }

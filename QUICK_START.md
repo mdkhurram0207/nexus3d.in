@@ -98,7 +98,7 @@ npm run preview
 Search for:
 - Phone: `+919756170713`
 - Email: `contact@nexus3d.in`
-- WhatsApp: `https://wa.me/+919756170713`
+- WhatsApp: `https://wa.me/919756170713`
 - Address: `Raza Building, Near Temptations, Delhi Road, Pakwara, Moradabad 244102`
 
 Replace with your details.

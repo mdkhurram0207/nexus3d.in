@@ -200,7 +200,7 @@ const Sidebar = () => {
                     <span className="hidden sm:inline">Call</span>
                   </motion.a>
                   <motion.a
-                    href="https://wa.me/+919756170713"
+                    href="https://wa.me/919756170713"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}

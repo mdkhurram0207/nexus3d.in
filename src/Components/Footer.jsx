@@ -84,7 +84,7 @@ const Footer = () => {
                 <span className="break-all">contact@nexus3d.in</span>
               </a>
               <a
-                href="https://wa.me/+919756170713"
+                href="https://wa.me/919756170713"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-3 text-gray-400 hover:text-white text-sm sm:text-base transition-colors duration-300 group"
