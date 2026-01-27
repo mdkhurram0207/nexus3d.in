@@ -348,10 +348,10 @@ const ProjectsFirebase = () => {
                 Get Started
               </a>
               <a
-                href="tel:+919876543210"
+                href="tel:+919756170713"
                 className="bg-white text-black border border-gray-300 px-6 sm:px-8 py-2 sm:py-3 rounded-lg hover:bg-gray-50 transition-colors duration-300 font-medium text-sm sm:text-base"
               >
-                Call Now
+                Call Now: +91 9756170713
               </a>
             </div>
           </motion.div>
