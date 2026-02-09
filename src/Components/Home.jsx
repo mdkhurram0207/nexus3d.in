@@ -329,7 +329,7 @@ const Home = () => {
               <div className="relative">
                 <div className="absolute -inset-4 bg-white/60 rounded-3xl pointer-events-none" />
                 <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <motion.div
+                  <motion.div
                       whileHover={{ y: -4 }}
                       transition={{ duration: 0.25 }}
                       className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500"
@@ -348,7 +348,7 @@ const Home = () => {
                     <motion.div
                       whileHover={{ y: -4 }}
                       transition={{ duration: 0.25 }}
-                      className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500 sm:mt-6"
+                      className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500"
                     >
                       <img
                         src="/assets/front-img-02.jpg.jpeg"
@@ -364,7 +364,7 @@ const Home = () => {
                     <motion.div
                       whileHover={{ y: -4 }}
                       transition={{ duration: 0.25 }}
-                      className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500 lg:mt-10"
+                      className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500"
                     >
                       <img
                         src="/assets/front-img-03.jpg.jpeg"
