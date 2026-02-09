@@ -317,17 +317,18 @@ const Home = () => {
 
           {/* What We Do Images (uses front images) */}
           <div className="mb-16">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-5">
-                <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-light">
-                  Here’s a small preview of the kind of visuals we like to deliver—balanced compositions,
-                  believable materials, and lighting that feels natural, not overdone.
-                </p>
-              </div>
-              <div className="lg:col-span-7">
-                <div className="relative">
-                  <div className="absolute -inset-4 bg-white/60 rounded-3xl pointer-events-none" />
-                  <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Text first, images below on all screen sizes */}
+            <div className="max-w-3xl mx-auto mb-8">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-light text-center">
+                Here’s a small preview of the kind of visuals we like to deliver—balanced compositions,
+                believable materials, and lighting that feels natural, not overdone.
+              </p>
+            </div>
+
+            <div>
+              <div className="relative">
+                <div className="absolute -inset-4 bg-white/60 rounded-3xl pointer-events-none" />
+                <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <motion.div
                       whileHover={{ y: -4 }}
                       transition={{ duration: 0.25 }}
