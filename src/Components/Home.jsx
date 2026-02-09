@@ -183,7 +183,7 @@ const Home = () => {
       </section>
 
       {/* Introduction Section */}
-      <section className="relative py-16 sm:py-20 bg-white overflow-hidden">
+      <section className="relative py-12 sm:py-16 bg-white overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-gray-50 rounded-full filter blur-3xl opacity-50"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gray-50 rounded-full filter blur-3xl opacity-50"></div>
@@ -205,7 +205,7 @@ const Home = () => {
               className="h-px bg-gradient-to-r from-transparent via-gray-900 to-transparent mx-auto mb-8"
             ></motion.div>
             
-            <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-light text-gray-900 mb-10 leading-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-gray-900 mb-6 leading-tight">
               Transforming Concepts<br/>
               <span className="italic relative inline-block">
                 into
@@ -224,13 +224,13 @@ const Home = () => {
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="w-24 h-px bg-gray-900 mx-auto mb-12"
+              className="w-20 h-px bg-gray-900 mx-auto mb-8"
             ></motion.div>
             
-            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto mb-8 font-light">
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto mb-6 font-light">
               Look, we've been at this since 2018. That's seven years of making buildings look real before they exist. Seven years of figuring out how to make light bounce just right, how to make materials look touchable, how to make spaces feel lived-in even when they're just pixels on a screen.
             </p>
-            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto font-light">
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto font-light">
               You know what's funny? Every project starts the same way. Someone shows us a drawing or a plan and says "can you make this look real?" And we're like "yeah, we got you." Then we spend way too much time on details nobody will notice, but that's what makes the difference. That's what makes people believe what they're seeing.
             </p>
           </motion.div>
@@ -315,8 +315,8 @@ const Home = () => {
             ></motion.div>
           </motion.div>
 
-          {/* What We Do Images (uses front-img-01 / front-img-02) */}
-          <div className="mb-14">
+          {/* What We Do Images (uses front images) */}
+          <div className="mb-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-5">
                 <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-light">
@@ -327,7 +327,7 @@ const Home = () => {
               <div className="lg:col-span-7">
                 <div className="relative">
                   <div className="absolute -inset-4 bg-white/60 rounded-3xl pointer-events-none" />
-                  <div className="relative grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     <motion.div
                       whileHover={{ y: -4 }}
                       transition={{ duration: 0.25 }}
@@ -357,6 +357,22 @@ const Home = () => {
                         decoding="async"
                         onError={(e) => {
                           e.currentTarget.src = "/assets/front-img-02.jpg.jpeg";
+                        }}
+                      />
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ y: -4 }}
+                      transition={{ duration: 0.25 }}
+                      className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500 lg:mt-10"
+                    >
+                      <img
+                        src="/assets/front-img-03.jpg.jpeg"
+                        alt="Nexus 3D sample visual 03"
+                        className="w-full h-60 sm:h-64 object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                        loading="lazy"
+                        decoding="async"
+                        onError={(e) => {
+                          e.currentTarget.src = "/assets/front-img-03.jpg.jpeg";
                         }}
                       />
                     </motion.div>
