@@ -281,11 +281,14 @@ const Home = () => {
       {/* What We Do Section */}
       <section className="relative py-16 sm:py-20 bg-gray-50/50 overflow-hidden">
         {/* Background pattern */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: 'radial-gradient(circle at 2px 2px, gray 1px, transparent 0)',
-          backgroundSize: '32px 32px'
-        }}></div>
-        
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, gray 1px, transparent 0)',
+            backgroundSize: '32px 32px',
+          }}
+        ></div>
+
         <div className="max-w-7xl mx-auto px-4 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -297,12 +300,12 @@ const Home = () => {
             {/* Decorative line */}
             <motion.div
               initial={{ width: 0 }}
-              whileInView={{ width: "4rem" }}
+              whileInView={{ width: '4rem' }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
               className="h-px bg-gradient-to-r from-transparent via-gray-900 to-transparent mx-auto mb-8"
             ></motion.div>
-            
+
             <h3 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light mb-6 text-gray-900">
               What We <span className="italic">Do</span>
             </h3>
@@ -320,69 +323,67 @@ const Home = () => {
             {/* Text first, images below on all screen sizes */}
             <div className="max-w-3xl mx-auto mb-8">
               <p className="text-base sm:text-lg text-gray-600 leading-relaxed font-light text-center">
-                Here’s a small preview of the kind of visuals we like to deliver—balanced compositions,
-                believable materials, and lighting that feels natural, not overdone.
+                Here’s a small preview of the kind of visuals we like to deliver—balanced compositions, believable
+                materials, and lighting that feels natural, not overdone.
               </p>
             </div>
 
-            <div>
-              <div className="relative">
-                <div className="absolute -inset-4 bg-white/60 rounded-3xl pointer-events-none" />
-                <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  <motion.div
-                      whileHover={{ y: -4 }}
-                      transition={{ duration: 0.25 }}
-                      className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500"
-                    >
-                      <img
-                        src="/assets/front-img-01.jpg.jpeg"
-                        alt="Nexus 3D sample visual 01"
-                        className="w-full h-60 sm:h-64 object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                        loading="lazy"
-                        decoding="async"
-                        onError={(e) => {
-                          e.currentTarget.src = "/assets/front-img-01.jpg.jpeg";
-                        }}
-                      />
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ y: -4 }}
-                      transition={{ duration: 0.25 }}
-                      className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500"
-                    >
-                      <img
-                        src="/assets/front-img-02.jpg.jpeg"
-                        alt="Nexus 3D sample visual 02"
-                        className="w-full h-60 sm:h-64 object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                        loading="lazy"
-                        decoding="async"
-                        onError={(e) => {
-                          e.currentTarget.src = "/assets/front-img-02.jpg.jpeg";
-                        }}
-                      />
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ y: -4 }}
-                      transition={{ duration: 0.25 }}
-                      className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500"
-                    >
-                      <img
-                        src="/assets/front-img-03.jpg.jpeg"
-                        alt="Nexus 3D sample visual 03"
-                        className="w-full h-60 sm:h-64 object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                        loading="lazy"
-                        decoding="async"
-                        onError={(e) => {
-                          e.currentTarget.src = "/assets/front-img-03.jpg.jpeg";
-                        }}
-                      />
-                    </motion.div>
-                  </div>
-                </div>
+            <div className="relative">
+              <div className="absolute -inset-4 bg-white/60 rounded-3xl pointer-events-none" />
+              <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.25 }}
+                  className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500"
+                >
+                  <img
+                    src="/assets/front-img-01.jpg.jpeg"
+                    alt="Nexus 3D sample visual 01"
+                    className="w-full h-60 sm:h-64 object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                    loading="lazy"
+                    decoding="async"
+                    onError={(e) => {
+                      e.currentTarget.src = '/assets/front-img-01.jpg.jpeg';
+                    }}
+                  />
+                </motion.div>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.25 }}
+                  className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500"
+                >
+                  <img
+                    src="/assets/front-img-02.jpg.jpeg"
+                    alt="Nexus 3D sample visual 02"
+                    className="w-full h-60 sm:h-64 object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                    loading="lazy"
+                    decoding="async"
+                    onError={(e) => {
+                      e.currentTarget.src = '/assets/front-img-02.jpg.jpeg';
+                    }}
+                  />
+                </motion.div>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.25 }}
+                  className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-shadow duration-500"
+                >
+                  <img
+                    src="/assets/front-img-03.jpg.jpeg"
+                    alt="Nexus 3D sample visual 03"
+                    className="w-full h-60 sm:h-64 object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                    loading="lazy"
+                    decoding="async"
+                    onError={(e) => {
+                      e.currentTarget.src = '/assets/front-img-03.jpg.jpeg';
+                    }}
+                  />
+                </motion.div>
               </div>
             </div>
           </div>
 
+          {/* Services cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {services.map((service, index) => (
               <motion.div
@@ -397,7 +398,7 @@ const Home = () => {
                 <div className="bg-white p-10 border border-gray-200 hover:border-gray-900 shadow-sm hover:shadow-xl transition-all duration-500 h-full relative overflow-hidden">
                   {/* Decorative corner */}
                   <div className="absolute top-0 right-0 w-16 h-16 border-t border-r border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
+
                   <div className="mb-6 flex items-center gap-3">
                     <motion.div
                       initial={{ scaleX: 0 }}
@@ -406,16 +407,14 @@ const Home = () => {
                       viewport={{ once: true }}
                       className="w-12 h-px bg-gray-900 origin-left"
                     ></motion.div>
-                    <span className="text-xs text-gray-400 font-light tracking-[0.2em] uppercase">0{index + 1}</span>
+                    <span className="text-xs text-gray-400 font-light tracking-[0.2em] uppercase">
+                      0{index + 1}
+                    </span>
                   </div>
-                  
+
                   <h4 className="font-serif text-2xl sm:text-3xl font-light mb-6 text-gray-900">{service.title}</h4>
-                  <p className="text-base text-gray-600 leading-relaxed mb-6 font-light">
-                    {service.description}
-                  </p>
-                  <p className="text-sm text-gray-500 italic font-light">
-                    {service.note}
-                  </p>
+                  <p className="text-base text-gray-600 leading-relaxed mb-6 font-light">{service.description}</p>
+                  <p className="text-sm text-gray-500 italic font-light">{service.note}</p>
                 </div>
               </motion.div>
             ))}
