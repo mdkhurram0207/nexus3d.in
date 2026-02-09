@@ -207,16 +207,7 @@ const Home = () => {
             
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-gray-900 mb-6 leading-tight">
               Transforming Concepts<br/>
-              <span className="italic relative inline-block">
-                into
-                <motion.span
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  viewport={{ once: true }}
-                  className="absolute bottom-2 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent origin-center"
-                ></motion.span>
-              </span> Reality
+              <span className="italic inline-block">into</span> Reality
             </h2>
             
             <motion.div
