@@ -11,6 +11,8 @@ const Blog = () => {
 
 
 
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -34,6 +36,7 @@ const Blog = () => {
         setBlogPosts(formattedPosts);
       } catch (error) {
         console.error("Error loading blogs:", error);
+        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -120,6 +123,12 @@ const Blog = () => {
         </motion.div>
 
         {/* Blog Posts Grid */}
+        {error && (
+          <div className="text-center py-12">
+            <p className="text-red-500 mb-4">Error loading posts: {error}</p>
+            <p className="text-gray-500 text-sm">If this is an index error, check the console for a link.</p>
+          </div>
+        )}
         {loading ? (
           <div className="text-center py-12">
             <p className="text-gray-600">Loading blog posts...</p>
