@@ -12,35 +12,41 @@ import ContactUsButton from "./Components/ContactUsButton";
 import Footer from "./Components/Footer";
 import ScrollToTop from "./Components/ScrollToTop";
 
+import { HelmetProvider } from "react-helmet-async";
+import BlogPost from "./Components/BlogPost";
+
 const App = () => {
   const location = useLocation();
   const isAdminPanel = location.pathname === "/admin-panel";
 
   return (
-    <div className="bg-black min-h-screen text-white relative">
-      {/* Scroll to top on route change */}
-      <ScrollToTop />
+    <HelmetProvider>
+      <div className="bg-black min-h-screen text-white relative">
+        {/* Scroll to top on route change */}
+        <ScrollToTop />
 
-      {/* Sidebar Navigation - Hide on admin panel */}
-      {!isAdminPanel && <Sidebar />}
+        {/* Sidebar Navigation - Hide on admin panel */}
+        {!isAdminPanel && <Sidebar />}
 
-      {/* Main Content */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/admin-panel" element={<AdminPanel />} />
-      </Routes>
+        {/* Main Content */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/admin-panel" element={<AdminPanel />} />
+        </Routes>
 
-      {/* Floating Contact Button - Hide on admin panel */}
-      {!isAdminPanel && <ContactUsButton />}
+        {/* Floating Contact Button - Hide on admin panel */}
+        {!isAdminPanel && <ContactUsButton />}
 
-      {/* Footer - Hide on admin panel */}
-      {!isAdminPanel && <Footer />}
-    </div>
+        {/* Footer - Hide on admin panel */}
+        {!isAdminPanel && <Footer />}
+      </div>
+    </HelmetProvider>
   );
 };
 

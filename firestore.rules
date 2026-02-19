@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is admin
+    // Replace 'jbQAlag59rZV6GHTxMWzvOdVK1E3' with your actual Admin UID from firebase.js if different
+    function isAdmin() {
+      return request.auth != null && request.auth.uid == 'jbQAlag59rZV6GHTxMWzvOdVK1E3';
+    }
+
+    // Projects: Public Read, Admin Write
+    match /projects/{projectId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Blogs: Public Read, Admin Write
+    match /blogs/{blogId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Blog Redirects: Public Read, Admin Write
+    match /blogRedirects/{redirectId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

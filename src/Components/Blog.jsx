@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaCalendarAlt, FaUser, FaArrowRight } from 'react-icons/fa';
-import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
-import { db } from '../firebase';
+import { Link } from 'react-router-dom';
+import { getBlogList } from '../services/blogService';
 
 const Blog = () => {
   const [selectedPost, setSelectedPost] = useState(null);
@@ -24,28 +24,34 @@ const Blog = () => {
   ];
 
   useEffect(() => {
-    const blogsRef = collection(db, 'blogs');
-    const q = query(blogsRef, orderBy('timestamp', 'desc'));
-    
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const posts = [];
-      snapshot.forEach((doc) => {
-        const data = doc.data();
-        posts.push({
-          id: doc.id,
+    const fetchPosts = async () => {
+      try {
+        setLoading(true);
+        // Fetch only published blogs
+        const posts = await getBlogList(true);
+
+        const formattedPosts = posts.map(data => ({
+          id: data.id,
           title: data.title || '',
+          slug: data.slug || '',
           author: data.author || 'Nexus 3D Team',
-          date: data.date || new Date(data.timestamp?.seconds * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+          date: data.createdAt?.seconds
+            ? new Date(data.createdAt.seconds * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+            : data.date || '',
           excerpt: data.excerpt || '',
           content: data.content || '',
-          timestamp: data.timestamp
-        });
-      });
-      setBlogPosts(posts);
-      setLoading(false);
-    });
+          timestamp: data.createdAt
+        }));
 
-    return () => unsubscribe();
+        setBlogPosts(formattedPosts);
+      } catch (error) {
+        console.error("Error loading blogs:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
   }, []);
 
   const handlePostClick = (post) => {
@@ -79,7 +85,7 @@ const Blog = () => {
             <h1 className="text-4xl sm:text-5xl font-light text-gray-900 mb-6 leading-tight">
               {selectedPost.title}
             </h1>
-            
+
             <div className="flex items-center gap-6 mb-8 text-gray-600">
               <div className="flex items-center gap-2">
                 <FaUser className="text-sm" />
@@ -140,9 +146,10 @@ const Blog = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -8 }}
                 className="group cursor-pointer"
-                onClick={() => handlePostClick(post)}
+                onClick={() => { }}
               >
                 <div className="h-full p-8 bg-white border-2 border-gray-200 hover:border-gray-900 hover:shadow-2xl transition-all duration-500 flex flex-col">
+                  <Link to={`/blog/${post.slug}`} className="absolute inset-0 z-10" />
                   <div className="flex items-center gap-4 mb-4 text-sm text-gray-500">
                     <div className="flex items-center gap-2">
                       <FaUser className="text-xs" />
@@ -173,41 +180,43 @@ const Blog = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post, index) => (
-            <motion.div
-              key={post.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
-              className="group cursor-pointer"
-              onClick={() => handlePostClick(post)}
-            >
-              <div className="h-full p-8 bg-white border-2 border-gray-200 hover:border-gray-900 hover:shadow-2xl transition-all duration-500 flex flex-col">
-                <div className="flex items-center gap-4 mb-4 text-sm text-gray-500">
-                  <div className="flex items-center gap-2">
-                    <FaUser className="text-xs" />
-                    <span>{post.author}</span>
+              <motion.div
+                key={post.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="group cursor-pointer"
+              // Removed onClick={() => handlePostClick(post)}
+              >
+                <div className="h-full p-8 bg-white border-2 border-gray-200 hover:border-gray-900 hover:shadow-2xl transition-all duration-500 flex flex-col">
+                  {/* Added Link component to cover the entire card */}
+                  <Link to={`/blog/${post.slug}`} className="absolute inset-0 z-10" />
+                  <div className="flex items-center gap-4 mb-4 text-sm text-gray-500">
+                    <div className="flex items-center gap-2">
+                      <FaUser className="text-xs" />
+                      <span>{post.author}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <FaCalendarAlt className="text-xs" />
+                      <span>{post.date}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <FaCalendarAlt className="text-xs" />
-                    <span>{post.date}</span>
+
+                  <h2 className="text-xl sm:text-2xl font-light text-gray-900 mb-4 leading-tight group-hover:text-gray-900 transition-colors duration-300">
+                    {post.title}
+                  </h2>
+
+                  <p className="text-base text-gray-600 leading-relaxed mb-6 flex-grow font-light">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="flex items-center text-gray-500 group-hover:text-gray-900 transition-colors duration-300">
+                    <span className="text-sm uppercase tracking-widest">Read More</span>
+                    <FaArrowRight className="ml-2 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300" />
                   </div>
                 </div>
-                
-                <h2 className="text-xl sm:text-2xl font-light text-gray-900 mb-4 leading-tight group-hover:text-gray-900 transition-colors duration-300">
-                  {post.title}
-                </h2>
-                
-                <p className="text-base text-gray-600 leading-relaxed mb-6 flex-grow font-light">
-                  {post.excerpt}
-                </p>
-                
-                <div className="flex items-center text-gray-500 group-hover:text-gray-900 transition-colors duration-300">
-                  <span className="text-sm uppercase tracking-widest">Read More</span>
-                  <FaArrowRight className="ml-2 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300" />
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
             ))}
           </div>
         )}
