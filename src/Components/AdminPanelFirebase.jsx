@@ -289,6 +289,9 @@ const AdminPanelFirebase = () => {
               <p className="text-sm text-gray-600 mt-1">
                 user: {user?.email}
               </p>
+              <p className="text-xs text-gray-400 font-mono mt-1">
+                UID: {user?.uid}
+              </p>
             </div>
             <button
               onClick={handleLogout}

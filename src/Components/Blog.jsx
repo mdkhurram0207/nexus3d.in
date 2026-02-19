@@ -9,19 +9,7 @@ const Blog = () => {
   const [blogPosts, setBlogPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fallback so the blog never looks empty (used only when Firestore has 0 posts)
-  const fallbackPosts = [
-    {
-      id: "starter-post",
-      title: "The First Render Is Never the Final Render (and That’s Okay)",
-      author: "Nexus 3D Team",
-      date: "January 2026",
-      excerpt:
-        "If you’ve ever sent a first draft to a client and immediately thought, “I should’ve waited,” welcome. Here’s how we handle the messy middle—without losing time or quality.",
-      content:
-        "There’s a funny moment in almost every project. We send the first render, and the client replies with something like: “Nice… can we try it with warmer lights, bigger windows, different flooring, and maybe the sofa moved?”\n\nAt first, that kind of feedback can feel like a setback. But after years of doing this, we’ve learned it’s actually a good sign. It means the client is engaging. They’re starting to *see* the space, not just approve it.\n\nOur rule is simple: the first render is for direction, not perfection. We use it to confirm the mood, the materials, the camera angle, and what the client cares about most. Then we tighten everything up—lighting, reflections, textures, tiny details that make the image feel real.\n\nIf you’re a client reading this: don’t worry about “bothering” us with revisions. Just be clear. Tell us what feels off and what you’re trying to achieve. If you’re not sure how to say it, even references help (a screenshot, a Pinterest image, a quick voice note).\n\nIf you’re an architect or designer: send us the intent early. The more we understand *why* you chose that form or material, the better we can translate it visually.\n\nThat messy middle—where things change a lot—is where good visualization actually happens. And when it clicks, the final render isn’t just “nice.” It sells the idea."
-    }
-  ];
+
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -137,45 +125,10 @@ const Blog = () => {
             <p className="text-gray-600">Loading blog posts...</p>
           </div>
         ) : blogPosts.length === 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {fallbackPosts.map((post, index) => (
-              <motion.div
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
-                className="group cursor-pointer"
-                onClick={() => { }}
-              >
-                <div className="h-full p-8 bg-white border-2 border-gray-200 hover:border-gray-900 hover:shadow-2xl transition-all duration-500 flex flex-col">
-                  <Link to={`/blog/${post.slug}`} className="absolute inset-0 z-10" />
-                  <div className="flex items-center gap-4 mb-4 text-sm text-gray-500">
-                    <div className="flex items-center gap-2">
-                      <FaUser className="text-xs" />
-                      <span>{post.author}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <FaCalendarAlt className="text-xs" />
-                      <span>{post.date}</span>
-                    </div>
-                  </div>
-
-                  <h2 className="text-xl sm:text-2xl font-light text-gray-900 mb-4 leading-tight group-hover:text-gray-900 transition-colors duration-300">
-                    {post.title}
-                  </h2>
-
-                  <p className="text-base text-gray-600 leading-relaxed mb-6 flex-grow font-light">
-                    {post.excerpt}
-                  </p>
-
-                  <div className="flex items-center text-gray-500 group-hover:text-gray-900 transition-colors duration-300">
-                    <span className="text-sm uppercase tracking-widest">Read More</span>
-                    <FaArrowRight className="ml-2 transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+          <div className="text-center py-20">
+            <p className="text-xl text-gray-500 font-light">
+              No blog posts found. Check back later!
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
